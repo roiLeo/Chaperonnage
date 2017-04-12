@@ -34,7 +34,11 @@ class Credential
      * @ORM\Column(name="verified", type="boolean")
      */
     private $verified;
-
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="uploaded_at", type="datetime")
+     */
+    private $uploadedAt;
 
     /**
      * Get id
@@ -93,5 +97,28 @@ class Credential
     {
         return $this->verified;
     }
-}
 
+    /**
+     * Set uploadedAt
+     *
+     * @param \DateTime $uploadedAt
+     *
+     * @return Credential
+     */
+    public function setUploadedAt(\DateTime $uploadedAt)
+    {
+        $this->uploadedAt = $uploadedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadedAt
+     *
+     * @return \DateTime
+     */
+    public function getUploadedAt(): ?\DateTime
+    {
+        return $this->uploadedAt;
+    }
+}

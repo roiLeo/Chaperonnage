@@ -56,7 +56,7 @@ class User extends BaseUser
     private $credential;
     /**
      * @var bool
-     * @ORM\Column(name="phoneVerified", type="boolean")
+     * @ORM\Column(name="phone_verified", type="boolean")
      */
     private $phoneVerified;
     /**

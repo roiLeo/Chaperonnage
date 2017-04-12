@@ -97,28 +97,5 @@ class Picture
     {
         return $this->verified;
     }
-
-    /**
-     * Set uploadedAt
-     *
-     * @param \DateTime $uploadedAt
-     *
-     * @return Picture
-     */
-    public function setUploadedAt(\DateTime $uploadedAt)
-    {
-        $this->uploadedAt = $uploadedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get uploadedAt
-     *
-     * @return \DateTime
-     */
-    public function getUploadedAt(): ?\DateTime
-    {
-        return $this->uploadedAt;
-    }
 }
+

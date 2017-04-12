@@ -53,7 +53,16 @@ class Ride
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="rideCreated")
      */
     private $protectedUser;
-
+    /**
+     * @var Address $startAddress
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     */
+    private $startAddress;
+    /**
+     * @var Address $finishAddress
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     */
+    private $finishAddress;
     /**
      * Get id
      *
@@ -182,5 +191,53 @@ class Ride
     public function getProtectedUser()
     {
         return $this->protectedUser;
+    }
+
+    /**
+     * Set startAddress
+     *
+     * @param \AppBundle\Entity\Address $startAddress
+     *
+     * @return Ride
+     */
+    public function setStartAddress(\AppBundle\Entity\Address $startAddress = null)
+    {
+        $this->startAddress = $startAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get startAddress
+     *
+     * @return \AppBundle\Entity\Address
+     */
+    public function getStartAddress(): ?Address
+    {
+        return $this->startAddress;
+    }
+
+    /**
+     * Set finishAddress
+     *
+     * @param \AppBundle\Entity\Address $finishAddress
+     *
+     * @return Ride
+     */
+    public function setFinishAddress(\AppBundle\Entity\Address $finishAddress = null)
+    {
+        $this->finishAddress = $finishAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get finishAddress
+     *
+     * @return \AppBundle\Entity\Address
+     */
+    public function getFinishAddress(): ?Address
+    {
+        return $this->finishAddress;
     }
 }
