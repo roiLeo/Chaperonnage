@@ -1,4 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div class="text-center">
+    <a class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
+        in
+        with Facebook </a>
+    <div class="mt-2 mb-2 hr">OR</div>
+</div>
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
@@ -39,15 +45,14 @@
     {{ form_errors(form.surname) }}
 </div>
 
-<div class="md-form">
-    {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+<div class="mdl-selectfield md-form">
+    {{ form_widget(form.gender, {'attr': {'class': 'browser-default form-control'}}) }}
     {{ form_label(form.gender) }}
     {{ form_errors(form.gender) }}
 </div>
 
-<div class="md-form">
+<div class="md-form birth">
     {{ form_widget(form.birthday) }}
-    {{ form_label(form.birthday) }}
     {{ form_errors(form.birthday) }}
 </div>
 
@@ -56,9 +61,21 @@
     {{ form_label(form.phone) }}
     {{ form_errors(form.phone) }}
 </div>
+<div class="text-center">
+    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+        <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span
+                class="custom-control-description">CGI</span> </label>
+    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+        <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span
+                class="custom-control-description">Newsletter</span> </label>
+</div>
 
 <div class="text-center">
-    <input type="submit" class="btn sign btn-outline-primary btn-lg btn-block"
-           value="{{ 'registration.submit'|trans }}"/>
+    <button type="submit"
+            class="btn sign btn-outline-primary btn-lg btn-block">{{ 'registration.submit'|trans }}</button>
+</div>
+<div class="text-center">
+    <p class="tw">have an account? <a href="#">Sign In</a></p>
+    <p class="tw"><a href="#">Forgot your Password?</a></p>
 </div>
 {{ form_end(form) }}
