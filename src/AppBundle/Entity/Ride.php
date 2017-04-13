@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ride
+ * Ride.
  *
  * @ORM\Table(name="ride")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RideRepository")
@@ -43,28 +52,29 @@ class Ride
     private $status;
 
     /**
-     * @var User $guardUser
+     * @var User
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="rideJoined")
      */
     private $guardUser;
 
     /**
-     * @var User $protectedUser
+     * @var User
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="rideCreated")
      */
     private $protectedUser;
     /**
-     * @var Address $startAddress
+     * @var Address
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
      */
     private $startAddress;
     /**
-     * @var Address $finishAddress
+     * @var Address
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
      */
     private $finishAddress;
+
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -74,7 +84,7 @@ class Ride
     }
 
     /**
-     * Set date
+     * Set date.
      *
      * @param \DateTime $date
      *
@@ -88,7 +98,7 @@ class Ride
     }
 
     /**
-     * Get date
+     * Get date.
      *
      * @return \DateTime
      */
@@ -98,7 +108,7 @@ class Ride
     }
 
     /**
-     * Set hour
+     * Set hour.
      *
      * @param \DateTime $hour
      *
@@ -112,7 +122,7 @@ class Ride
     }
 
     /**
-     * Get hour
+     * Get hour.
      *
      * @return \DateTime
      */
@@ -122,7 +132,7 @@ class Ride
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
      *
@@ -136,7 +146,7 @@ class Ride
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
@@ -146,7 +156,7 @@ class Ride
     }
 
     /**
-     * Set guardUser
+     * Set guardUser.
      *
      * @param \AppBundle\Entity\User $guardUser
      *
@@ -160,7 +170,7 @@ class Ride
     }
 
     /**
-     * Get guardUser
+     * Get guardUser.
      *
      * @return \AppBundle\Entity\User
      */
@@ -170,7 +180,7 @@ class Ride
     }
 
     /**
-     * Set protectedUser
+     * Set protectedUser.
      *
      * @param \AppBundle\Entity\User $protectedUser
      *
@@ -184,7 +194,7 @@ class Ride
     }
 
     /**
-     * Get protectedUser
+     * Get protectedUser.
      *
      * @return \AppBundle\Entity\User
      */
@@ -194,7 +204,7 @@ class Ride
     }
 
     /**
-     * Set startAddress
+     * Set startAddress.
      *
      * @param \AppBundle\Entity\Address $startAddress
      *
@@ -208,7 +218,7 @@ class Ride
     }
 
     /**
-     * Get startAddress
+     * Get startAddress.
      *
      * @return \AppBundle\Entity\Address
      */
@@ -218,7 +228,7 @@ class Ride
     }
 
     /**
-     * Set finishAddress
+     * Set finishAddress.
      *
      * @param \AppBundle\Entity\Address $finishAddress
      *
@@ -232,7 +242,7 @@ class Ride
     }
 
     /**
-     * Get finishAddress
+     * Get finishAddress.
      *
      * @return \AppBundle\Entity\Address
      */
