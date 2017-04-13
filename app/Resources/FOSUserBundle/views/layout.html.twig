@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-centered">
+                <!--Naked Form-->
+                <div class="card-block">
+                    <!--Header-->
+                    <div class="text-center"><img src="{{ asset('bundles/app/img/logo.png') }}"/>
+                        <a class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
+                            in
+                            with Facebook </a>
+                        <div class="mt-2 mb-2 hr">OR</div>
+                    </div>
+                    {% block fos_user_content '' %}
+                    <div class="text-center">
+                        <p class="tw">have an account? <a href="#">Sign In</a></p>
+                        <p class="tw"><a href="#">Forgot your Password?</a></p>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer"></div>
+                    <!--Naked Form-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
