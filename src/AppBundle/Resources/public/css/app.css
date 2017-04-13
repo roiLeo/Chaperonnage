@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(102, 193, 191);
+}
+
+.hr {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+    color: #fafafa;
+}
+
+.hr::before, .hr::after {
+    content: '';
+    flex: 1;
+    margin: 0 .25em;
+    border-bottom: 1px solid #fafafa;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.md-form label, .md-form i, .tw {
+    color: #fafafa;
+}
+
+.sign.btn-outline-primary {
+    border-color: #fafafa;
+    color: #fafafa !important;
+    box-shadow: inherit;
+}
+
+.sign.btn-outline-primary:hover {
+    border-color: #fff !important;
+}
+
+.btn {
+    text-transform: inherit;
+}
+
+.md-form .form-control {
+    border-bottom-color: #fafafa;
+}
+
+.md-form i {
+    margin-top: 15px;
+}
+
+.btn-social .fa-facebook {
+    margin-top: 5px;
+}
+
