@@ -47,23 +47,42 @@
                 [
                     'name'=> 'Franck',
                     'surname'=> 'Bilal',
-
+                    'addresses'=>[
+                        'address-1',
+                        'address-0',
+                    ],
                 ],
                 [
                     'name' => 'Jeremy',
                     'surname'=> 'Batman',
+                    'addresses'=>[
+                        'address-2',
+                        'address-8'
+                    ],
                 ],
                 [
                     'name' => 'Alexia',
                     'surname'=> 'xXCatXx',
+                    'addresses'=>[
+                        'address-3',
+                        'address-9'
+                    ],
                 ],
                 [
                     'name' => 'Roger',
                     'surname'=> 'BellegosseDu93',
+                    'addresses'=>[
+                        'address-4',
+                        'address-5',
+                        'address-6',
+                        'address-7',
+                    ],
                 ],
                 [
                     'name' => 'Emily',
                     'surname'=> 'Milly',
+                    'addresses'=>[
+                    ],
                 ],
             ];
             foreach ($users as $i => $u) {
@@ -79,20 +98,19 @@
 
                 $user->setGender(rand(0,1)==1?'M':'F');
 
-                $nb_addr = rand(0,4);
-                for($j=0;$j<$nb_addr;$j++){
-                    $user->addAddress($this->getReference('address-'.rand(0,3)));
+                foreach ($u['addresses'] as $j => $address){
+                    $user->addAddress($this->getReference($address));
                 }
                 //private $address;
 
-                $user->setUsername($this->generateRandomString(10));
-                $user->setEmail('email@domain.com');
+                $user->setUsername($u['surname']);
+                $user->setEmail($u['surname'].'@domain.com');
                 $user->setPlainPassword('password');
                 $user->setEnabled(true);
-                $user->setRoles(array('ROLE_ADMIN'));
+                //$user->setRoles(array('ROLE_ADMIN'));
 
                 // Update the user
-                $userManager->updateUser($user, true);
+                //$userManager->updateUser($user, true);
 
                 $manager->persist($user);
 
