@@ -15,6 +15,8 @@ class User extends BaseUser
 
     const GENDER_FEMALE = 'female';
     const GENDER_MALE = 'male';
+    const GENDER_UNSPECIFIED = 'unspecified';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
