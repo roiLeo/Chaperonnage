@@ -12,10 +12,13 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
-        $builder->add('surname');
-        $builder->add('gender',ChoiceType::class,['choices' =>['Unspecified' => User::GENDER_UNSPECIFIED, 'Female' => User::GENDER_FEMALE,'Male' => User::GENDER_MALE]]);
-        $builder->add('birthday',BirthdayType::class,array('widget' => 'choice'));
+        $builder->add('name',null, array( 'label'  => 'Prénom'));
+        $builder->add('surname',null, array( 'label'  => 'Nom'));
+        $builder->add('gender',ChoiceType::class,
+            ['choices' =>['Unspecified' => User::GENDER_UNSPECIFIED, 'Female' => User::GENDER_FEMALE,'Male' => User::GENDER_MALE],
+                'label'  => 'Sexe']);
+        $builder->add('birthday',BirthdayType::class,array('widget' => 'choice','view_timezone' => 'Europe/Paris','label'  => 'Date de naissance'));
+        $builder->add('phone',null,array( 'label'  => 'Mobile'));
     }
     public function getParent()
     {
