@@ -1,10 +1,18 @@
 <?php
-// src/AppBundle/Entity/User.php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
@@ -45,12 +53,12 @@ class User extends BaseUser
      */
     private $description;
     /**
-     * @var Picture $picture
+     * @var Picture
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture")
      */
     private $picture;
     /**
-     * @var Credential $credential
+     * @var Credential
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Credential")
      */
     private $credential;
@@ -65,24 +73,22 @@ class User extends BaseUser
      */
     private $gender;
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection $address
+     * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
      * @ORM\JoinTable(name="users_addresses", joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)})
      */
     private $address;
     /**
-     * @var Ride $rideCreated
+     * @var Ride
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ride", mappedBy="protectedUser")
      */
     private $rideCreated;
     /**
-     * @var Ride $rideJoined
+     * @var Ride
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ride", mappedBy="guardUser")
      */
     private $rideJoined;
-
-
 
     public function __construct()
     {
@@ -93,7 +99,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set phone
+     * Set phone.
      *
      * @param string $phone
      *
@@ -107,7 +113,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get phone
+     * Get phone.
      *
      * @return string
      */
@@ -117,7 +123,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -131,7 +137,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -141,7 +147,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set surname
+     * Set surname.
      *
      * @param string $surname
      *
@@ -155,7 +161,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get surname
+     * Get surname.
      *
      * @return string
      */
@@ -165,7 +171,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set birthday
+     * Set birthday.
      *
      * @param \DateTime $birthday
      *
@@ -179,7 +185,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get birthday
+     * Get birthday.
      *
      * @return \DateTime
      */
@@ -189,7 +195,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -203,7 +209,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -213,9 +219,9 @@ class User extends BaseUser
     }
 
     /**
-     * Set phoneVerified
+     * Set phoneVerified.
      *
-     * @param boolean $phoneVerified
+     * @param bool $phoneVerified
      *
      * @return User
      */
@@ -227,9 +233,9 @@ class User extends BaseUser
     }
 
     /**
-     * Get phoneVerified
+     * Get phoneVerified.
      *
-     * @return boolean
+     * @return bool
      */
     public function getPhoneVerified(): ?bool
     {
@@ -237,7 +243,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set gender
+     * Set gender.
      *
      * @param string $gender
      *
@@ -251,7 +257,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get gender
+     * Get gender.
      *
      * @return string
      */
@@ -261,7 +267,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set picture
+     * Set picture.
      *
      * @param \AppBundle\Entity\Picture $picture
      *
@@ -275,7 +281,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get picture
+     * Get picture.
      *
      * @return \AppBundle\Entity\Picture
      */
@@ -285,7 +291,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set credential
+     * Set credential.
      *
      * @param \AppBundle\Entity\Credential $credential
      *
@@ -299,7 +305,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get credential
+     * Get credential.
      *
      * @return \AppBundle\Entity\Credential
      */
@@ -309,7 +315,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add address
+     * Add address.
      *
      * @param \AppBundle\Entity\Address $address
      *
@@ -323,7 +329,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove address
+     * Remove address.
      *
      * @param \AppBundle\Entity\Address $address
      */
@@ -333,7 +339,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get address
+     * Get address.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -343,7 +349,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add rideCreated
+     * Add rideCreated.
      *
      * @param \AppBundle\Entity\Ride $rideCreated
      *
@@ -357,7 +363,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove rideCreated
+     * Remove rideCreated.
      *
      * @param \AppBundle\Entity\Ride $rideCreated
      */
@@ -367,7 +373,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get rideCreated
+     * Get rideCreated.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -377,7 +383,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add rideJoined
+     * Add rideJoined.
      *
      * @param \AppBundle\Entity\Ride $rideJoined
      *
@@ -391,7 +397,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove rideJoined
+     * Remove rideJoined.
      *
      * @param \AppBundle\Entity\Ride $rideJoined
      */
@@ -401,7 +407,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get rideJoined
+     * Get rideJoined.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

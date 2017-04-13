@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Address
+ * Address.
  *
  * @ORM\Table(name="address")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressRepository")
@@ -49,9 +58,8 @@ class Address
      */
     private $lattitude;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -61,7 +69,7 @@ class Address
     }
 
     /**
-     * Set postalCode
+     * Set postalCode.
      *
      * @param string $postalCode
      *
@@ -75,7 +83,7 @@ class Address
     }
 
     /**
-     * Get postalCode
+     * Get postalCode.
      *
      * @return string
      */
@@ -85,7 +93,7 @@ class Address
     }
 
     /**
-     * Set city
+     * Set city.
      *
      * @param string $city
      *
@@ -99,7 +107,7 @@ class Address
     }
 
     /**
-     * Get city
+     * Get city.
      *
      * @return string
      */
@@ -109,7 +117,7 @@ class Address
     }
 
     /**
-     * Set longitude
+     * Set longitude.
      *
      * @param float $longitude
      *
@@ -123,7 +131,7 @@ class Address
     }
 
     /**
-     * Get longitude
+     * Get longitude.
      *
      * @return float
      */
@@ -133,7 +141,7 @@ class Address
     }
 
     /**
-     * Set lattitude
+     * Set lattitude.
      *
      * @param float $lattitude
      *
@@ -147,7 +155,7 @@ class Address
     }
 
     /**
-     * Get lattitude
+     * Get lattitude.
      *
      * @return float
      */
@@ -156,4 +164,3 @@ class Address
         return $this->lattitude;
     }
 }
-
