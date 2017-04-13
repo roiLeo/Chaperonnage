@@ -51,3 +51,55 @@ body {
     margin-top: 5px;
 }
 
+
+/* ==========  Select Field  ========== */
+
+select:focus {
+    outline: none;
+}
+
+
+/* Hide label */
+
+.mdl-selectfield label {
+    display: none;
+}
+
+
+/* Use custom arrow */
+
+.mdl-selectfield select {
+    background-color: transparent;
+    width: 100%;
+    padding: 4px 0;
+    font-size: 16px;
+    color: #fafafa;
+    /* rgba(0,0,0, 0.26);*/
+    border: none;
+    border-bottom: 1px solid #fafafa;
+    /*rgba(0,0,0, 0.12);*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.mdl-selectfield {
+    position: relative;
+}
+
+.mdl-selectfield:after {
+    position: absolute;
+    top: 0.75em;
+    right: 0.5em;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: .25em solid transparent;
+    border-right: .25em solid transparent;
+    border-top: 0.375em solid #f5f5f5;
+    pointer-events: none;
+}
+
+.md-form.birth select{margin-left: 25px;}
