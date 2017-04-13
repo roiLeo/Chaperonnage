@@ -13,6 +13,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,6 +21,9 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    const GENDER_FEMALE = 'female';
+    const GENDER_MALE = 'male';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -29,27 +33,31 @@ class User extends BaseUser
     /**
      * @var string
      * @ORM\Column(name="phone", type="string", length=10)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $phone;
     /**
      * @var string
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $name;
     /**
      * @var string
      * @ORM\Column(name="surname", type="string", length=255)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $surname;
     /**
      * @var \DateTime
      * @ORM\Column(name="birthday", type="date")
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $birthday;
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
     /**
@@ -70,6 +78,7 @@ class User extends BaseUser
     /**
      * @var string
      * @ORM\Column(name="gender", type="string", length=255)
+     * @Assert\NotBlank(groups={"Registration"})
      */
     private $gender;
     /**
@@ -96,6 +105,7 @@ class User extends BaseUser
         $this->rideCreated = new \Doctrine\Common\Collections\ArrayCollection();
         $this->rideJoined = new \Doctrine\Common\Collections\ArrayCollection();
         $this->address = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->phoneVerified = false;
     }
 
     /**
