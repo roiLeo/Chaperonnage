@@ -4,7 +4,18 @@ parameters:
     #parameter_name: value
 
 services:
+    app.normalizer.user:
+        class: AppBundle\Serializer\Normalizer\UserNormalizer
+        tags:
+            - { name: serializer.normalizer }
+
+    app.user_manager:
+          class: AppBundle\Manager\UserManager
+          arguments:
+            - "@=service('doctrine').getManager()"
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
