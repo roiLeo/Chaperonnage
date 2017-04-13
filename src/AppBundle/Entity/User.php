@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
+    const GENDER_FEMALE = 'open';
+    const GENDER_MALE = 'closed';
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -46,6 +49,7 @@ class User extends BaseUser
     private $description;
     /**
      * @var Picture $picture
+     *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture")
      */
     private $picture;

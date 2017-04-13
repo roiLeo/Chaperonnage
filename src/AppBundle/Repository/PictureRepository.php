@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class PictureRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
