@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Credential
+ * Credential.
  *
  * @ORM\Table(name="credential")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CredentialRepository")
@@ -41,7 +50,7 @@ class Credential
     private $uploadedAt;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -51,7 +60,7 @@ class Credential
     }
 
     /**
-     * Set src
+     * Set src.
      *
      * @param string $src
      *
@@ -65,7 +74,7 @@ class Credential
     }
 
     /**
-     * Get src
+     * Get src.
      *
      * @return string
      */
@@ -75,9 +84,9 @@ class Credential
     }
 
     /**
-     * Set verified
+     * Set verified.
      *
-     * @param boolean $verified
+     * @param bool $verified
      *
      * @return Credential
      */
@@ -89,7 +98,7 @@ class Credential
     }
 
     /**
-     * Get verified
+     * Get verified.
      *
      * @return bool
      */
@@ -99,7 +108,7 @@ class Credential
     }
 
     /**
-     * Set uploadedAt
+     * Set uploadedAt.
      *
      * @param \DateTime $uploadedAt
      *
@@ -113,7 +122,7 @@ class Credential
     }
 
     /**
-     * Get uploadedAt
+     * Get uploadedAt.
      *
      * @return \DateTime
      */

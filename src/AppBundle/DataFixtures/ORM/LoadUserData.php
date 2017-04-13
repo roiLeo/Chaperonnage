@@ -1,12 +1,20 @@
 <?php
-    namespace AppBundle\DataFixtures\ORM;
-    use Doctrine\Common\Persistence\ObjectManager;
-    use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace AppBundle\DataFixtures\ORM;
+
+use AppBundle\Entity\User;
     use Doctrine\Common\DataFixtures\AbstractFixture;
-    use AppBundle\Entity\User;
-
-
-
+    use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+    use Doctrine\Common\Persistence\ObjectManager;
 
     class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
@@ -21,23 +29,27 @@
             return new \DateTime(date($sFormat, $fVal));
         }
 
-        private function generateRandomPhone($length = 9) {
+        private function generateRandomPhone($length = 9)
+        {
             $characters = '0123456789';
             $charactersLength = strlen($characters);
             $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
+            for ($i = 0; $i < $length; ++$i) {
                 $randomString .= $characters[rand(0, $charactersLength - 1)];
             }
+
             return '0'.$randomString;
         }
 
-        private function generateRandomString($length = 10) {
+        private function generateRandomString($length = 10)
+        {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
             $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
+            for ($i = 0; $i < $length; ++$i) {
                 $randomString .= $characters[rand(0, $charactersLength - 1)];
             }
+
             return $randomString;
         }
 
@@ -45,33 +57,33 @@
         {
             $users = [
                 [
-                    'name'=> 'Franck',
-                    'surname'=> 'Bilal',
-                    'addresses'=>[
+                    'name' => 'Franck',
+                    'surname' => 'Bilal',
+                    'addresses' => [
                         'address-1',
                         'address-0',
                     ],
                 ],
                 [
                     'name' => 'Jeremy',
-                    'surname'=> 'Batman',
-                    'addresses'=>[
+                    'surname' => 'Batman',
+                    'addresses' => [
                         'address-2',
-                        'address-8'
+                        'address-8',
                     ],
                 ],
                 [
                     'name' => 'Alexia',
-                    'surname'=> 'xXCatXx',
-                    'addresses'=>[
+                    'surname' => 'xXCatXx',
+                    'addresses' => [
                         'address-3',
-                        'address-9'
+                        'address-9',
                     ],
                 ],
                 [
                     'name' => 'Roger',
-                    'surname'=> 'BellegosseDu93',
-                    'addresses'=>[
+                    'surname' => 'BellegosseDu93',
+                    'addresses' => [
                         'address-4',
                         'address-5',
                         'address-6',
@@ -80,8 +92,8 @@
                 ],
                 [
                     'name' => 'Emily',
-                    'surname'=> 'Milly',
-                    'addresses'=>[
+                    'surname' => 'Milly',
+                    'addresses' => [
                     ],
                 ],
             ];
@@ -94,23 +106,18 @@
 
                 $user->setDescription($this->generateRandomString(20));
 
-                $user->setPhoneVerified(rand(0,1)==1);
+                $user->setPhoneVerified(rand(0, 1) === 1);
 
-                $user->setGender(rand(0,1)==1?'M':'F');
-
-                foreach ($u['addresses'] as $j => $address){
+                $user->setGender(rand(0, 1) === 1 ? 'M' : 'F');
+                $addresses = $u['addresses'];
+                foreach ($addresses as $j => $address) {
                     $user->addAddress($this->getReference($address));
                 }
-                //private $address;
 
                 $user->setUsername($u['surname']);
                 $user->setEmail($u['surname'].'@domain.com');
                 $user->setPlainPassword('password');
                 $user->setEnabled(true);
-                //$user->setRoles(array('ROLE_ADMIN'));
-
-                // Update the user
-                //$userManager->updateUser($user, true);
 
                 $manager->persist($user);
 
@@ -123,5 +130,4 @@
         {
             return 10;
         }
-
     }

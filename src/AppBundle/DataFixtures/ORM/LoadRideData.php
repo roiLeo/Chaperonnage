@@ -1,12 +1,20 @@
 <?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\DataFixtures\ORM;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Doctrine\Common\DataFixtures\AbstractFixture;
+
 use AppBundle\Entity\Ride;
-
-
-
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -21,41 +29,41 @@ class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
         return new \DateTime(date($sFormat, $fVal));
     }
 
-    private $statuses =['waiting', 'in progress', 'success'];
+    private $statuses = ['waiting', 'in progress', 'success'];
 
     public function load(ObjectManager $manager)
     {
         $rides = [
             [
-                'GuardUser'=> 'user-0',
-                'ProtectedUser'=> 'user-2',
-                'StartAddress'=>'address-3',
-                'FinishAddress'=>'address-9',
+                'GuardUser' => 'user-0',
+                'ProtectedUser' => 'user-2',
+                'StartAddress' => 'address-3',
+                'FinishAddress' => 'address-9',
             ],
             [
-                'GuardUser'=> 'user-0',
-                'ProtectedUser'=> 'user-1',
-                'StartAddress'=>'address-2',
-                'FinishAddress'=>'address-8',
+                'GuardUser' => 'user-0',
+                'ProtectedUser' => 'user-1',
+                'StartAddress' => 'address-2',
+                'FinishAddress' => 'address-8',
             ],
             [
-                'GuardUser'=> 'user-2',
-                'ProtectedUser'=> 'user-3',
-                'StartAddress'=>'address-5',
-                'FinishAddress'=>'address-6',
+                'GuardUser' => 'user-2',
+                'ProtectedUser' => 'user-3',
+                'StartAddress' => 'address-5',
+                'FinishAddress' => 'address-6',
             ],
             [
-                'GuardUser'=> 'user-1',
-                'ProtectedUser'=> 'user-3',
-                'StartAddress'=>'address-7',
-                'FinishAddress'=>'address-4',
+                'GuardUser' => 'user-1',
+                'ProtectedUser' => 'user-3',
+                'StartAddress' => 'address-7',
+                'FinishAddress' => 'address-4',
             ],
             [
-                'GuardUser'=> 'user-2',
-                'ProtectedUser'=> 'user-0',
-                'StartAddress'=>'address-1',
-                'FinishAddress'=>'address-0',
-            ]
+                'GuardUser' => 'user-2',
+                'ProtectedUser' => 'user-0',
+                'StartAddress' => 'address-1',
+                'FinishAddress' => 'address-0',
+            ],
         ];
         foreach ($rides as $i => $r) {
             $ride = new Ride();
@@ -64,14 +72,13 @@ class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
 
             $ride->setHour($ride->getDate());
 
-            $ride->setStatus($this->statuses[rand(0,2)]);
+            $ride->setStatus($this->statuses[rand(0, 2)]);
 
             $ride->setGuardUser($this->getReference($r['GuardUser']));
             $ride->setProtectedUser($this->getReference($r['ProtectedUser']));
 
             $ride->setStartAddress($this->getReference($r['StartAddress']));
             $ride->setFinishAddress($this->getReference($r['FinishAddress']));
-
 
             $manager->persist($ride);
             $this->addReference('ride-'.$i, $ride);
@@ -83,5 +90,4 @@ class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
     {
         return 11;
     }
-
 }
