@@ -13,8 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
 
-    const GENDER_FEMALE = 'open';
-    const GENDER_MALE = 'closed';
+    const GENDER_FEMALE = 'female';
+    const GENDER_MALE = 'male';
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
