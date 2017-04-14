@@ -30,7 +30,8 @@ class UserController extends Controller
             $user = $this->getUser()->setPhoneVerified(true);
             $userManager = $this->get('fos_user.user_manager');
             $userManager->updateUser($user);
-            //return $this->redirectToRoute('', ['id' => $form->getData()->getId()]);
+
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('user/user.certificate_phone.html.twig', ['form' => $form->createView()]);

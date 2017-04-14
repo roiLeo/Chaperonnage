@@ -12,13 +12,13 @@
 namespace AppBundle\Form\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class PhoneCertification
 {
     /**
      * @var string
      * @Assert\NotBlank()
+     *  @Assert\EqualTo("0000")
      * @Assert\Length(
      *      min = 4,
      *      max = 4,
@@ -46,16 +46,5 @@ class PhoneCertification
         $this->code = $code;
 
         return $this;
-    }
-
-    /**
-     * @Assert\Callback
-     */
-    public function validate(ExecutionContextInterface $context, $payload)
-    {
-        if ('0000' !== $this->getCode()) {
-            $context->buildViolation('Le code saisi est invalide !')
-                ->addViolation();
-        }
     }
 }
