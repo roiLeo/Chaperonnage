@@ -24,21 +24,49 @@
                                     <a class="nav-link">Chercher un trajet</a>
                                 </li>
                             </ul>
-                            <form class="form-inline waves-effect waves-light">
-                                {% block account %}
-                                    {% if true %}
-                                        <ul class="navbar-nav mr-auto">
-                                            <li class="nav-item">
-                                                <a href="{{ path('homepage') }}" class="nav-link">Se connecter</a>
+                            {% block account %}
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> 
+                                            <strong>Mon compte</strong>
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu grey_bg">
+                                            <li>
+                                                <div class="navbar-login ">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <p class="text-center">
+                                                                {% block user_img %}<span class="glyphicon glyphicon-user icon-size"></span>{% endblock %}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <p class="text-left"><strong>Pseudo</strong></p>
+                                                            <p class="text-left small">email@email.com</p>
+                                                            <p class="text-left">
+                                                                <a href="#" class="btn sign btn-outline-primary btn-lg btn-block">Mon profile</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="nav-item">
-                                                <a href="{{ path('homepage') }}" class="nav-link">S'inscrire</a>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <div class="navbar-login navbar-login-session">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <p>
+                                                                <a href="{{ path('fos_user_security_logout') }}" class="btn sign btn-outline-primary btn-lg btn-block">Se déconnecter</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                         </ul>
-                                    {% else %}
-                                    {% endif %}
-                                {%  endblock %}
-                            </form>
+                                    </li>
+                                </ul>
+                            {%  endblock %}
                         </div>
                     </div>
                 </nav>
@@ -54,7 +82,7 @@
 
     {% block footer %}
         <!--Footer-->
-        <footer class="page-footer orange_bg center-on-small-only">
+        <footer class="page-footer center-on-small-only">
             <!--Footer Links-->
             <div class="container-fluid">
                 <div class="container">
@@ -70,23 +98,23 @@
                         <!--Second column-->
                         <div class="col-md-3">
                             <h5 class="title">Liens</h5>
-                            <ul class="s9menuContainer" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0">
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root1_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root1_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/mon-chaperon-pro" target="_self" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root1_.0">Mon Chaperon Pro</a>
+                            <ul class="s9menuContainer">
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root1_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/mon-chaperon-pro" target="_self">Mon Chaperon Pro</a>
                                 </li>
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root3_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root3_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self" data-keep-roots="true" data-anchor="dataItem-ioig1pcs" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root3_.0">Chaperon ou Chaperonné?</a>
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root3_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self">Chaperon ou Chaperonné?</a>
                                 </li>
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root4_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root4_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self" data-keep-roots="true" data-anchor="dataItem-ioig0sqg" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root4_.0">Comment ça marche?</a>
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root4_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self">Comment ça marche?</a>
                                 </li>
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root5_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root5_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/faq" target="_self" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root5_.0">FAQ</a></li>
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root6_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root6_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/actu" target="_self" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root6_.0">Actu</a>
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root5_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/faq" target="_self">FAQ</a></li>
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root6_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr/actu" target="_self">Actu</a>
                                 </li>
-                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root7_" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root7_">
-                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self" data-keep-roots="true" data-anchor="dataItem-ioig2oa8" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_FOOTER.1.1.$comp-ioifk0c2.1.$mediairkbbite1/=1$mediairkbbite1.1.$comp-ioigobf8.0.$root7_.0">Newsletter</a>
+                                <li class="s9_item s9_itemWrapper " style="height:20px;" id="root7_">
+                                    <a class=" s9_label level0" style="line-height: 22px;" href="https://www.monchaperon.fr" target="_self">Newsletter</a>
                                 </li>
                             </ul>
                         </div>
