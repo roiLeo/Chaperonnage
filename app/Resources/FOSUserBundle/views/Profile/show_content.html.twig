@@ -1,0 +1,69 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="profileClass">
+
+    <ul class="nav nav-tabs text-center" role="tablist">
+        <li class="nav-item col-md-3">
+            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">profil</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#address" role="tab" data-toggle="tab">Mes adresses</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#friends" role="tab" data-toggle="tab">Mes amis</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#rides" role="tab" data-toggle="tab">Mes trajets</a>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="profile">
+            <div class="container">
+                <div class="rounded-image col-md-3" style="background-image: url('{{ asset("bundles/app/img/test.jpg") }}');">
+
+                </div><div class="col-md-9 noPaddingRight">
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Informations</h4>
+                            <!--Text-->
+                            {##}
+                            <span class="glyphicon glyphicon glyphicon-stats" aria-hidden="true"></span>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Button</a>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container text-center">
+                <div class="col-md-3">
+                    <p>{{ app.user.name | capitalize }} {{ app.user.surname | capitalize}} | {{ app.user.birthday | date("m/d/Y") }}</p>
+                </div>
+
+                <div class="col-md-9">
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+        <div role="tabpanel" class="tab-pane fade" id="friends">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
+    </div>
+
+</div>

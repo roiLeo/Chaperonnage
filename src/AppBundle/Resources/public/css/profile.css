@@ -1,0 +1,57 @@
+
+/*Tabs*/
+
+.profileClass ul{
+    background-color: #217D7A;
+    border: 0;
+    padding: .7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: -20px;
+    z-index: 2;
+    position: relative;
+}
+.profileClass ul li{
+    padding: 0;
+}
+
+.tab-content{
+    padding: 2rem 1rem 1rem;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.nav-tabs .nav-item{
+    margin:0;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #217D7A;
+}
+
+.nav-tabs .nav-link.active{
+    background-color: #66c1Be;
+    color: #fff;
+    border-color: #66c1Be;
+}
+
+.profileClass a, a:hover{
+    color: #fff;
+}
+
+/*content profil*/
+
+.rounded-image{
+    background-size: cover;
+    height: 262px;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profileClass .container{
+    display: flex;
+}
+
+.noPaddingRight{
+    padding-right: 0 !important;
+}
