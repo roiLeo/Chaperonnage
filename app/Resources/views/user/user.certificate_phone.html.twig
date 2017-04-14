@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-centered">
+                <div>Veuillez saisir le code que vous avez reçu par SMS<div>
+                <hr>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal','novalidate': 'novalidate'}}) }}
+                {{ form_errors(form) }}
+                <div class="md-form">
+                    {{ form_row(form.code) }}
+                </div>
+                <div class="text-center">
+                    <input type="submit" class="btn sign btn-outline-primary btn-lg btn-block" value="Valider">
+                </div>
+                {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

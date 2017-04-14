@@ -19,3 +19,12 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    app.subscriber.check_user_pin:
+        class: AppBundle\EventListener\RequestListener
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - "@router"
+            - "@security.authorization_checker"
+            - "@security.token_storage"
+
