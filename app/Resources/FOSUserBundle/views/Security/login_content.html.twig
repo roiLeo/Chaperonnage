@@ -4,22 +4,39 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
+<div class="text-center">
+    <a class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
+        in
+        with Facebook </a>
+    <div class="mt-2 mb-2 hr">OR</div>
+</div>
+
+
 <form action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
     {% endif %}
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    <div class="md-form"><i class="fa fa-user prefix text-center"></i>
+        <input type="text" id="email" class="form-control" required="required" value="{{ last_username }}">
+        <label for="email">{{ 'security.login.username'|trans }}</label>
+    </div>
+    <div class="md-form"><i class="fa fa-lock prefix text-center"></i>
+        <input type="password" id="password" name="_password" class="form-control" required="required">
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+    </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
     <div class="text-center">
         <button type="submit" id="_submit" name="_submit"
                 class="btn sign btn-outline-primary btn-lg btn-block">{{ 'security.login.submit'|trans }}</button>
+    </div>
+
+    <div class="text-center">
+        <p class="tw">Don't have an account? <a href="#">Sign Up</a></p>
+        <p class="tw"><a href="#">Forgot your Password?</a></p>
     </div>
 </form>
