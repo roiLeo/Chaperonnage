@@ -25,7 +25,7 @@
         <input type="password" id="password" name="_password" class="form-control" required="required">
         <label for="password">{{ 'security.login.password'|trans }}</label>
     </div>
-    
+
     <div class="text-center">
         <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
             <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on">
@@ -40,7 +40,7 @@
     </div>
 
     <div class="text-center">
-        <p class="tw">Don't have an account? <a href="#">Sign Up</a></p>
+        <p class="tw">Don't have an account? <a href="{{ path('fos_user_registration_register') }}">Sign Up</a></p>
         <p class="tw"><a href="#">Forgot your Password?</a></p>
     </div>
 </form>

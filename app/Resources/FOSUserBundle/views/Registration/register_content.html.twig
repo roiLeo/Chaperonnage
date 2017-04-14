@@ -75,7 +75,7 @@
             class="btn sign btn-outline-primary btn-lg btn-block">{{ 'registration.submit'|trans }}</button>
 </div>
 <div class="text-center">
-    <p class="tw">have an account? <a href="#">Sign In</a></p>
+    <p class="tw">have an account? <a href="{{ path('fos_user_security_login') }}">Sign In</a></p>
     <p class="tw"><a href="#">Forgot your Password?</a></p>
 </div>
 {{ form_end(form) }}
