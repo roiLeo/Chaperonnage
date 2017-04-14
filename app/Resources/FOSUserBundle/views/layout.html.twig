@@ -1,21 +1,28 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-centered">
-                <!--Naked Form-->
-                <div class="card-block">
-                    <!--Header-->
-                    <div class="text-center">
-                        <img src="{{ asset('bundles/app/img/logo.png') }}"/>
-                    </div>
-                    {% block fos_user_content '' %}
-                    <!--Footer-->
-                    <div class="modal-footer"></div>
-                    <!--Naked Form-->
-                </div>
+    {#
+    <div class="col-md-4 col-centered">
+        <!--Naked Form-->
+        <div class="card-block">
+            <!--Header-->
+            <div class="text-center">
+                <img src="{{ asset('bundles/app/img/logo.png') }}"/>
             </div>
+
+            <!--Footer-->
+            <div class="modal-footer"></div>
+            <!--Naked Form-->
         </div>
     </div>
+    #}
+            <div class="col-md-12 col-centered">
+            {% block fos_user_content '' %}
+            </div>
+</div>
+</div>
+
 {% endblock %}
