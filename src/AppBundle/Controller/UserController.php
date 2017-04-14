@@ -13,6 +13,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Form\Model\PhoneCertification;
 use AppBundle\Form\PhoneCertificationType;
+use AppBundle\Form\UserMobileType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,9 +21,27 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
+     * @Route("/user/mobile/", name="user_mobile")
+     */
+    public function mobileAction(Request $request)
+    {
+        $form = $this->createForm(UserMobileType::class, $this->getUser()); // retourne un objet Form
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $user = $this->getUser();
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+
+            return $this->redirectToRoute('certificate_phone');
+        }
+
+        return $this->render('user/user.mobile.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
      * @Route("/user/activation/", name="certificate_phone")
      */
-    public function phoneAction(Request $request)
+    public function activationAction(Request $request)
     {
         $form = $this->createForm(PhoneCertificationType::class, new PhoneCertification()); // retourne un objet Form
         $form->handleRequest($request);

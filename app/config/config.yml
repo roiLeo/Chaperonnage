@@ -82,7 +82,7 @@ fos_user:
         form:
             type:               AppBundle\Form\RegistrationType
         confirmation:
-            enabled:    true
+            enabled:    false
             template:   FOSUserBundle:Registration:email.txt.twig
 
 nelmio_api_doc: ~

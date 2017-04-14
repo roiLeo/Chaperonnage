@@ -14,6 +14,11 @@ services:
           arguments:
             - "@=service('doctrine').getManager()"
 
+    app.avatar_manager:
+        class: AppBundle\Manager\AvatarUserResolver
+        arguments:
+            - "@=service('doctrine').getManager()"
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
@@ -27,4 +32,11 @@ services:
             - "@router"
             - "@security.authorization_checker"
             - "@security.token_storage"
+
+    app.twig.avatar_extension:
+        class: AppBundle\Twig\AvatarExtension
+        tags:
+        - { name: twig.extension }
+        arguments:
+            - "@app.avatar_manager"
 

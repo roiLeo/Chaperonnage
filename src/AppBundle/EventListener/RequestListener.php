@@ -42,32 +42,27 @@ class RequestListener implements EventSubscriberInterface
     public function onKernelRequest(GetResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
-            // don't do anything if it's not the master request
             return;
         }
-        if ('certificate_phone' === $event->getRequest()->get('_route')) {
+        if (!in_array($event->getRequest()->get('_route'), $this->getIgnoredRoutes())) {
             if (null === $token = $this->tokenStorage->getToken()) {
                 return;
             }
             if (false === $this->authorizationChecker->isGranted('ROLE_USER')) {
                 return;
             }
-            if (true === $token->getUser()->getPhoneVerified()) {
-                $url = $this->router->generate('fos_user_profile_show');
+            if (!$token->getUser()->getPhoneVerified()) {
+                $url = $this->router->generate('user_mobile');
                 $event->setResponse(new RedirectResponse($url));
             }
         }
-        if ('certificate_phone' !== $event->getRequest()->get('_route')) {
-            if (null === $token = $this->tokenStorage->getToken()) {
-                return;
-            }
-            if (false === $this->authorizationChecker->isGranted('ROLE_USER')) {
-                return;
-            }
-            if (false === $token->getUser()->getPhoneVerified()) {
-                $url = $this->router->generate('certificate_phone');
-                $event->setResponse(new RedirectResponse($url));
-            }
-        }
+    }
+
+    private function getIgnoredRoutes()
+    {
+        return [
+            'certificate_phone',
+            'user_mobile',
+        ];
     }
 }
