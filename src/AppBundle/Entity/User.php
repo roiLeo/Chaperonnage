@@ -11,12 +11,13 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
@@ -102,9 +103,9 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->rideCreated = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->rideJoined = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->address = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->rideCreated = new ArrayCollection();
+        $this->rideJoined = new ArrayCollection();
+        $this->address = new ArrayCollection();
         $this->phoneVerified = false;
     }
 
