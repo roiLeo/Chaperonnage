@@ -18,8 +18,9 @@
     {% endif %}
 
     <div class="md-form"><i class="fa fa-user prefix text-center"></i>
-        <input type="text" id="email" class="form-control" required="required" value="{{ last_username }}">
-        <label for="email">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" class="form-control" required="required"
+               value="{{ last_username }}">
+        <label for="username">{{ 'security.login.username'|trans }}</label>
     </div>
     <div class="md-form"><i class="fa fa-lock prefix text-center"></i>
         <input type="password" id="password" name="_password" class="form-control" required="required">
