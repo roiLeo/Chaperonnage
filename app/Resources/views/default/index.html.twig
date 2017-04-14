@@ -1,15 +1,24 @@
 {% extends 'layout.html.twig' %}
 
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/app/js/google_autocomplete.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-TozRWtnMZroNu6HOGostbH4RVwIhLj4&libraries=places&callback=initAutocomplete"
+                async defer></script>
+    {% endblock %}
+
 {% block content %}
     <div id="spacing" class="row">
 
     </div>
     <div class="row">
         <div class="md-form col-md-6">
-            <input type="text" id="startAddress" class="form-control">
+            <input type="text" id="startAddress"
+                   onFocus="geolocate()" class="form-control">
             <label class="search_label" for="startAddress">Adresse de Départ</label>
         </div><div class="md-form col-md-6">
-            <input type="text" id="finishAddress" class="form-control">
+            <input type="text" id="finishAddress"
+                   onFocus="geolocate()" class="form-control">
             <label class="search_label" for="finishAddress">Adresse d'Arrivée</label>
         </div>
     </div>
