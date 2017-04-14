@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/accueil.css') }}" type="text/css"/>
+    {% block header %}
+        {% block navbar %}
+            <nav class="navbar navbar-toggleable-md navbar-dark blue_bg">
+                <div class="container">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="{{ asset('bundles/app/img/logo1.png') }}"/>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNav1">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Proposer un trajet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Chercher un trajet</a>
+                            </li>
+                        </ul>
+                        {% block account %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="fa-stack fa-lg">
+                                                 <i class="fa fa-circle fa-stack-2x"></i>
+                                                 <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="navbar-login ">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <p class="text-center">
+                                                            {% block user_img %}
+                                                                <span class="fa-stack fa-lg">
+                                                                         <i class="fa fa-circle fa-stack-2x"></i>
+                                                                         <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                            {% endblock %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <p class="text-left">
+                                                            <strong>{{ app.user.name |capitalize }} {{ app.user.surname |capitalize }}</strong>
+                                                        </p>
+                                                        <p class="text-left small">{{ app.user.email }}</p>
+                                                        <p class="btn-profil">
+                                                            <a class="btn btn-default btn-sm" href="#">
+                                                                <i class="fa fa-cog"></i> Settings</a>
+                                                            <a href="{{ path('fos_user_security_logout') }}"
+                                                               class="btn btn-danger"><i
+                                                                        class="fa fa-power-off"></i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {% endblock %}
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+    {% endblock %}
+
+    <div class="container">
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% block footer %}
+        <!--Footer-->
+        <footer class="page-footer center-on-small-only">
+            <!--Footer Links-->
+            <div class="container-fluid">
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-3 offset-md-1">
+                        <h5 class="title">Footer Content</h5>
+                        <p>Nemo quaeso miretur, si post exsudatos labores itinerum longos congestosque adfatim commeatus
+                            fiducia vestri ductante barbaricos pagos adventans velut mutato repente consilio ad
+                            placidiora deverti.</p>
+                    </div>
+                    <!--/.First column-->
+
+                    <hr class="hidden-md-up">
+
+                    <!--Second column-->
+                    <div class="col-md-2 offset-md-1">
+                        <h5 class="title">Links</h5>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                            <li><a href="#">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <!--/.Second column-->
+
+                    <hr class="hidden-md-up">
+
+                    <!--Third column-->
+                    <div class="col-md-2">
+                        <h5 class="title">Links</h5>
+                        <ul>
+                        </ul>
+                    </div>
+                    <!--/.Third column-->
+
+                    <hr class="hidden-md-up">
+
+                    <!--Fourth column-->
+                    <div class="col-md-2">
+                        <h5 class="title">Social</h5>
+                        <a href="#">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x"></i>
+                        </span></a>
+                        <a href="#">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span></a>
+                        <a href="#">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-instagram fa-stack-1x"></i>
+                        </span></a>
+                    </div>
+                    <!--/.Fourth column-->
+                </div>
+            </div>
+            <!--/.Footer Links-->
+
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="container-fluid">
+                    © 2017 Made with love ♥
+                </div>
+            </div>
+            <!--/.Copyright-->
+
+        </footer>
+        <!--/.Footer-->
+    {% endblock %}
+{% endblock %}

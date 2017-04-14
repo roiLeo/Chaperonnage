@@ -1,42 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-centered">
-                <!--Naked Form-->
-                <div class="card-block">
-                    <form method="post">
-                        <!--Header-->
-                        <div class="text-center"><img src="{{ asset('bundles/app/img/logo.png') }}"/>
-                            <a class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
-                                in
-                                with Facebook </a>
-                            <div class="mt-2 mb-2 hr">OR</div>
-                        </div>
-                        <!--Body-->
-                        <div class="md-form"><i class="fa fa-user prefix text-center"></i>
-                            <input type="text" id="form2" class="form-control">
-                            <label for="form2">email</label>
-                        </div>
-                        <div class="md-form"><i class="fa fa-lock prefix text-center"></i>
-                            <input type="password" id="form4" class="form-control">
-                            <label for="form4">password</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn sign btn-outline-primary btn-lg btn-block">Sign in</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="text-center">
-                    <p class="tw">Don't have an account? <a href="{{ path('fos_user_registration_register') }}">Sign Up</a></p>
-                    <p class="tw"><a href="#">Forgot your Password?</a></p>
-                </div>
-                <!--Footer-->
-                <div class="modal-footer"></div>
-                <!--Naked Form-->
-            </div>
-        </div>
+{% block content %}
+    <div class="md-form col-md-4">
+        <input type="text" id="startAddress" class="form-control">
+        <label for="startAddress">Adresse de Départ</label>
+    </div>
+    <div class="md-form col-md-4">
+        <input type="text" id="finishAddress" class="form-control">
+        <label for="finishAddress">Adresse d'Arrivée</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn sign btn-outline-primary btn-lg btn-block">Rechercher un trajet</button>
     </div>
 {% endblock %}
-
