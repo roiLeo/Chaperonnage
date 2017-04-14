@@ -24,3 +24,14 @@
 {
     font-size: 87px;
 }
+
+.search_label {
+    font-size: 1rem;
+    color: #fafafa;
+    cursor: text;
+    left: auto !important;
+}
+
+#spacing{
+    height: 100px;
+}
