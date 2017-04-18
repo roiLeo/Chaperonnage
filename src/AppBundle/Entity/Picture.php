@@ -49,6 +49,12 @@ class Picture
      */
     private $uploadedAt;
 
+    public function __construct()
+    {
+        $this->uploadedAt = new \DateTime();
+        $this->verified = false;
+    }
+
     /**
      * Get id.
      *
