@@ -1,0 +1,108 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="profileClass container">
+
+    <ul class="nav nav-tabs text-center" role="tablist">
+        <li class="nav-item col-md-3">
+            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">profil</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#address" role="tab" data-toggle="tab">Mes adresses</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#friends" role="tab" data-toggle="tab">Mes amis</a>
+        </li>
+        <li class="nav-item col-md-3">
+            <a class="nav-link" href="#rides" role="tab" data-toggle="tab">Mes trajets</a>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+            <div class="container alignItemCenter">
+                <div class="col-md-3">
+                    <img class="rounded-circle img-responsive rounded-image" src="{{ asset(get_avatar(app.user)) }}"  alt="photo de profil" height="232" width="232">
+
+                </div><div class="col-md-9 noPaddingRight">
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Informations</h4>
+                            <!--Text-->
+                            {##}
+
+                            <p class="card-text"><i class="fa fa-bar-chart" aria-hidden="true"></i>  {{ get_niveauCop(app.user) }} </p>
+                            <p class="card-text"><i class="fa fa-users" aria-hidden="true"></i>  {{ get_nbCop(app.user) }} Copiétonnage(s)</p>
+                            <p class="card-text"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </p>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container text-center">
+                <div class="col-md-3">
+                    <p>{{ app.user.name | capitalize }} {{ app.user.surname | capitalize}} | {{ get_age(app.user) }} ans</p>
+                </div>
+                <div class="col-md-9">
+                </div>
+            </div>
+
+            <div class="container alignItemTop">
+                <div class="col-md-3">
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Vérifications</h4>
+                            <!--Text-->
+                            {##}
+                            {% if get_phone(app.user) == 'true'  %}
+                                <p class="card-text"><i class="fa fa-check-square-o" aria-hidden="true"></i> Téléphone vérifié </p>
+                            {% else %}
+                                <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Téléphone non vérifié </p>
+                            {% endif %}
+
+                            {% if get_pictureVerified(app.user) == 'true'  %}
+                                <p class="card-text"><i class="fa fa-check-square-o" aria-hidden="true"></i> Avatar vérifié </p>
+                            {% else %}
+                                <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Avatar non vérifié </p>
+                            {% endif %}
+
+                            {% if get_credentialVerified(app.user) == 'true'  %}
+                                <p class="card-text"><i class="fa fa-check-square-o" aria-hidden="true"></i> Pièce d'identité vérifié </p>
+                            {% else %}
+                                <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Pièce d'identité non vérifié </p>
+                            {% endif %}
+
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                </div>
+                {#app.user.birthday | date("m/d/Y")#}
+                <div class="col-md-9">
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Description</h4>
+                            <!--Text-->
+                            {##}
+
+                            <p class="card-text"> {{ app.user.description }} </p>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+        <div role="tabpanel" class="tab-pane fade" id="friends">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
+    </div>
+
+</div>
