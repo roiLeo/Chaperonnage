@@ -1,0 +1,10 @@
+.search_label {
+    font-size: 1rem;
+    color: #101010;
+    cursor: text;
+    left: auto !important;
+}
+
+#map {
+    height: 400px;
+}
