@@ -48,9 +48,16 @@
     border-radius: 50%;
 }
 
-.profileClass .container{
+.profileClass .alignItemCenter{
+    display: flex;
+    align-items: center;
+}
+
+.profileClass .alignItemTop{
     display: flex;
 }
+
+
 
 .noPaddingRight{
     padding-right: 0 !important;
