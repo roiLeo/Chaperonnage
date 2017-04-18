@@ -81,6 +81,9 @@ fos_user:
     registration:
         form:
             type:               AppBundle\Form\RegistrationType
+        confirmation:
+            enabled:    false
+            template:   FOSUserBundle:Registration:email.txt.twig
 
 nelmio_api_doc: ~
 

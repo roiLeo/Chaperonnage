@@ -33,8 +33,8 @@ class User extends BaseUser
     protected $id;
     /**
      * @var string
-     * @ORM\Column(name="phone", type="string", length=10)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @ORM\Column(name="phone", type="string", length=10, nullable=true)
+     * @Assert\NotBlank(groups={"Phone"})
      */
     private $phone;
     /**

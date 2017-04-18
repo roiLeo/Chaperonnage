@@ -35,7 +35,6 @@ class RegistrationType extends AbstractType
             'view_timezone' => 'Europe/Paris',
             'label' => 'Date de naissance',
         ]);
-        $builder->add('phone', null, ['label' => 'Mobile']);
     }
 
     public function getParent()

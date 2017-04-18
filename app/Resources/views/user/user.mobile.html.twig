@@ -1,0 +1,17 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block fos_user_content %}
+    <div>Veuillez saisir votre numéro de mobile<div>
+    <hr>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal','novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+    <div class="md-form">
+        {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.phone) }}
+        {{ form_errors(form.phone) }}
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn sign btn-outline-primary btn-lg btn-block" value="Valider">
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

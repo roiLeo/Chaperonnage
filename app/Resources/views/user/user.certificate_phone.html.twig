@@ -1,0 +1,17 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block fos_user_content %}
+    <div>Veuillez saisir le code que vous avez reçu par SMS<div>
+    <hr>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal','novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+    <div class="md-form">
+        {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.code) }}
+        {{ form_errors(form.code) }}
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn sign btn-outline-primary btn-lg btn-block" value="Valider">
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
