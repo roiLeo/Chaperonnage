@@ -25,6 +25,10 @@ body {
     height: 42px;
 }
 
+.spacing{
+    height: 50px;
+}
+
 .navatar {
     width: 40px;
     height: 40px;
