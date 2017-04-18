@@ -21,7 +21,8 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active show" id="profile">
             <div class="container alignItemCenter">
-                <div class="rounded-image col-md-3" style="background-image: url('{{ asset("bundles/app/img/test.jpg") }}');">
+                <div class="col-md-3">
+                    <img class="rounded-circle img-responsive rounded-image" src="{{ asset(get_avatar(app.user)) }}"  alt="photo de profil" height="232" width="232">
 
                 </div><div class="col-md-9 noPaddingRight">
                     <div class="card">

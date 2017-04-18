@@ -42,10 +42,7 @@
 /*content profil*/
 
 .rounded-image{
-    background-size: cover;
-    height: 262px;
-    width: 100%;
-    border-radius: 50%;
+    object-fit: cover;
 }
 
 .profileClass .alignItemCenter{
