@@ -41,7 +41,7 @@
 
 /*content profil*/
 
-.rounded-image{
+.profileClass .rounded-image{
     object-fit: cover;
 }
 
@@ -54,8 +54,18 @@
     display: flex;
 }
 
-
-
 .noPaddingRight{
     padding-right: 0 !important;
+}
+
+
+
+/*Edit Profil*/
+
+.marginTop15{
+    margin-top: 15px;
+}
+
+.profileClass .md-form label, .md-form i, .tw {
+    color: rgba(0,0,0,.46);
 }

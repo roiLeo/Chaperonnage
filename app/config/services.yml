@@ -34,6 +34,11 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    app.form.profile:
+        class: AppBundle\Form\UserProfileType
+        tags:
+            - { name: form.type, alias: app_user_profile }
+
     app.subscriber.check_user_pin:
         class: AppBundle\EventListener\RequestListener
         tags:

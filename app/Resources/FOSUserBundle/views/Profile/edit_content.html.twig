@@ -1,1 +1,89 @@
+{% trans_default_domain 'FOSUserBundle' %}
 
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_profile_edit'), 'attr': {'class': 'fos_user_profile_edit'}}) }}
+
+
+{{ form_errors(form) }}
+
+<div class="profileClass container">
+
+    <div class="container alignItemCenter marginTop15">
+        <div class="col-md-3">
+            <img class="rounded-circle img-responsive rounded-image" src="{{ asset(get_avatar(app.user)) }}"  alt="photo de profil" height="232" width="232">
+
+        </div><div class="col-md-9 noPaddingRight">
+            <div class="card">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Text-->
+                    <div class="md-form marginTop15">
+                        {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.gender) }}
+                        {{ form_errors(form.gender) }}
+                    </div>
+
+                    <div class="md-form">
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container alignItemTop">
+        <div class="col-md-3">
+            <div class="card">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Text-->
+                    {##}
+                    <div class="md-form">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+
+                    <div class="md-form">
+                        {{ form_widget(form.surname, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_label(form.surname) }}
+                        {{ form_errors(form.surname) }}
+                    </div>
+
+                    <div class="md-form">
+                        {{ form_widget(form.birthday) }}
+                        {{ form_label(form.birthday) }}
+                    </div>
+
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
+        {#app.user.birthday | date("m/d/Y")#}
+        <div class="col-md-9 noPaddingRight">
+            <div class="card">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Description</h4>
+                    <!--Text-->
+                    {##}
+
+                    <p class="card-text"> {{ app.user.description }} </p>
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{{ form_end(form) }}
