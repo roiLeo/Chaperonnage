@@ -24,6 +24,14 @@ class UserManager extends AbstractDoctrineManager
     }
 
     /**
+     * @return array
+     */
+    public function getOneById()
+    {
+        return $this->getRepository()->getAll();
+    }
+
+    /**
      * @return \AppBundle\Repository\UserRepository
      */
     protected function getRepository()
