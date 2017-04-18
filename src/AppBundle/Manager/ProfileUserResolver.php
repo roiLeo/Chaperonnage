@@ -1,88 +1,88 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Utilisateur
- * Date: 18/04/2017
- * Time: 11:47
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace AppBundle\Manager;
 
-
-use AppBundle\Entity\Picture;
 use AppBundle\Entity\User;
 
 class ProfileUserResolver
 {
+    //    VERIFICATION
 
-
-//    VERIFICATION
-
-
-    public function resolvePhone(User $user){
+    public function resolvePhone(User $user)
+    {
         $phone = $user->getPhoneVerified();
-        if($phone === true){
+        if ($phone === true) {
             return true;
-        }else{
-            return false;
         }
+
+        return false;
     }
 
-    public function resolvePictureVerified(User $user){
+    public function resolvePictureVerified(User $user)
+    {
         $picture = $user->getPicture();
-        if($picture != null){
+        if ($picture !== null) {
             $pictureVerified = $picture->getVerified();
-            if($pictureVerified != null && $pictureVerified === true){
+            if ($pictureVerified !== null && $pictureVerified === true) {
                 return true;
-            }else{
-                return false;
             }
-        }else{
+
             return false;
         }
+
+        return false;
     }
 
-    public function resolveCredentialVerified(User $user){
+    public function resolveCredentialVerified(User $user)
+    {
         $credential = $user->getCredential();
-        if($credential != null){
+        if ($credential !== null) {
             $credentialVerified = $credential->getVerified();
-            if($credentialVerified != null && $credentialVerified === true){
+            if ($credentialVerified !== null && $credentialVerified === true) {
                 return true;
-            }else{
-                return false;
             }
-        }else{
+
             return false;
         }
-    }
 
+        return false;
+    }
 
 //    INFORMATIONS
 
-    public function resolveNiveau(User $user){
-
+    public function resolveNiveau(User $user)
+    {
         $rideJoin = $user->getRideJoined()->count();
         $rideCreated = $user->getRideCreated()->count();
         $allride = $rideCreated + $rideJoin;
-        if($allride < 10){
-            return "Débutant";
-        }else if($allride < 20){
-            return "Habitué";
-        }else if($allride < 30){
-            return "Confirmé";
-        }else if($allride > 30){
-            return "Expert";
-        }else{
-            return "Erreur";
+        if ($allride < 10) {
+            return 'Débutant';
+        } elseif ($allride < 20) {
+            return 'Habitué';
+        } elseif ($allride < 30) {
+            return 'Confirmé';
+        } elseif ($allride > 30) {
+            return 'Expert';
+        } else {
+            return 'Erreur';
         }
     }
 
-    public function resolveNombreCopieto(User $user){
+    public function resolveNombreCopieto(User $user)
+    {
         $rideJoin = $user->getRideJoined()->count();
         $rideCreated = $user->getRideCreated()->count();
         $allride = $rideCreated + $rideJoin;
+
         return $allride;
     }
-
-
 }
