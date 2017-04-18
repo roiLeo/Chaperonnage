@@ -29,10 +29,8 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <span class="fa-stack fa-lg">
-                                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                                 <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-                                            </span>
+                                        <img class="rounded-circle img-responsive navatar"
+                                             src="{{ asset(get_avatar(app.user)) }}">
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -42,10 +40,8 @@
                                                     <div class="col-lg-4">
                                                         <p class="text-center">
                                                             {% block user_img %}
-                                                                <span class="fa-stack fa-lg">
-                                                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                                                         <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-                                                                    </span>
+                                                                <img class="rounded img-fluid"
+                                                                     src="{{ asset(get_avatar(app.user)) }}">
                                                             {% endblock %}
                                                         </p>
                                                     </div>
@@ -128,17 +124,17 @@
                     <div class="col-md-2">
                         <h5 class="title">Social</h5>
                         <a href="#">
-                        <span class="fa-stack fa-lg">
+                        <span class="fa-stack fa-lg logotwitter">
                           <i class="fa fa-square-o fa-stack-2x"></i>
                           <i class="fa fa-twitter fa-stack-1x"></i>
                         </span></a>
                         <a href="#">
-                        <span class="fa-stack fa-lg">
+                        <span class="fa-stack fa-lg logofacebook">
                           <i class="fa fa-square-o fa-stack-2x"></i>
                           <i class="fa fa-facebook fa-stack-1x"></i>
                         </span></a>
                         <a href="#">
-                        <span class="fa-stack fa-lg">
+                        <span class="fa-stack fa-lg logoinstagram">
                           <i class="fa fa-square-o fa-stack-2x"></i>
                           <i class="fa fa-instagram fa-stack-1x"></i>
                         </span></a>
