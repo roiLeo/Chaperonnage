@@ -1,16 +1,56 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div class="alert alert-danger" role="alert">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i> <strong>Error!</strong> {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
 {% endif %}
 
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        FB.init({
+            appId      : '411685625863488',                        // App ID from the app dashboard
+            status     : true,                                 // Check Facebook Login status
+        });
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function fb_login() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // connected
+                //alert('Already connected, redirect to login page to create token.');
+                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+            } else {
+                // not_authorized
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                    } else {
+                        //alert('Cancelled.');
+                    }
+                }, {scope: 'email'});
+            }
+        });
+    }
+</script>
+
 <div class="text-center">
-    <a class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
+    <a href="#" onclick="fb_login();" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
         in
         with Facebook </a>
     <div class="mt-2 mb-2 hr">OR</div>
 </div>
-
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
@@ -42,6 +82,6 @@
 
     <div class="text-center">
         <p class="tw">Don't have an account? <a href="{{ path('fos_user_registration_register') }}">Sign Up</a></p>
-        <p class="tw"><a href="#">Forgot your Password?</a></p>
+        <p class="tw"><a href="{{ path('fos_user_resetting_request') }}">Forgot your Password?</a></p>
     </div>
 </form>
