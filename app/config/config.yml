@@ -121,3 +121,11 @@ hwi_oauth:
                     csrf: true
                     display: popup #dialog is optimized for popup window
                     auth_type: rerequest # Re-asking for Declined Permissions
+
+# Sonata Admin Configuration
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]

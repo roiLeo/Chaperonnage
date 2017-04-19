@@ -19,3 +19,7 @@ hwi_oauth_redirect:
 facebook_login:
     path: /connect/check-facebook
 
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
