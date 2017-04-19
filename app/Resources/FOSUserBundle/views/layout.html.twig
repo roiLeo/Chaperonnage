@@ -8,7 +8,9 @@
                 <div class="card-block">
                     <!--Header-->
                     <div class="text-center">
-                        <img src="{{ asset('bundles/app/img/logo.png') }}"/>
+                        <a href="{{ path('fos_user_security_login') }}">
+                            <img src="{{ asset('bundles/app/img/logo.png') }}"/>
+                        </a>
                     </div>
                     {% block fos_user_content '' %}
                     <!--Footer-->
