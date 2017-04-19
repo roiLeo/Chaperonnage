@@ -42,4 +42,3 @@ security:
         - { path: ^/user, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, role: IS_AUTHENTICATED_FULLY }
-

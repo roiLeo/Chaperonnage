@@ -19,6 +19,16 @@ services:
         arguments:
             - "@=service('doctrine').getManager()"
 
+    app.birthday_manager:
+        class: AppBundle\Manager\BirthdayUserResolver
+        arguments:
+            - "@=service('doctrine').getManager()"
+
+    app.profil_manager:
+        class: AppBundle\Manager\ProfileUserResolver
+        arguments:
+            - "@=service('doctrine').getManager()"
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
@@ -39,6 +49,20 @@ services:
         - { name: twig.extension }
         arguments:
             - "@app.avatar_manager"
+
+    app.twig.birthday_extension:
+        class: AppBundle\Twig\BirthdayExtension
+        tags:
+        - { name: twig.extension }
+        arguments:
+            - "@app.birthday_manager"
+
+    app.twig.profil_extension:
+        class: AppBundle\Twig\ProfilExtension
+        tags:
+        - { name: twig.extension }
+        arguments:
+            - "@app.profil_manager"
 
     hwi_oauth.user.provider.entity:
             class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

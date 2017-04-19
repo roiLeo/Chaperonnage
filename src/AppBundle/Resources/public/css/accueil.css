@@ -1,3 +1,7 @@
+body {
+    background-color: #f9f9f9;
+}
+
 .blue_bg {
     background-color: rgb(102, 193, 191);
 }
@@ -6,35 +10,45 @@
     background-color: rgb(62, 69, 81);
 }
 
+/*** NAVBAR ***/
 .navbar-login {
     width: 305px;
     padding: 10px;
     padding-bottom: 0;
 }
 
-.navbar-login-session {
-    padding: 10px;
-    padding-bottom: 0;
-    padding-top: 0;
+.btn-profil {
+    display: inline-flex;
 }
 
-.icon-size {
-    font-size: 87px;
+.navbar-brand img {
+    height: 42px;
 }
 
+.spacing{
+    height: 50px;
+}
+
+.navatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/*** FOOTER ***/
 footer.page-footer {
     background-color: #676b74;
     margin-top: 2rem;
 }
 
-body {
-    background-color: #f9f9f9;
+.logofacebook:hover {
+    color: #3b5998;
 }
 
-.btn-profil{
-    display: inline-flex;
+.logotwitter:hover {
+    color: #4099FF;
 }
 
-.navbar-brand img{
-    height: 42px;
+.logoinstagram:hover {
+    color: #8a3ab9;
 }
