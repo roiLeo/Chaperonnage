@@ -14,6 +14,7 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Model\PhoneCertification;
 use AppBundle\Form\PhoneCertificationType;
 use AppBundle\Form\UserMobileType;
+use AppBundle\Form\UserProfileType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class UserController extends Controller
         $form = $this->createForm(UserMobileType::class, $this->getUser()); // retourne un objet Form
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $user = $this->getUser();
+            $user = $this->getUser();
             $userManager = $this->get('fos_user.user_manager');
             $userManager->updateUser($user);
 
@@ -54,5 +55,23 @@ class UserController extends Controller
         }
 
         return $this->render('user/user.certificate_phone.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/user/complete/", name="complete_profile")
+     */
+    public function completeAction(Request $request)
+    {
+        $form = $this->createForm(UserProfileType::class, $this->getUser()); // retourne un objet Form
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+
+            return $this->redirectToRoute('user_mobile');
+        }
+
+        return $this->render('user/user.complete_profile.html.twig', ['form' => $form->createView()]);
     }
 }

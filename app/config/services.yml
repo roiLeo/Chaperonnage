@@ -64,3 +64,16 @@ services:
         arguments:
             - "@app.profil_manager"
 
+    hwi_oauth.user.provider.entity:
+            class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+
+    app.fos_user.oauth_provider:
+            class: AppBundle\Security\Core\User\MyFOSUBUserProvider
+            arguments: ["@fos_user.user_manager",{facebook: facebookId}]
+
+    my.oauth_aware.user_provider.service:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
+        arguments:
+            - '@fos_user.user_manager'
+            - ['pass properties as array']
+

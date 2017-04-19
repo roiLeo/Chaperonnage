@@ -51,7 +51,12 @@ class RequestListener implements EventSubscriberInterface
             if (false === $this->authorizationChecker->isGranted('ROLE_USER')) {
                 return;
             }
-            if (!$token->getUser()->getPhoneVerified()) {
+            if ($token->getUser()->getFacebookId()) {
+                if ((null === $token->getUser()->getName()) && (null === $token->getUser()->getSurname())) {
+                    $url = $this->router->generate('complete_profile');
+                    $event->setResponse(new RedirectResponse($url));
+                }
+            } elseif (!$token->getUser()->getPhoneVerified()) {
                 $url = $this->router->generate('user_mobile');
                 $event->setResponse(new RedirectResponse($url));
             }
@@ -61,6 +66,7 @@ class RequestListener implements EventSubscriberInterface
     private function getIgnoredRoutes()
     {
         return [
+            'complete_profile',
             'certificate_phone',
             'user_mobile',
         ];

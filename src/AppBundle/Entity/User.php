@@ -31,6 +31,16 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     */
+    private $facebookId;
+
+    /**
+     * @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true)
+     */
+    private $facebookAccessToken;
     /**
      * @var string
      * @ORM\Column(name="phone", type="string", length=10, nullable=true)
@@ -39,20 +49,20 @@ class User extends BaseUser
     private $phone;
     /**
      * @var string
-     * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"Registration","Complete"})
      */
     private $name;
     /**
      * @var string
-     * @ORM\Column(name="surname", type="string", length=255)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @ORM\Column(name="surname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"Registration","Complete"})
      */
     private $surname;
     /**
      * @var \DateTime
-     * @ORM\Column(name="birthday", type="date")
-     * @Assert\NotBlank(groups={"Registration"})
+     * @ORM\Column(name="birthday", type="date", nullable=true)
+     * @Assert\NotBlank(groups={"Registration","Complete"})
      */
     private $birthday;
     /**
@@ -78,8 +88,8 @@ class User extends BaseUser
     private $phoneVerified;
     /**
      * @var string
-     * @ORM\Column(name="gender", type="string", length=255)
-     * @Assert\NotBlank(groups={"Registration"})
+     * @ORM\Column(name="gender", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"Registration","Complete"})
      */
     private $gender;
     /**
@@ -425,5 +435,45 @@ class User extends BaseUser
     public function getRideJoined()
     {
         return $this->rideJoined;
+    }
+
+    /**
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param string $facebookAccessToken
+     *
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
     }
 }

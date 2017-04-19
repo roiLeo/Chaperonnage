@@ -100,3 +100,24 @@ fos_rest:
         rules:
             - { path: '^/api', priorities: ['json'], fallback_format: json, prefer_extension: false }
             - { path: '^/', stop: true }
+hwi_oauth:
+    connect:
+        confirmation: true
+        registration_form: app.form.registration
+    # list of names of the firewalls in which this bundle is active, this setting MUST be set
+    firewall_names:
+        - 'main'
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook:    facebookId
+    resource_owners:
+            facebook:
+                type:                facebook
+                client_id:           411685625863488
+                client_secret:       fbacf76235a160ae097d39ac39fa8584
+                scope:         "email"
+                options:
+                    csrf: true
+                    display: popup #dialog is optimized for popup window
+                    auth_type: rerequest # Re-asking for Declined Permissions
