@@ -17,7 +17,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170413151018 extends AbstractMigration
+class Version20170418151552 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -27,7 +27,7 @@ class Version20170413151018 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user CHANGE description description VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE fos_user CHANGE name name VARCHAR(255) DEFAULT NULL, CHANGE surname surname VARCHAR(255) DEFAULT NULL, CHANGE birthday birthday DATE DEFAULT NULL');
     }
 
     /**
@@ -38,6 +38,6 @@ class Version20170413151018 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user CHANGE description description VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE fos_user CHANGE name name VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci, CHANGE surname surname VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci, CHANGE birthday birthday DATE NOT NULL');
     }
 }
