@@ -10,7 +10,7 @@
                             aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ path('homepage')}}">
                         <img src="{{ asset('bundles/app/img/logo1.png') }}"/>
                     </a>
                     <div class="collapse navbar-collapse" id="navbarNav1">
@@ -51,7 +51,7 @@
                                                         </p>
                                                         <p class="text-left small">{{ app.user.email }}</p>
                                                         <p class="btn-profil">
-                                                            <a class="btn btn-default btn-sm" href="#">
+                                                            <a class="btn btn-default btn-sm" href="{{ path('fos_user_profile_show') }}">
                                                                 <i class="fa fa-cog"></i> Settings</a>
                                                             <a href="{{ path('fos_user_security_logout') }}"
                                                                class="btn btn-danger"><i class="fa fa-power-off"></i></a>
