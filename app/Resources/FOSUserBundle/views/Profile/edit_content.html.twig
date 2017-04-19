@@ -34,6 +34,14 @@
 
     </div>
 
+    <div class="container text-center">
+        <div class="col-md-3">
+            {{ form_widget(form.picture) }}
+        </div>
+        <div class="col-md-9">
+        </div>
+    </div>
+
     <div class="container alignItemTop">
         <div class="col-md-3">
             <div class="card">
@@ -53,9 +61,9 @@
                         {{ form_errors(form.surname) }}
                     </div>
 
-                    <div class="md-form">
+                    <div class="md-form text-center birthdayEdit">
                         {{ form_widget(form.birthday) }}
-                        {{ form_label(form.birthday) }}
+                        {{ form_errors(form.birthday) }}
                     </div>
 
                 </div>
@@ -67,15 +75,21 @@
             <div class="card">
                 <!--Card content-->
                 <div class="card-block">
-                    <!--Title-->
                     <h4 class="card-title">Description</h4>
-                    <!--Text-->
-                    {##}
-
-                    <p class="card-text"> {{ app.user.description }} </p>
+                    <div class="md-form">
+                        {{ form_widget(form.description,{ 'attr': {'cols': '10'} }) }}
+                        {{ form_errors(form.description) }}
+                    </div>
                 </div>
                 <!--/.Card content-->
             </div>
+        </div>
+    </div>
+
+
+    <div class="container marginTop15">
+        <div class="col-md-4 text-center marginAuto">
+            <button type="submit" class="btn btn-outline-primary submitProfile btn-lg btn-block">Enregistrer</button>
         </div>
     </div>
 </div>

@@ -69,3 +69,24 @@
 .profileClass .md-form label, .md-form i, .tw {
     color: rgba(0,0,0,.46);
 }
+
+.birthdayEdit select{
+    margin-right: 10px;
+}
+
+.birthdayEdit #fos_user_profile_form_birthday_year{
+    margin-right: 0px;
+}
+
+.profileClass textarea{
+    height: 8.4rem;
+}
+
+.submitProfile, .submitProfile:hover{
+    border-color: rgb(102, 193, 191);
+    color: rgb(102, 193, 191) !important;
+}
+
+.marginAuto{
+    margin:0 auto;
+}
