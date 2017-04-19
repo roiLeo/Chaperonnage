@@ -1,0 +1,70 @@
+<div class="row spacing"></div>
+
+<div id="map"></div>
+
+<div class="row spacing"></div>
+
+<div class="row">
+    <div class="col-md-6">
+        <input type="text" id="startAddress"
+               onFocus="geolocate()" class="form-control">
+        <label class="search_label" for="startAddress">Adresse de Départ</label>
+        <input type="hidden" id="startCity">
+        <input type="hidden" id="startPostalCode">
+        <input type="hidden" id="startLongitude">
+        <input type="hidden" id="startLatitude">
+    </div><div class="col-md-6">
+    <input type="text" id="finishAddress"
+           onFocus="geolocate()" class="form-control">
+    <label class="search_label" for="finishAddress">Adresse d'Arrivée</label>
+    <input type="hidden" id="finishCity">
+    <input type="hidden" id="finishPostalCode">
+    <input type="hidden" id="finishLongitude">
+    <input type="hidden" id="finishLatitude">
+</div>
+</div>
+
+<div class="row spacing"></div>
+
+<div class="row">
+    <!--<input class="form-control"
+           ng-model="ctrl.input"
+           ng-model-options="{ updateOn: 'blur' }"
+           placeholder="Select a date..."
+           moment-picker="ctrl.input">-->
+    <div class="col-md-2"></div>
+    <label class="col-md-3 search_label" for="date">Date du trajet</label>
+    <div class="col-md-5">
+        <input id="date" class="form-control"
+           flex-gt-xs
+           ng-model="rideDate"
+           ng-model-options="{ updateOn: 'blur' }"
+           placeholder="Select a date..."
+           moment-picker="rideDate"
+           locale="fr"
+           format="dddd DD MMM YYYY - HH:mm"
+           start-view="month"
+           autoclose="true"
+           today="true">
+    </div>
+
+    <!--    <div layout-gt-xs="row">
+        <div flex-gt-xs>
+            <md-datepicker id="date" ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+        </div>
+    </div>-->
+
+    <!--
+    <label class="col-md-3 search_label" for="date">Date du trajet</label>
+    <div class="col-md-5">
+        <input type="date" id="date">
+    </div>-->
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    </div><div class="col-md-4">
+        <button type="submit" class="btn btn-default btn-sm">Rechercher un trajet</button>
+    </div><div class="col-md-4">
+    </div>
+</div>

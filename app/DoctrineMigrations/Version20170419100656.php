@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -17,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170418151658 extends AbstractMigration
+class Version20170419100656 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -27,7 +18,7 @@ class Version20170418151658 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user CHANGE gender gender VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE fos_user CHANGE phone phone VARCHAR(10) DEFAULT NULL');
     }
 
     /**
@@ -38,6 +29,6 @@ class Version20170418151658 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE fos_user CHANGE gender gender VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE fos_user CHANGE phone phone VARCHAR(10) NOT NULL COLLATE utf8_unicode_ci');
     }
 }
