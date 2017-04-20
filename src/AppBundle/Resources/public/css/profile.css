@@ -41,7 +41,7 @@
 
 /*content profil*/
 
-.rounded-image{
+.profileClass .rounded-image{
     object-fit: cover;
 }
 
@@ -54,12 +54,43 @@
     display: flex;
 }
 
-
-
 .noPaddingRight{
     padding-right: 0 !important;
 }
+/*Edit Profil*/
 
+.marginTop15{
+    margin-top: 15px;
+}
+
+.profileClass .md-form label, .md-form i, .tw {
+    color: rgba(0,0,0,.46);
+}
+
+.birthdayEdit select{
+    margin-right: 10px;
+}
+
+.birthdayEdit #fos_user_profile_form_birthday_year{
+    margin-right: 0px;
+}
+
+.profileClass textarea{
+    height: 8.4rem;
+}
+
+.submitProfile, .submitProfile:hover, .editAvatarButton, .editAvatarButton:hover{
+    border-color: rgb(102, 193, 191);
+    color: rgb(102, 193, 191) !important;
+}
+
+.marginAuto{
+    margin:0 auto;
+}
+
+.editAvatarButton {
+    margin: 10px 0;
+}
 /*facebook friends block */
 .friend-block{
     align-items: center;

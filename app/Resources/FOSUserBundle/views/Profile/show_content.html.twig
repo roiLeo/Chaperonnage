@@ -4,7 +4,7 @@
 
     <ul class="nav nav-tabs text-center" role="tablist">
         <li class="nav-item col-md-3">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">profil</a>
+            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">Profil</a>
         </li>
         <li class="nav-item col-md-3">
             <a class="nav-link" href="#address" role="tab" data-toggle="tab">Mes adresses</a>
@@ -20,6 +20,16 @@
 <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert alert-dismissible alert-{{ type }}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <div class="container alignItemCenter">
                 <div class="col-md-3">
                     <img class="rounded-circle img-responsive rounded-image" src="{{ asset(get_avatar(app.user)) }}"  alt="photo de profil" height="232" width="232">
@@ -83,7 +93,7 @@
                     </div>
                 </div>
                 {#app.user.birthday | date("m/d/Y")#}
-                <div class="col-md-9">
+                <div class="col-md-9 noPaddingRight">
                     <div class="card">
                         <!--Card content-->
                         <div class="card-block">

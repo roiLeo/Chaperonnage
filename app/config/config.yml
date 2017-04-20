@@ -89,6 +89,9 @@ fos_user:
         confirmation:
             enabled:    false
             template:   FOSUserBundle:Registration:email.txt.twig
+    profile:
+        form:
+            type:               AppBundle\Form\UserEditProfileType
 
 nelmio_api_doc: ~
 
