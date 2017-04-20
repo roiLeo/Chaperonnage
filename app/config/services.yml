@@ -82,3 +82,19 @@ services:
             - '@fos_user.user_manager'
             - ['pass properties as array']
 
+    admin.category:
+            class: AppBundle\Admin\CategoryAdmin
+            arguments: [~, AppBundle\Entity\Picture, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Picture , group : Picture}
+
+    admin.user:
+            class: AppBundle\Admin\UserAdmin
+            arguments: [~, AppBundle\Entity\User, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: List, group : Users }
+
+    app.picture_uploader:
+          class: AppBundle\Service\PictureUploader
+          arguments: ['%pictures_directory%']
+
