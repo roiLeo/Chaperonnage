@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    pictures_directory: '%kernel.root_dir%/../web/uploads/pictures'
 
 framework:
     #esi: ~
@@ -38,6 +39,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+            - /Form/image.html.twig
 
 # Doctrine Configuration
 doctrine:
@@ -128,4 +131,4 @@ sonata_block:
     blocks:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
-            contexts: [admin]
+            contexts:   [admin]

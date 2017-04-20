@@ -49,6 +49,8 @@ class Picture
      */
     private $uploadedAt;
 
+    private $uploadedFile;
+
     public function __construct()
     {
         $this->uploadedAt = new \DateTime();
@@ -135,5 +137,23 @@ class Picture
     public function getUploadedAt(): ?\DateTime
     {
         return $this->uploadedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
+    }
+
+    /**
+     * @param mixed $uploadedFile
+     * @return Picture
+     */
+    public function setUploadedFile($uploadedFile)
+    {
+        $this->uploadedFile = $uploadedFile;
+        return $this;
     }
 }
