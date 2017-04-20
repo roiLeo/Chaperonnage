@@ -78,7 +78,7 @@ services:
             - ['pass properties as array']
 
     admin.category:
-            class: AppBundle\Admin\CategoryAdmin
+            class: AppBundle\Admin\PictureAdmin
             arguments: [~, AppBundle\Entity\Picture, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Picture , group : Picture}
@@ -87,7 +87,13 @@ services:
             class: AppBundle\Admin\UserAdmin
             arguments: [~, AppBundle\Entity\User, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: List, group : Users }
+                - { name: sonata.admin, manager_type: orm, label: List, group : User }
+
+    admin.credentiam:
+            class: AppBundle\Admin\CredentialAdmin
+            arguments: [~, AppBundle\Entity\Credential, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: List, group : Credential }
 
     app.picture_uploader:
           class: AppBundle\Service\PictureUploader

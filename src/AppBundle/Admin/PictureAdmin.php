@@ -17,7 +17,7 @@ use AppBundle\Form\Type\ImageType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-class CategoryAdmin extends AbstractAdmin
+class PictureAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
