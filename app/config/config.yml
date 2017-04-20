@@ -38,6 +38,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+            fbAppId: '%fbappid%'
 
 # Doctrine Configuration
 doctrine:
@@ -116,8 +118,7 @@ hwi_oauth:
                 type:                facebook
                 client_id:           411685625863488
                 client_secret:       fbacf76235a160ae097d39ac39fa8584
-                scope:         "email"
+                scope:         "email, user_friends"
                 options:
                     csrf: true
-                    display: popup #dialog is optimized for popup window
                     auth_type: rerequest # Re-asking for Declined Permissions

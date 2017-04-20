@@ -11,12 +11,23 @@
 
 namespace AppBundle\Security\Core\User;
 
+use AppBundle\Entity\User;
+use AppBundle\Service\FacebookFriends;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseFOSUBProvider;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class MyFOSUBUserProvider extends BaseFOSUBProvider
 {
+    private $facebookFriends;
+
+    public function __construct(UserManagerInterface $userManager, array $properties, FacebookFriends $facebookFriends)
+    {
+        parent::__construct($userManager, $properties);
+        $this->facebookFriends = $facebookFriends;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -66,6 +77,8 @@ class MyFOSUBUserProvider extends BaseFOSUBProvider
             $user->setEmail($email);
             $user->setPassword($username);
             $user->setEnabled(true);
+
+            $this->facebookFriends->getUserFriendsList($user);
             $this->userManager->updateUser($user);
 
             return $user;
@@ -76,6 +89,9 @@ class MyFOSUBUserProvider extends BaseFOSUBProvider
         $setter = 'set'.ucfirst($serviceName).'AccessToken';
         //update access token
         $user->$setter($response->getAccessToken());
+
+        $this->facebookFriends->getUserFriendsList($user);
+        $this->userManager->updateUser($user);
 
         return $user;
     }
