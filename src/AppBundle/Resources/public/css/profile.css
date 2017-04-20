@@ -57,9 +57,6 @@
 .noPaddingRight{
     padding-right: 0 !important;
 }
-
-
-
 /*Edit Profil*/
 
 .marginTop15{
@@ -93,4 +90,8 @@
 
 .editAvatarButton {
     margin: 10px 0;
+}
+/*facebook friends block */
+.friend-block{
+    align-items: center;
 }

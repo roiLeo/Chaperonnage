@@ -31,6 +31,11 @@ class UserManager extends AbstractDoctrineManager
         return $this->getRepository()->getAll();
     }
 
+    public function getUserByFacebookId(string $facebookId)
+    {
+        return $this->getRepository()->getUserByFacebookId($facebookId);
+    }
+
     /**
      * @return \AppBundle\Repository\UserRepository
      */

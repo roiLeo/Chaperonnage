@@ -43,12 +43,14 @@ class PictureUploader
         }
 
         $this->save($picture);
+
     }
 
     public function getTargetDir()
     {
         return $this->targetDir;
     }
+
 
     public function save(Picture $picture)
     {
@@ -58,4 +60,5 @@ class PictureUploader
 
         $this->entityManager->flush();
     }
+
 }

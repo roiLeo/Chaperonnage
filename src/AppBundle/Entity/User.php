@@ -112,12 +112,30 @@ class User extends BaseUser
      */
     private $rideJoined;
 
+    /**
+     * Many Users have Many Friends.
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="friends",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="friend_user_id", referencedColumnName="id")}
+     *      )
+     */
+    private $facebookFriendsList;
+
+    /**
+     * @var string
+     * @ORM\Column(name="total_facebook_friends", type="string", length=255, nullable=true)
+     *   */
+    private $totalCountFacebookFriends;
+
     public function __construct()
     {
         parent::__construct();
         $this->rideCreated = new ArrayCollection();
         $this->rideJoined = new ArrayCollection();
         $this->address = new ArrayCollection();
+        $this->facebookFriendsList = new ArrayCollection();
         $this->phoneVerified = false;
     }
 
@@ -477,5 +495,25 @@ class User extends BaseUser
     public function getFacebookAccessToken()
     {
         return $this->facebookAccessToken;
+    }
+
+    public function setFacebookFriendsList($facebookFriendsList)
+    {
+        $this->facebookFriendsList = $facebookFriendsList;
+    }
+
+    public function getFacebookFriendsList()
+    {
+        return $this->facebookFriendsList;
+    }
+
+    public function setTotalCountFacebookFriends($totalCount)
+    {
+        $this->totalCountFacebookFriends = $totalCount;
+    }
+
+    public function getTotalCountFacebookFriends()
+    {
+        return $this->totalCountFacebookFriends;
     }
 }

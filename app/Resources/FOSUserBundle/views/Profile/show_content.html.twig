@@ -72,7 +72,7 @@
                                 <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Avatar non vérifié </p>
                             {% endif %}
 
-                            {% if get_credentialVerified(app.user) == 'true'  %}
+                            {% if get_credentialVerified(app.user) == 'true' %}
                                 <p class="card-text"><i class="fa fa-check-square-o" aria-hidden="true"></i> Pièce d'identité vérifié </p>
                             {% else %}
                                 <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Pièce d'identité non vérifié </p>
@@ -101,7 +101,45 @@
 
         </div>
         <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
-        <div role="tabpanel" class="tab-pane fade" id="friends">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="friends">
+            {% if app.user.facebookId %}
+            <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">Amis Facebook</h4>
+                            <p class="card-text">
+                                Vous avez un total de {{ app.user.totalCountFacebookFriends }} amis sur Facebook.
+                            </p>
+                    </div>
+            </div>
+            <div class="card ">
+                    <div class="card-block">
+                        <h4 class="card-title">Amis utilisant Mon Chaperon</h4>
+                        {% for user in app.user.facebookFriendsList %}
+                            <div class="d-flex align-content-center flex-wrap friend-block">
+                                <div class="p-2">
+                                    <img class="rounded-circle img-responsive navatar" src="{{ asset(get_avatar(user))}}">
+                                </div>
+                               <div class="p-2">
+                                   {{ user.name | capitalize }} {{ user.surname | capitalize}}  {{ get_age(user) }} ans -
+                                   {{ user.description }}
+                               </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+            </div>
+            {% else %}
+                        <div class="card-block">
+                            <h4 class="card-title">Vous n'êtes pas connecté avec Facebook.</h4>
+                            <div class="text-center">
+                                <a href="#" onclick="fb_login();" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span>Me connecter
+                                    à Facebook
+                                </a>
+                                <div class="mt-2 mb-2 hr">OR</div>
+                            </div>
+                        </div>
+            {% endif %}
+            </div>
+
         <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
     </div>
 

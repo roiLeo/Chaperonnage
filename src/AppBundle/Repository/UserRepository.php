@@ -24,4 +24,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getUserByFacebookId(string $facebookId)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->andWhere('u.facebookId = :facebookId')
+            ->setParameter('facebookId', $facebookId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
