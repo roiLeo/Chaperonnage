@@ -86,19 +86,19 @@ services:
             class: AppBundle\Admin\PictureAdmin
             arguments: [~, AppBundle\Entity\Picture, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Picture , group : Picture}
+                - { name: sonata.admin, manager_type: orm, label: Pictures , group : Picture}
 
     admin.user:
             class: AppBundle\Admin\UserAdmin
             arguments: [~, AppBundle\Entity\User, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: List, group : User }
+                - { name: sonata.admin, manager_type: orm, label: List User, group : User }
 
-    admin.credentiam:
+    admin.credential:
             class: AppBundle\Admin\CredentialAdmin
             arguments: [~, AppBundle\Entity\Credential, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: List, group : Credential }
+                - { name: sonata.admin, manager_type: orm, label: List Credential, group : Credential }
 
     app.picture_uploader:
           class: AppBundle\Service\PictureUploader
