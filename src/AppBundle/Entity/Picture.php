@@ -149,11 +149,13 @@ class Picture
 
     /**
      * @param mixed $uploadedFile
+     *
      * @return Picture
      */
     public function setUploadedFile($uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
+
         return $this;
     }
 }
