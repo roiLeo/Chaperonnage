@@ -4,13 +4,16 @@ var markers = { start : null,
 var map;
 
 function initAutocomplete() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
 
     var France = {lat: 46.7366065, lng: 1.402915};
-
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: France
     });
+    directionsDisplay.setMap(map);
+
     navigator.geolocation.getCurrentPosition(function(position) {
         map.setCenter({lat: position.coords.latitude,
                         lng: position.coords.longitude});
@@ -27,11 +30,11 @@ function initAutocomplete() {
         {types: ['geocode']});
 
     // When the user selects an address from the dropdown, event
-    autocompleteStart.addListener('place_changed', function(){fillInAddress('start', autocompleteStart)});
-    autocompleteFinish.addListener('place_changed', function(){fillInAddress('finish', autocompleteFinish)});
+    autocompleteStart.addListener('place_changed', function(){fillInAddress('start', autocompleteStart, directionsService, directionsDisplay)});
+    autocompleteFinish.addListener('place_changed', function(){fillInAddress('finish', autocompleteFinish, directionsService, directionsDisplay)});
 }
 
-function fillInAddress(addr, autocomplete) {
+function fillInAddress(addr, autocomplete, directionsService, directionsDisplay) {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
     coord = {lat: place.geometry.location.lat(),
@@ -63,6 +66,19 @@ function fillInAddress(addr, autocomplete) {
     });
 
     map.setCenter(coord);
+
+    if(markers['start']&&markers['finish']){
+        //Displaying the direction on the map
+        directionsService.route({
+            origin: markers['start'].coord,
+            destination: markers['finish'].coord,
+            travelMode: 'WALKING'
+        }, function (response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    }
 }
 
 // Bias the autocomplete object to the user's geographical location,

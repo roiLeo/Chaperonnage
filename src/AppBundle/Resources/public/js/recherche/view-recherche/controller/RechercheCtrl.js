@@ -3,7 +3,7 @@
 angular
     .module('recherche')
     .controller('RechercheCtrl', ['$scope', function($scope){
-        //initAutocomplete();
+        initAutocomplete();
         $scope.myDate = new Date();
         $scope.isOpen = false;
     }]);

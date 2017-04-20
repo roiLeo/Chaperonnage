@@ -1,7 +1,7 @@
 'use strict'
 
 angular
-    .module('myApp', ['ngRoute', 'recherche', 'moment-picker'])
+    .module('myApp', ['ngRoute', 'recherche', 'results', 'moment-picker'])
     .config(function($routeProvider, $locationProvider){
         $routeProvider.otherwise({
             redirectTo : '/recherche'
