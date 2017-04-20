@@ -14,8 +14,10 @@ namespace AppBundle\Controller\Api;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations as FOSRest;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\View\View;
+//use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
 
 /**
  * AgentApiController.
@@ -33,11 +35,16 @@ class AgentApiController extends FOSRestController
      *  description="Returns a collection of user Agents"
      * )
      *
+     *
+     * @QueryParam(name="startlat", nullable=false, strict=true, description="Latitude of the starting point")
+     *
      * @return User[]
      */
-    public function cgetAgents()
+    public function cgetAgents(ParamFetcher $paramFetcher)
     {
-        return $this->getUserManager()->all();
+        $result = $this->getUserManager()->all();
+        $result['0']->setName($paramFetcher->get("startlat"));
+        return $result;
     }
 
     /**

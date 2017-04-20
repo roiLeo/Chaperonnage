@@ -27,6 +27,10 @@ class UserNormalizer extends AbstractNormalizer
         $data = [
             'id' => $object->getId(),
             'name' => $object->getName(),
+            'start' => ['lat' => 43.619154,
+                        'lng' => 3.837391 ],
+            'finish' => ['lat' => 43.620490,
+                         'lng' => 3.848445],
         ];
 
         return $data;
