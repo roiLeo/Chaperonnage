@@ -29,7 +29,18 @@ class Address
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string",length=255)
+     * */
+    private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="street", type="string",length=255)
+     * */
+    private $street;
     /**
      * @var string
      *
@@ -67,7 +78,23 @@ class Address
     {
         return $this->id;
     }
+    public function setName(string $name)
+    {
+        $this->name = $name;
 
+        return $this;
+    }
+    public function getName(){
+        return $this->name;
+    }
+    public function setStreet($street){
+        $this->street = $street;
+
+        return $this;
+    }
+    public function getStreet(){
+        return $this->street;
+    }
     /**
      * Set postalCode.
      *
@@ -75,7 +102,7 @@ class Address
      *
      * @return Address
      */
-    public function setPostalCode($postalCode)
+    public function setPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
 
@@ -99,7 +126,7 @@ class Address
      *
      * @return Address
      */
-    public function setCity($city)
+    public function setCity(string $city)
     {
         $this->city = $city;
 

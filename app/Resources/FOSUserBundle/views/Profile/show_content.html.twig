@@ -100,7 +100,23 @@
             </div>
 
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+        <div role="tabpanel" class="tab-pane fade" id="address">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Adresses enregistrées</h4>
+                    {% for address in app.user.address %}
+                        <div>
+                            {{ address.name }} {{ address.street }} {{ address.city }} {{ address.postalCode }}
+                        </div>
+                    {% else %}
+                        Aucune adresse enregistrée.
+                    {% endfor %}
+                    <div>
+                        <a class="" href="#">Ajouter une adresse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div role="tabpanel" class="tab-pane fade" id="friends">
             {% if app.user.facebookId %}
             <div class="card">
@@ -124,6 +140,8 @@
                                    {{ user.description }}
                                </div>
                             </div>
+                        {% else %}
+                            Aucun de vos amis Facebook n'utilise Mon Chaperon.
                         {% endfor %}
                     </div>
             </div>
