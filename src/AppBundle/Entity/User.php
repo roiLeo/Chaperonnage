@@ -74,6 +74,8 @@ class User extends BaseUser
     /**
      * @var Picture
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture")
+     *
+     * @Assert\NotBlank(groups={"upload"})
      */
     private $picture;
     /**
@@ -294,7 +296,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setPicture(\AppBundle\Entity\Picture $picture = null)
+    public function setPicture($picture)
     {
         $this->picture = $picture;
 

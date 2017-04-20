@@ -82,11 +82,15 @@
     height: 8.4rem;
 }
 
-.submitProfile, .submitProfile:hover{
+.submitProfile, .submitProfile:hover, .editAvatarButton, .editAvatarButton:hover{
     border-color: rgb(102, 193, 191);
     color: rgb(102, 193, 191) !important;
 }
 
 .marginAuto{
     margin:0 auto;
+}
+
+.editAvatarButton {
+    margin: 10px 0;
 }

@@ -12,6 +12,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Picture.
@@ -34,6 +35,8 @@ class Picture
      * @var string
      *
      * @ORM\Column(name="src", type="string", length=255)
+     *
+     * @Assert\NotBlank(groups={"upload"})
      */
     private $src;
 

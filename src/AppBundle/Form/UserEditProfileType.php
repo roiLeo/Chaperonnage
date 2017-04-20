@@ -25,20 +25,13 @@ class UserEditProfileType extends AbstractType
         $builder->add('email', null, ['label' => 'Email']);
         $builder->add('name', null, ['label' => 'Prénom']);
         $builder->add('surname', null, ['label' => 'Nom']);
-        $builder->add('gender', ChoiceType::class, [
-            'choices' => [
-                'Féminin' => User::GENDER_FEMALE,
-                'Masculin' => User::GENDER_MALE,
-            ],
-            'label' => 'Sexe',
-        ]);
         $builder->add('birthday', BirthdayType::class, [
             'widget' => 'choice',
             'view_timezone' => 'Europe/Paris',
             'label' => 'Date de naissance',
         ]);
         $builder->add('description', TextareaType::class , ['label' => 'Description']);
-        $builder->add('picture', FileType::class, array('label' => 'Avatar'));
+//        $builder->add('picture', FileType::class, array('label' => 'Avatar'));
         $builder->remove('current_password');
         $builder->remove('username');
 

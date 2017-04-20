@@ -86,7 +86,7 @@ fos_user:
             template:   FOSUserBundle:Registration:email.txt.twig
     profile:
         form:
-            type:               AppBundle\Form\UserProfileType
+            type:               AppBundle\Form\UserEditProfileType
 
 nelmio_api_doc: ~
 
