@@ -19,12 +19,7 @@ class ProfileUserResolver
 
     public function resolvePhone(User $user)
     {
-        $phone = $user->getPhoneVerified();
-        if ($phone === true) {
-            return true;
-        }
-
-        return false;
+        return $phone = $user->getPhoneVerified();
     }
 
     public function resolvePictureVerified(User $user)
@@ -35,8 +30,6 @@ class ProfileUserResolver
             if ($pictureVerified !== null && $pictureVerified === true) {
                 return true;
             }
-
-            return false;
         }
 
         return false;
@@ -50,8 +43,6 @@ class ProfileUserResolver
             if ($credentialVerified !== null && $credentialVerified === true) {
                 return true;
             }
-
-            return false;
         }
 
         return false;
@@ -61,19 +52,15 @@ class ProfileUserResolver
 
     public function resolveNiveau(User $user)
     {
-        $rideJoin = $user->getRideJoined()->count();
-        $rideCreated = $user->getRideCreated()->count();
-        $allride = $rideCreated + $rideJoin;
+        $allride = $this->resolveNombreCopieto($user);
         if ($allride < 10) {
             return 'Débutant';
         } elseif ($allride < 20) {
             return 'Habitué';
         } elseif ($allride < 30) {
             return 'Confirmé';
-        } elseif ($allride > 30) {
+        }else{
             return 'Expert';
-        } else {
-            return 'Erreur';
         }
     }
 

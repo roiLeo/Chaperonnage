@@ -12,6 +12,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Picture.
@@ -49,6 +50,11 @@ class Picture
      */
     private $uploadedAt;
 
+    /**
+     * @Assert\Image(groups={"upload"})
+     *
+     * @Assert\NotBlank(groups={"upload"})
+     */
     private $uploadedFile;
 
     public function __construct()
@@ -149,11 +155,13 @@ class Picture
 
     /**
      * @param mixed $uploadedFile
+     *
      * @return Picture
      */
     public function setUploadedFile($uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
+
         return $this;
     }
 }

@@ -4,7 +4,7 @@
 
     <ul class="nav nav-tabs text-center" role="tablist">
         <li class="nav-item col-md-3">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">profil</a>
+            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">Profil</a>
         </li>
         <li class="nav-item col-md-3">
             <a class="nav-link" href="#address" role="tab" data-toggle="tab">Mes adresses</a>
@@ -20,6 +20,16 @@
 <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert alert-dismissible alert-{{ type }}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <div class="container alignItemCenter">
                 <div class="col-md-3">
                     <img class="rounded-circle img-responsive rounded-image" src="{{ asset(get_avatar(app.user)) }}"  alt="photo de profil" height="232" width="232">
@@ -72,7 +82,7 @@
                                 <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Avatar non vérifié </p>
                             {% endif %}
 
-                            {% if get_credentialVerified(app.user) == 'true'  %}
+                            {% if get_credentialVerified(app.user) == 'true' %}
                                 <p class="card-text"><i class="fa fa-check-square-o" aria-hidden="true"></i> Pièce d'identité vérifié </p>
                             {% else %}
                                 <p class="card-text"><i class="fa fa-square-o" aria-hidden="true"></i> Pièce d'identité non vérifié </p>
@@ -83,7 +93,7 @@
                     </div>
                 </div>
                 {#app.user.birthday | date("m/d/Y")#}
-                <div class="col-md-9">
+                <div class="col-md-9 noPaddingRight">
                     <div class="card">
                         <!--Card content-->
                         <div class="card-block">
@@ -101,7 +111,45 @@
 
         </div>
         <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
-        <div role="tabpanel" class="tab-pane fade" id="friends">ccc</div>
+        <div role="tabpanel" class="tab-pane fade" id="friends">
+            {% if app.user.facebookId %}
+            <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">Amis Facebook</h4>
+                            <p class="card-text">
+                                Vous avez un total de {{ app.user.totalCountFacebookFriends }} amis sur Facebook.
+                            </p>
+                    </div>
+            </div>
+            <div class="card ">
+                    <div class="card-block">
+                        <h4 class="card-title">Amis utilisant Mon Chaperon</h4>
+                        {% for user in app.user.facebookFriendsList %}
+                            <div class="d-flex align-content-center flex-wrap friend-block">
+                                <div class="p-2">
+                                    <img class="rounded-circle img-responsive navatar" src="{{ asset(get_avatar(user))}}">
+                                </div>
+                               <div class="p-2">
+                                   {{ user.name | capitalize }} {{ user.surname | capitalize}}  {{ get_age(user) }} ans -
+                                   {{ user.description }}
+                               </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+            </div>
+            {% else %}
+                        <div class="card-block">
+                            <h4 class="card-title">Vous n'êtes pas connecté avec Facebook.</h4>
+                            <div class="text-center">
+                                <a href="#" onclick="fb_login();" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span>Me connecter
+                                    à Facebook
+                                </a>
+                                <div class="mt-2 mb-2 hr">OR</div>
+                            </div>
+                        </div>
+            {% endif %}
+            </div>
+
         <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
     </div>
 
