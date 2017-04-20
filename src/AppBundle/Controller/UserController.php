@@ -86,6 +86,11 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->container->get('app.picture_uploader')->upload($form->getData(), $this->getUser());
 
+            $this->addFlash(
+                'success',
+                'Votre demande d\'image a bien été pris en compte, elle sera soumise à une validation par un administrateur'
+            );
+
             return $this->redirectToRoute('fos_user_profile_show');
         }
 
