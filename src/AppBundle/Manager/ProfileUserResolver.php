@@ -72,9 +72,9 @@ class ProfileUserResolver
             return 'Confirmé';
         } elseif ($allride > 30) {
             return 'Expert';
-        } else {
-            return 'Erreur';
         }
+
+        return 'Erreur';
     }
 
     public function resolveNombreCopieto(User $user)
