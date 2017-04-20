@@ -35,8 +35,6 @@ class Picture
      * @var string
      *
      * @ORM\Column(name="src", type="string", length=255)
-     *
-     * @Assert\NotBlank(groups={"upload"})
      */
     private $src;
 
@@ -52,6 +50,11 @@ class Picture
      */
     private $uploadedAt;
 
+    /**
+     * @Assert\Image(groups={"upload"})
+     *
+     * @Assert\NotBlank(groups={"upload"})
+     */
     private $uploadedFile;
 
     public function __construct()
@@ -152,11 +155,13 @@ class Picture
 
     /**
      * @param mixed $uploadedFile
+     *
      * @return Picture
      */
     public function setUploadedFile($uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
+
         return $this;
     }
 }

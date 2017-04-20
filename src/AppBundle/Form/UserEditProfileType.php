@@ -1,18 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Utilisateur
- * Date: 19/04/2017
- * Time: 11:24
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace AppBundle\Form;
 
-
-use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,11 +30,10 @@ class UserEditProfileType extends AbstractType
             'view_timezone' => 'Europe/Paris',
             'label' => 'Date de naissance',
         ]);
-        $builder->add('description', TextareaType::class , ['label' => 'Description']);
+        $builder->add('description', TextareaType::class, ['label' => 'Description']);
 //        $builder->add('picture', FileType::class, array('label' => 'Avatar'));
         $builder->remove('current_password');
         $builder->remove('username');
-
     }
 
     public function getParent()

@@ -96,5 +96,7 @@ services:
 
     app.picture_uploader:
           class: AppBundle\Service\PictureUploader
-          arguments: ['%pictures_directory%']
+          arguments:
+              - '%pictures_directory%'
+              - "@=service('doctrine').getManager()"
 

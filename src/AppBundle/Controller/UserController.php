@@ -11,12 +11,11 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Picture;
 use AppBundle\Form\Model\PhoneCertification;
 use AppBundle\Form\PhoneCertificationType;
+use AppBundle\Form\UserEditAvatarType;
 use AppBundle\Form\UserMobileType;
 use AppBundle\Form\UserProfileType;
-use AppBundle\Form\UserEditAvatarType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,14 +81,12 @@ class UserController extends Controller
      */
     public function modifAvatarAction(Request $request)
     {
-        $form = $this->createForm(UserEditAvatarType::class, $this->getUser()); // retourne un objet Form
+        $form = $this->createForm(UserEditAvatarType::class); // retourne un objet Form
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-//            $user = $this->getUser();
-//            $userManager = $this->get('fos_user.user_manager');
-//            $userManager->updateUser($user);
-//
-//            return $this->redirectToRoute('user_mobile');
+            $this->container->get('app.picture_uploader')->upload($form->getData(), $this->getUser());
+
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('Profile/edit_avatar.html.twig', ['form' => $form->createView()]);
