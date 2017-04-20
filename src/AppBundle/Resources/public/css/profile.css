@@ -59,3 +59,8 @@
 .noPaddingRight{
     padding-right: 0 !important;
 }
+
+/*facebook friends block */
+.friend-block{
+    align-items: center;
+}

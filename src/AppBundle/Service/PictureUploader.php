@@ -1,14 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Utilisateur
- * Date: 19/04/2017
- * Time: 15:57
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace AppBundle\Service;
 
-use AppBundle\Form\Type\ImageType;
 use AppBundle\Entity\Picture;
 
 class PictureUploader
@@ -23,13 +25,13 @@ class PictureUploader
     public function upload(Picture $picture)
     {
         $file = $picture->getUploadedFile();
-        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move(
             $this->targetDir,
             $fileName
         );
 
-        $picture->setSrc('/uploads/pictures/' . $fileName);
+        $picture->setSrc('/uploads/pictures/'.$fileName);
     }
 
     public function getTargetDir()
