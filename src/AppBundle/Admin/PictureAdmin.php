@@ -21,13 +21,11 @@ class CategoryAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->add('id')
-            //->add('src')
+            ->add('src')
             ->add('verified')
             ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()]);
-        //->add('file', 'file', $fileFieldOptions);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
