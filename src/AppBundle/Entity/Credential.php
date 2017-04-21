@@ -48,9 +48,7 @@ class Credential
      * @ORM\Column(name="uploaded_at", type="datetime")
      */
     private $uploadedAt;
-    /**
-     *
-     */
+
     private $uploadedFile;
 
     /**
@@ -145,13 +143,11 @@ class Credential
 
     /**
      * @param mixed $uploadedFile
-     * @return Credential
      *
+     * @return Credential
      */
     public function setUploadedFile($uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
     }
-
-
 }

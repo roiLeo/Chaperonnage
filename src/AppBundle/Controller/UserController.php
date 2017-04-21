@@ -105,14 +105,14 @@ class UserController extends Controller
         $form = $this->createForm(UserEditAvatarType::class); // retourne un objet Form
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            //$this->container->get('app.picture_uploader')->upload($form->getData(), $this->getUser());
+            $this->container->get('app.picture_uploader')->uploadCredential($form->getData(), $this->getUser());
 
-//            $this->addFlash(
-//                'success',
-//                'Votre demande de vérification d\'identité a bien été pris en compte, elle sera soumise à une validation par un administrateur'
-//            );
+            $this->addFlash(
+                'success',
+                'Votre demande de vérification d\'identité a bien été pris en compte, elle sera soumise à une validation par un administrateur'
+            );
 
-//            return $this->redirectToRoute('fos_user_profile_show');
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('Profile/edit_credential.html.twig', ['form' => $form->createView()]);
