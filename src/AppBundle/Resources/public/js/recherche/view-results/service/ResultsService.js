@@ -13,7 +13,7 @@ angular
             return $http.get(url).then(function(response){
                 return response.data;
             }, function(){
-                console.warn('Arg, impossible de charger la liste dagents');
+                console.warn('Arg, impossible de charger la liste d\'agents');
                 return [];
             });
         };
