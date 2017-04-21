@@ -88,7 +88,7 @@
                             {% if get_credentialVerified(app.user) == 'true' %}
                                 <p class="card-text greenValid"><i class="fa fa-check-square-o" aria-hidden="true"></i>Pièce d'identité vérifié </p>
                             {% else %}
-                                <p class="card-text redNonValid"><i class="fa fa-square-o" aria-hidden="true"></i><a href="{{ path('edit_avatar') }}" class="redNonValid underline">Faire vérifier une pièce d'identité </a> </p>
+                                <p class="card-text redNonValid"><i class="fa fa-square-o" aria-hidden="true"></i><a href="{{ path('edit_credential') }}" class="redNonValid underline">Ajouter une pièce d'identité </a> </p>
                             {% endif %}
 
                         </div>
