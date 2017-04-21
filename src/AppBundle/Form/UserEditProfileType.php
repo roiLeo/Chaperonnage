@@ -12,7 +12,6 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,11 +24,7 @@ class UserEditProfileType extends AbstractType
         $builder->add('email', null, ['label' => 'Email']);
         $builder->add('name', null, ['label' => 'Prénom']);
         $builder->add('surname', null, ['label' => 'Nom']);
-        $builder->add('birthday', BirthdayType::class, [
-            'widget' => 'choice',
-            'view_timezone' => 'Europe/Paris',
-            'label' => 'Date de naissance',
-        ]);
+        $builder->add('phone', null, ['label' => 'Téléphone']);
         $builder->add('description', TextareaType::class, ['label' => 'Description']);
 //        $builder->add('picture', FileType::class, array('label' => 'Avatar'));
         $builder->remove('current_password');
