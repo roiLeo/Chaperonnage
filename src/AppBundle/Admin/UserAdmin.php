@@ -27,9 +27,16 @@ class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('phone')
             ->add('birthday')
-            ->add('description')
+            ->add('description', 'textarea')
             ->add('roles')
-
+            ->add('picture', 'entity', array(
+                'class' => 'AppBundle\Entity\Picture',
+                'choice_label' => 'id',
+            ))
+            ->add('credential', 'entity', array(
+                'class' => 'AppBundle\Entity\Picture',
+                'choice_label' => 'id',
+            ))
         ;
     }
 
@@ -48,6 +55,10 @@ class UserAdmin extends AbstractAdmin
             ->add('phone')
             ->add('birthday')
             ->add('description')
-            ->add('phone_verified');
+            ->add('picture.id')
+            ->add('credential.id')
+            ->add('total_facebook_friends')
+            ->add('phone_verified')
+            ;
     }
 }

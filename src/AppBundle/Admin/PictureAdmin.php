@@ -26,7 +26,8 @@ class PictureAdmin extends AbstractAdmin
         $formMapper
             ->add('id')
             ->add('verified')
-            ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()]);
+            ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()])
+            ->add('picture_type','text');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -39,7 +40,8 @@ class PictureAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('src')
-            ->addIdentifier('verified');
+            ->addIdentifier('verified')
+            ->add('picture_type');
     }
 
     /**
