@@ -96,4 +96,25 @@ class UserController extends Controller
 
         return $this->render('Profile/edit_avatar.html.twig', ['form' => $form->createView()]);
     }
+
+    /**
+     * @Route("/profile/edit/credential", name="edit_credential")
+     */
+    public function modifCredentialAction(Request $request)
+    {
+        $form = $this->createForm(UserEditAvatarType::class); // retourne un objet Form
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->container->get('app.picture_uploader')->uploadCredential($form->getData(), $this->getUser());
+
+            $this->addFlash(
+                'success',
+                'Votre demande de vérification d\'identité a bien été pris en compte, elle sera soumise à une validation par un administrateur'
+            );
+
+            return $this->redirectToRoute('fos_user_profile_show');
+        }
+
+        return $this->render('Profile/edit_credential.html.twig', ['form' => $form->createView()]);
+    }
 }
