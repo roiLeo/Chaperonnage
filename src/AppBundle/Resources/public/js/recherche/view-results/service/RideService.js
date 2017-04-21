@@ -1,6 +1,6 @@
 angular
     .module('results')
-    .factory('ResultsService', function($http){
+    .factory('RideService', function($http){
         var service = {};
 
         service.searchAgents = function(start, finish){
