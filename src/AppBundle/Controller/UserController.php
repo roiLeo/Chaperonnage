@@ -84,7 +84,7 @@ class UserController extends Controller
         $form = $this->createForm(UserEditAvatarType::class); // retourne un objet Form
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->container->get('app.picture_uploader')->upload($form->getData(), $this->getUser());
+            $this->container->get('app.picture_uploader')->uploadAvatar($form->getData(), $this->getUser());
 
             $this->addFlash(
                 'success',

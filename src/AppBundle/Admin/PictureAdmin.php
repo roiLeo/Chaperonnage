@@ -19,16 +19,14 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class CategoryAdmin extends AbstractAdmin
+class PictureAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('id')
-            //->add('src')
             ->add('verified')
             ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()]);
-        //->add('file', 'file', $fileFieldOptions);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -62,11 +60,19 @@ class CategoryAdmin extends AbstractAdmin
 
     private function upload(Picture $picture)
     {
+        $pictureUploader = $this
+            ->getConfigurationPool()
+            ->getContainer()
+            ->get('app.picture_uploader');
+
         if ($picture->getUploadedFile() instanceof UploadedFile) {
-            $this->getConfigurationPool()
-                ->getContainer()
-                ->get('app.picture_uploader')
-                ->upload($picture);
+            if ($picture->isAvatar()) {
+                $pictureUploader
+                    ->uploadAvatar($picture);
+            } elseif ($picture->isCredential()) {
+                $pictureUploader
+                    ->uploadCredential($picture);
+            }
         }
     }
 }
