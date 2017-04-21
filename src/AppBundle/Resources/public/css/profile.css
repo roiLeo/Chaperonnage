@@ -18,7 +18,6 @@
 .tab-content{
     padding: 2rem 1rem 1rem;
     z-index: 1;
-    background-color: #fff;
 }
 
 .nav-tabs .nav-item{
@@ -35,9 +34,30 @@
     border-color: #66c1Be;
 }
 
-.profileClass a, a:hover{
+.profileClass .nav a, .nav a:hover{
     color: #fff;
 }
+
+.greyaaa{
+    color: #aaaaaa;
+}
+
+.greenValid{
+    color: #2C9227;
+}
+
+.redNonValid{
+    color: #A52C2F;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.profileClass .paddingBottom0{
+    padding-bottom: 0!important;
+}
+
 
 /*content profil*/
 
@@ -54,9 +74,28 @@
     display: flex;
 }
 
+.profileClass .fa{
+    margin-right: 10px;
+}
+
 .noPaddingRight{
     padding-right: 0 !important;
 }
+
+.btnEditProfil{
+    position: absolute;
+    right:15px;
+}
+
+.btnEditProfil .fa{
+    color: #292b2c;
+    transform: scale(1.5,1.5);
+}
+
+.marginRight10{
+    margin-right: 10px;
+}
+
 /*Edit Profil*/
 
 .marginTop15{
@@ -76,7 +115,7 @@
 }
 
 .profileClass textarea{
-    height: 8.4rem;
+    height: 10rem;
 }
 
 .submitProfile, .submitProfile:hover, .editAvatarButton, .editAvatarButton:hover{
