@@ -49,6 +49,8 @@ class Credential
      */
     private $uploadedAt;
 
+    private $uploadedFile;
+
     /**
      * Get id.
      *
@@ -129,5 +131,23 @@ class Credential
     public function getUploadedAt(): ?\DateTime
     {
         return $this->uploadedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
+    }
+
+    /**
+     * @param mixed $uploadedFile
+     *
+     * @return Credential
+     */
+    public function setUploadedFile($uploadedFile)
+    {
+        $this->uploadedFile = $uploadedFile;
     }
 }

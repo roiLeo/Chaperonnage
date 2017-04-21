@@ -28,7 +28,9 @@ class UserAdmin extends AbstractAdmin
             ->add('phone')
             ->add('birthday')
             ->add('description')
-            ->add('roles');
+            ->add('roles')
+
+        ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

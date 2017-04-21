@@ -22,6 +22,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Picture
 {
+    const TYPE_AVATAR = 'avatar';
+    const TYPE_CREDENTIAL = 'credential';
+
     /**
      * @var int
      *
@@ -57,8 +60,16 @@ class Picture
      */
     private $uploadedFile;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture_type", type="string", length=255)
+     */
+    private $pictureType;
+
     public function __construct()
     {
+        $this->pictureType = self::TYPE_AVATAR;
         $this->uploadedAt = new \DateTime();
         $this->verified = false;
     }
@@ -163,5 +174,35 @@ class Picture
         $this->uploadedFile = $uploadedFile;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPictureType(): string
+    {
+        return $this->pictureType;
+    }
+
+    /**
+     * @param string $pictureType
+     *
+     * @return Picture
+     */
+    public function setPictureType(string $pictureType): Picture
+    {
+        $this->pictureType = $pictureType;
+
+        return $this;
+    }
+
+    public function isAvatar()
+    {
+        return $this->getPictureType() === self::TYPE_AVATAR;
+    }
+
+    public function isCredential()
+    {
+        return $this->getPictureType() === self::TYPE_CREDENTIAL;
     }
 }

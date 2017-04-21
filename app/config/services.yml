@@ -88,16 +88,16 @@ services:
             - "@app.user_manager"
 
     admin.category:
-            class: AppBundle\Admin\CategoryAdmin
+            class: AppBundle\Admin\PictureAdmin
             arguments: [~, AppBundle\Entity\Picture, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Picture , group : Picture}
+                - { name: sonata.admin, manager_type: orm, label: Pictures , group : Picture}
 
     admin.user:
             class: AppBundle\Admin\UserAdmin
             arguments: [~, AppBundle\Entity\User, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: List, group : Users }
+                - { name: sonata.admin, manager_type: orm, label: List User, group : User }
 
     app.picture_uploader:
           class: AppBundle\Service\PictureUploader
