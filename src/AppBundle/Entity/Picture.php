@@ -22,8 +22,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Picture
 {
-    const TYPE_AVATAR = "avatar";
-    const TYPE_CREDENTIAL = "credential";
+    const TYPE_AVATAR = 'avatar';
+    const TYPE_CREDENTIAL = 'credential';
 
     /**
      * @var int
@@ -186,19 +186,23 @@ class Picture
 
     /**
      * @param string $pictureType
+     *
      * @return Picture
      */
     public function setPictureType(string $pictureType): Picture
     {
         $this->pictureType = $pictureType;
+
         return $this;
     }
 
-    public function isAvatar(){
-        return $this->getPictureType()===self::TYPE_AVATAR;
+    public function isAvatar()
+    {
+        return $this->getPictureType() === self::TYPE_AVATAR;
     }
 
-    public function isCredential(){
-        return $this->getPictureType()===self::TYPE_CREDENTIAL;
+    public function isCredential()
+    {
+        return $this->getPictureType() === self::TYPE_CREDENTIAL;
     }
 }

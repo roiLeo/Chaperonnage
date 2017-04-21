@@ -69,7 +69,7 @@ class PictureAdmin extends AbstractAdmin
             if ($picture->isAvatar()) {
                 $pictureUploader
                     ->uploadAvatar($picture);
-            } else if ($picture->isCredential()) {
+            } elseif ($picture->isCredential()) {
                 $pictureUploader
                     ->uploadCredential($picture);
             }

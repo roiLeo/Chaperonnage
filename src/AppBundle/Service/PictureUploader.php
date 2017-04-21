@@ -30,17 +30,15 @@ class PictureUploader
         $this->entityManager = $entityManager;
     }
 
-
     private function upload(Picture $picture, $targetDir)
     {
         $file = $picture->getUploadedFile();
-        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move(
             $this->targetDir.$targetDir,
             $fileName
         );
-        $picture->setSrc($targetDir . $fileName);
-
+        $picture->setSrc($targetDir.$fileName);
     }
 
     public function uploadAvatar(Picture $picture, User $user = null)
