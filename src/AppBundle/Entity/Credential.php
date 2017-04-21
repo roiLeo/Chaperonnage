@@ -48,6 +48,10 @@ class Credential
      * @ORM\Column(name="uploaded_at", type="datetime")
      */
     private $uploadedAt;
+    /**
+     *
+     */
+    private $uploadedFile;
 
     /**
      * Get id.
@@ -130,4 +134,24 @@ class Credential
     {
         return $this->uploadedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
+    }
+
+    /**
+     * @param mixed $uploadedFile
+     * @return Credential
+     *
+     */
+    public function setUploadedFile($uploadedFile)
+    {
+        $this->uploadedFile = $uploadedFile;
+    }
+
+
 }
