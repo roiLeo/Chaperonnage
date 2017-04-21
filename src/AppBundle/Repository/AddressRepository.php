@@ -19,4 +19,5 @@ namespace AppBundle\Repository;
  */
 class AddressRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

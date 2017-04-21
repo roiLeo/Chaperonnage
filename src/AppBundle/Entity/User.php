@@ -96,7 +96,7 @@ class User extends BaseUser
     private $gender;
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address",cascade={"persist"})
      * @ORM\JoinTable(name="users_addresses", joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)})
      */

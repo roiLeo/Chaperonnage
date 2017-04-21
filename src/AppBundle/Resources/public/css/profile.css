@@ -95,3 +95,27 @@
 .friend-block{
     align-items: center;
 }
+/* modal address_form */
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+/* btn delete address */
+i.fa.fa-trash.btnDeleteAddress{
+    color:#A52c2F;
+    transform: scale(1.5,1.5);
+}
+/* btn edit address */
+i.fa.fa-pencil-square-o.btnEditAddress{
+    color:#2C9227;
+    transform: scale(1.5,1.5);
+}
+.modal{
+    z-index: 20;
+}
+.modal-backdrop{
+    z-index: 10;
+}​

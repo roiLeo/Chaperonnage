@@ -38,13 +38,13 @@ class Address
     /**
      * @var string
      *
-     * @ORM\Column(name="street", type="string",length=255)
+     * @ORM\Column(name="street", type="string",length=255,nullable=true)
      * */
     private $street;
     /**
      * @var string
      *
-     * @ORM\Column(name="postal_code", type="string", length=255)
+     * @ORM\Column(name="postal_code", type="string", length=255,nullable=true)
      */
     private $postalCode;
 
@@ -54,7 +54,12 @@ class Address
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     */
+    private $country;
     /**
      * @var float
      *
@@ -143,6 +148,14 @@ class Address
         return $this->city;
     }
 
+    public function setCountry($country){
+        $this->country = $country;
+
+        return $this;
+    }
+    public function getCountry(){
+        return $this->country;
+    }
     /**
      * Set longitude.
      *
