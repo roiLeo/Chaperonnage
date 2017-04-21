@@ -80,7 +80,7 @@ class User extends BaseUser
     private $picture;
     /**
      * @var Credential
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Credential")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture")
      */
     private $credential;
     /**

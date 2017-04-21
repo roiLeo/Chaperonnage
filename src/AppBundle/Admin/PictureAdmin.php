@@ -25,7 +25,6 @@ class PictureAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('id')
-            ->add('src')
             ->add('verified')
             ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()]);
     }
@@ -61,11 +60,19 @@ class PictureAdmin extends AbstractAdmin
 
     private function upload(Picture $picture)
     {
+        $pictureUploader = $this
+            ->getConfigurationPool()
+            ->getContainer()
+            ->get('app.picture_uploader');
+
         if ($picture->getUploadedFile() instanceof UploadedFile) {
-            $this->getConfigurationPool()
-                ->getContainer()
-                ->get('app.picture_uploader')
-                ->upload($picture);
+            if ($picture->isAvatar()) {
+                $pictureUploader
+                    ->uploadAvatar($picture);
+            } else if ($picture->isCredential()) {
+                $pictureUploader
+                    ->uploadCredential($picture);
+            }
         }
     }
 }

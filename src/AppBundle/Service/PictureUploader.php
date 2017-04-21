@@ -18,47 +18,56 @@ use Doctrine\ORM\EntityManagerInterface;
 class PictureUploader
 {
     private $targetDir;
-
+    private $targetAvatarDir;
+    private $targetCredentialDir;
     private $entityManager;
 
     public function __construct($targetDir, EntityManagerInterface $entityManager)
     {
         $this->targetDir = $targetDir;
+        $this->targetAvatarDir = '/uploads/pictures/';
+        $this->targetCredentialDir = '/uploads/credential/';
         $this->entityManager = $entityManager;
     }
 
-    public function upload(Picture $picture, User $user = null)
+
+    private function upload(Picture $picture, $targetDir)
     {
         $file = $picture->getUploadedFile();
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
         $file->move(
-            $this->targetDir,
+            $this->targetDir.$targetDir,
             $fileName
         );
+        $picture->setSrc($targetDir . $fileName);
 
-        $picture->setSrc('/uploads/pictures/'.$fileName);
+    }
 
+    public function uploadAvatar(Picture $picture, User $user = null)
+    {
+        $picture->setPictureType(Picture::TYPE_AVATAR);
+        $this->upload($picture, $this->targetAvatarDir);
         if (null !== $user) {
             $user->setPicture($picture);
+            $this->save($picture);
         }
-
-        $this->save($picture);
-
     }
 
-    public function getTargetDir()
+    public function uploadCredential(Picture $picture, User $user = null)
     {
-        return $this->targetDir;
+        $picture->setPictureType(Picture::TYPE_CREDENTIAL);
+        $this->upload($picture, $this->targetCredentialDir);
+        if (null !== $user) {
+            $user->setCredential($picture);
+            $this->save($picture);
+        }
     }
-
 
     public function save(Picture $picture)
     {
         if (null === $picture->getId()) {
             $this->entityManager->persist($picture);
         }
-
         $this->entityManager->flush();
     }
-
 }
