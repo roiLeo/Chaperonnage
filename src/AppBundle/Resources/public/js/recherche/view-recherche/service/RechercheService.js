@@ -44,19 +44,11 @@ angular
         };
 
         service.newRide = function(){
-
-            //On ajoute d'abbord les addresses
-
-            var url = 'http://127.0.0.1:8080/address/new?' +
-                'appbundle_address[postalCode]=' + service.startPoint.postalCode +
-                'appbundle_address[lattitude]='  + service.startPoint.lat +
-                'appbundle_address[longitude]='  + service.startPoint.lng +
-                'appbundle_address[city]='       + service.startPoint.city;
-
+            var url = 'http://127.0.0.1:8080/ride/new';
             return $http.get(url).then(function(response){
                 return response.data;
             }, function(){
-                console.warn('Arg, startAddress non viable');
+                console.warn('Arg, ride non viable');
                 return [];
             });
         };

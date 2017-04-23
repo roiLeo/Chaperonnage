@@ -35,15 +35,13 @@ angular
                 {types: ['geocode']});
 
             // When the user selects an address from the dropdown, event
-            autocompleteStart.addListener('place_changed', function(){fillInAddress('start', autocompleteStart, directionsService, directionsDisplay)});
-            autocompleteFinish.addListener('place_changed', function(){fillInAddress('finish', autocompleteFinish, directionsService, directionsDisplay)});
+            autocompleteStart.addListener('place_changed', function(){onAutocompleteUpdate('start', autocompleteStart.getPlace(), directionsService, directionsDisplay)});
+            autocompleteFinish.addListener('place_changed', function(){onAutocompleteUpdate('finish', autocompleteFinish.getPlace(), directionsService, directionsDisplay)});
         }
 
-        function fillInAddress(addr, autocomplete, directionsService, directionsDisplay) {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-            var coord = {lat: place.geometry.location.lat(),
-                lng: place.geometry.location.lng()};
+        function onAutocompleteUpdate(addr, place, directionsService, directionsDisplay) {
+            var coord = {   lat: place.geometry.location.lat(),
+                            lng: place.geometry.location.lng()};
 
             // Get each component of the address from the place details
             // and fill the corresponding field on the form.
@@ -63,13 +61,11 @@ angular
 
             if(addr=='start') {
                 RechercheService.setStartPoint(lat, lng, city, postalCode);
-                console.log(addr);
             }else{
-                console.log(addr);
                 RechercheService.setFinishPoint(lat, lng, city, postalCode);
             }
-            console.log(RechercheService.getStartPoint());
-            console.log(RechercheService.getFinishPoint());
+
+
             //Showing the position on the map
             if(markers[addr]){
                 markers[addr].setMap(null);
