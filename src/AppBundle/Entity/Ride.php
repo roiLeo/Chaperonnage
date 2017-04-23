@@ -64,12 +64,12 @@ class Ride
     private $protectedUser;
     /**
      * @var Address
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist"})
      */
     private $startAddress;
     /**
      * @var Address
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist"})
      */
     private $finishAddress;
 

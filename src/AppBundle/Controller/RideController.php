@@ -3,6 +3,9 @@
 namespace AppBundle\Controller;
 use AppBundle\Form\RideType;
 use AppBundle\Entity\Ride;
+use AppBundle\Entity\Address;
+use AppBundle\Form\StartAddressType;
+use AppBundle\Form\FinishAddressType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

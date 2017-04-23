@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\User;
 use AppBundle\Entity\Address;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,12 +27,12 @@ class RideType extends AbstractType
             ->add('protectedUser', EntityType::class, array(
                 'class'=> User::class,
                 'choice_label'=>'name'))
-            ->add('startAddress', EntityType::class, array(
-                'class'=> Address::class,
-                'choice_label'=>'city'))
-            ->add('finishAddress', EntityType::class, array(
-                'class'=> Address::class,
-                'choice_label'=>'city'));
+            ->add('startAddress', AddressType::class, array(
+                'data_class'=> Address::class,
+                'label'=>'Adresse de départ'))
+            ->add('finishAddress', AddressType::class, array(
+                'data_class'=> Address::class,
+                'label'=>'Adresse de fin'));
     }
     
     /**

@@ -47,16 +47,16 @@ angular
 
             //On ajoute d'abbord les addresses
 
-            var url = 'http://127.0.0.1:8000//address/new ?' +
-                'startlat='+start.lat
-                +'&startlng='+start.lng
-                +'&finishlat='+finish.lat
-                +'&finishlng='+finish.lng;
+            var url = 'http://127.0.0.1:8080/address/new?' +
+                'appbundle_address[postalCode]=' + service.startPoint.postalCode +
+                'appbundle_address[lattitude]='  + service.startPoint.lat +
+                'appbundle_address[longitude]='  + service.startPoint.lng +
+                'appbundle_address[city]='       + service.startPoint.city;
 
             return $http.get(url).then(function(response){
                 return response.data;
             }, function(){
-                console.warn('Arg, impossible de charger la liste d\'agents');
+                console.warn('Arg, startAddress non viable');
                 return [];
             });
         };
