@@ -80,7 +80,7 @@ class User extends BaseUser
     private $picture;
     /**
      * @var Credential
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Credential")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture")
      */
     private $credential;
     /**
@@ -334,13 +334,13 @@ class User extends BaseUser
     /**
      * Set credential.
      *
-     * @param \AppBundle\Entity\Credential $credential
+     * @param \AppBundle\Entity\Picture $picture
      *
      * @return User
      */
-    public function setCredential(\AppBundle\Entity\Credential $credential = null)
+    public function setCredential($picture)
     {
-        $this->credential = $credential;
+        $this->credential = $picture;
 
         return $this;
     }
@@ -348,9 +348,9 @@ class User extends BaseUser
     /**
      * Get credential.
      *
-     * @return \AppBundle\Entity\Credential
+     * @return \AppBundle\Entity\Picture
      */
-    public function getCredential(): ?Credential
+    public function getCredential(): ?Picture
     {
         return $this->credential;
     }
