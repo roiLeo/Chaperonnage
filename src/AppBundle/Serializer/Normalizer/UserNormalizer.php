@@ -23,10 +23,19 @@ class UserNormalizer extends AbstractNormalizer
      */
     public function normalize($object, $format = null, array $context = [])
     {
-        /* @var User $object */
+        //* @var User $object */
+        $picture = '';
+        if ($object->getPicture()) {
+            $picture = $object->getPicture()->getSrc();
+        }
+
         $data = [
             'id' => $object->getId(),
             'name' => $object->getName(),
+            'gender' => $object->getGender(),
+            'picture' => $picture,
+            'position' => $object->position,
+            'price' => $object->price,
         ];
 
         return $data;

@@ -12,15 +12,16 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Address;
-use AppBundle\Form\AddressType;
+use AppBundle\Entity\Ride;
+use AppBundle\Form\RideType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class AddressController extends Controller
+class RideController extends Controller
 {
     /**
-     * @Route("/address/new", name="app_address_new", methods={"GET", "POST"})
+     * @Route("/ride/new", name="app_ride_new", methods={"GET", "POST"})
      *
      * @param Request $request
      *
@@ -28,13 +29,13 @@ class AddressController extends Controller
      */
     public function newAction(Request $request)
     {
-        $form = $this->createForm(AddressType::class, new Address());
+        $form = $this->createForm(RideType::class, new Ride());
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($form->getData());
             $entityManager->flush();
-            $this->render('default/index.html.twig', []);
+            $this->render(':default:index.html.twig', []);
         }
 
         return $this->render(':address:new.html.twig', [

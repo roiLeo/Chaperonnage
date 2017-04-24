@@ -83,23 +83,31 @@ class Address
     {
         return $this->id;
     }
+
     public function setName(string $name)
     {
         $this->name = $name;
 
         return $this;
     }
-    public function getName(){
+
+    public function getName()
+    {
         return $this->name;
     }
-    public function setStreet($street){
+
+    public function setStreet($street)
+    {
         $this->street = $street;
 
         return $this;
     }
-    public function getStreet(){
+
+    public function getStreet()
+    {
         return $this->street;
     }
+
     /**
      * Set postalCode.
      *
@@ -148,14 +156,18 @@ class Address
         return $this->city;
     }
 
-    public function setCountry($country){
+    public function setCountry($country)
+    {
         $this->country = $country;
 
         return $this;
     }
-    public function getCountry(){
+
+    public function getCountry()
+    {
         return $this->country;
     }
+
     /**
      * Set longitude.
      *

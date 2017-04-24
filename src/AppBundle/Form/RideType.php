@@ -11,11 +11,12 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Address;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddressType extends AbstractType
+class RideType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,10 +24,16 @@ class AddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('postalCode')
-            ->add('city')
-            ->add('longitude')
-            ->add('lattitude');
+            ->setMethod('GET')
+            ->add('date')
+            ->add('hour')
+            ->add('status')
+            ->add('startAddress', AddressType::class, [
+                'data_class' => Address::class,
+                'label' => 'Adresse de départ', ])
+            ->add('finishAddress', AddressType::class, [
+                'data_class' => Address::class,
+                'label' => 'Adresse de fin', ]);
     }
 
     /**
@@ -35,7 +42,8 @@ class AddressType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Address',
+            'data_class' => 'AppBundle\Entity\Ride',
+            'csrf_protection' => false,
         ]);
     }
 
@@ -44,6 +52,6 @@ class AddressType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_address';
+        return 'appbundle_ride';
     }
 }

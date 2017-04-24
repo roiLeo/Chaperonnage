@@ -12,7 +12,7 @@
                         <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                {{ render(controller('AppBundle:Address:edit',{id: address.id})) }}
+                {{ render(controller('AppBundle:UserAddress:edit',{id: address.id})) }}
             </div>
         {% else %}
             Aucune adresse enregistrée.
