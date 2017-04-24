@@ -29,6 +29,11 @@ services:
         arguments:
             - "@=service('doctrine').getManager()"
 
+    app.ride_manager:
+        class: AppBundle\Manager\RideManager
+        arguments:
+            - "@=service('doctrine').getManager()"
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
@@ -68,6 +73,7 @@ services:
         - { name: twig.extension }
         arguments:
             - "@app.profil_manager"
+            - "@app.ride_manager"
 
     hwi_oauth.user.provider.entity:
             class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

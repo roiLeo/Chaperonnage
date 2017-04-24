@@ -134,3 +134,10 @@
 .friend-block{
     align-items: center;
 }
+
+/*Onglet Trajet*/
+.card img{
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 40px;
+}

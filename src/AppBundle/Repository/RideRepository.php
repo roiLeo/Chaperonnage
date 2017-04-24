@@ -11,6 +11,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+
 /**
  * RideRepository.
  *
@@ -19,4 +21,13 @@ namespace AppBundle\Repository;
  */
 class RideRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getManyprotected(User $user)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->where('r.protectedUser = :id')
+            ->setParameter('id', $user->getId())
+            ->getQuery()
+            ->getResult();
+    }
 }

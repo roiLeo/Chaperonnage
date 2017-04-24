@@ -13,14 +13,17 @@ namespace AppBundle\Twig;
 
 use AppBundle\Entity\User;
 use AppBundle\Manager\ProfileUserResolver;
+use AppBundle\Manager\RideManager;
 
 class ProfilExtension extends \Twig_Extension
 {
     private $profilResolver;
+    private $rideResolver;
 
-    public function __construct(ProfileUserResolver $profilManager)
+    public function __construct(ProfileUserResolver $profilManager, RideManager $rideManager)
     {
         $this->profilResolver = $profilManager;
+        $this->rideResolver = $rideManager;
     }
 
     public function getFunctions()
@@ -31,6 +34,7 @@ class ProfilExtension extends \Twig_Extension
             new \Twig_SimpleFunction('get_credentialVerified', [$this, 'getCredentialVerified']),
             new \Twig_SimpleFunction('get_niveauCop', [$this, 'getNiveauCop']),
             new \Twig_SimpleFunction('get_nbCop', [$this, 'getNombreCop']),
+            new \Twig_SimpleFunction('get_ride', [$this, 'getRide']),
         ];
     }
 
@@ -57,5 +61,10 @@ class ProfilExtension extends \Twig_Extension
     public function getNombreCop(User $user)
     {
         return $this->profilResolver->resolveNombreCopieto($user);
+    }
+
+    public function getRide(User $user)
+    {
+        return $this->rideResolver->rideProtectedList($user);
     }
 }
