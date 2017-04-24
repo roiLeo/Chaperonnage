@@ -36,10 +36,10 @@ class RideAdmin extends AbstractAdmin
             ->addIdentifier('id')
             ->add('date')
             ->add('hour')
-            ->add('address.city')
-            ->add('address.postal_code')
-            ->add('address.lattitude')
-            ->add('address.longitude')
+            ->add('Address.city')
+            ->add('Address.postal_code')
+            ->add('Address.lattitude')
+            ->add('Address.longitude')
         ;
     }
 }

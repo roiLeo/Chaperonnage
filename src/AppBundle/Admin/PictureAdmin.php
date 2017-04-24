@@ -27,7 +27,7 @@ class PictureAdmin extends AbstractAdmin
             ->add('id')
             ->add('verified')
             ->add('uploadedFile', ImageType::class, ['image_web_path' => $this->getSubject()->getSrc()])
-            ->add('picture_type','text');
+            ->add('picture_type', 'text');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

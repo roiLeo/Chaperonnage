@@ -29,14 +29,14 @@ class UserAdmin extends AbstractAdmin
             ->add('birthday')
             ->add('description', 'textarea')
             ->add('roles')
-            ->add('picture', 'entity', array(
+            ->add('picture', 'entity', [
                 'class' => 'AppBundle\Entity\Picture',
                 'choice_label' => 'id',
-            ))
-            ->add('credential', 'entity', array(
+            ])
+            ->add('credential', 'entity', [
                 'class' => 'AppBundle\Entity\Picture',
                 'choice_label' => 'id',
-            ))
+            ])
         ;
     }
 
