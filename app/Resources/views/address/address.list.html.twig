@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">Adresses enregistrées</h4>
+        {% for address in app.user.address %}
+            <div>
+                <div class="d-flex">
+                    <div>
+                        <strong>{{ address.name }}</strong> - {{ address.street }} {{ address.city }} {{ address.postalCode }} {{ address.country }}
+                    </div>
+                    <div class="pull-right">
+                        <a data-toggle="modal" data-target="#edit_address_form{{ address.id }}"><i class="fa fa-pencil-square-o btnEditAddress" aria-hidden="true"></i></a>
+                        <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                {{ render(controller('AppBundle:UserAddress:edit',{id: address.id})) }}
+            </div>
+        {% else %}
+            Aucune adresse enregistrée.
+        {% endfor %}
+    </div>
+</div>
+<div class="container marginTop15 text-center">
+    <div class="col-md-3 text-center">
+        <a class="btn btn-outline-primary editAvatarButton btn-lg btn-block" data-toggle="modal" data-target="#address_form">Ajouter une adresse</a>
+    </div>
+</div>
+
+<!-- Modal Add Address -->
+<div class="modal fade" id="address_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            {{ form_start(form, {'method': 'post', 'action': path('app_form_address'), 'attr': {'class': 'fos_user_profile_show'}}) }}
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">Enregistrer une nouvelle adresse</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                {{ form_errors(form) }}
+                <div class="md-form">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_label(form.name) }}
+                    {{ form_errors(form.name) }}
+                </div>
+                <div id="locationField" class="md-form">
+
+                    <input id="autocomplete" onFocus="geolocate()" type="text">
+
+                </div>
+                <div class="md-form">
+                    {{ form_widget(form.street, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_label(form.street) }}
+                    {{ form_errors(form.street) }}
+                </div>
+
+                <div class="md-form">
+                    {{ form_widget(form.postalCode, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_label(form.postalCode) }}
+                    {{ form_errors(form.postalCode) }}
+                </div>
+
+                <div class="md-form">
+                    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_label(form.city) }}
+                    {{ form_errors(form.city) }}
+                </div>
+
+                <div class="md-form">
+                    {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_label(form.country) }}
+                    {{ form_errors(form.country) }}
+                </div>
+                {{ form_rest(form) }}
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button id="dismiss-btn-address-form" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- /.Live preview-->
+
+<!-- Modal Remove Address -->
+<div class="modal fade" id="modal_remove_address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            {{ form_start(delete_form, {'method': 'post', 'action': path('app_remove_address', {id: '__ID__'}), 'attr': {'class': 'fos_user_profile_show'}}) }}
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">Supprimer l'adresse</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir supprimer l'adresse <span id="remove_address_name"></span> ?
+                {{ form_rest(delete_form) }}
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Supprimer</button>
+            </div>
+            {{ form_end(delete_form) }}
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- /.Live preview-->

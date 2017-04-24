@@ -1,5 +1,13 @@
 {% extends "::layout.html.twig" %}
 
+
 {% block content %}
 {% include "@FOSUser/Profile/show_content.html.twig" %}
 {% endblock content %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/manage_address.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-TozRWtnMZroNu6HOGostbH4RVwIhLj4&libraries=places&callback=initAutocomplete"
+            async defer></script>
+{% endblock %}
+

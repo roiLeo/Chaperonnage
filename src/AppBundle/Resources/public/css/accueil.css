@@ -1,3 +1,8 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     background-color: #f9f9f9;
 }
@@ -25,7 +30,7 @@ body {
     height: 42px;
 }
 
-.spacing{
+.spacing {
     height: 50px;
 }
 
@@ -38,7 +43,9 @@ body {
 /*** FOOTER ***/
 footer.page-footer {
     background-color: #676b74;
-    margin-top: 2rem;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
 }
 
 .logofacebook:hover {
