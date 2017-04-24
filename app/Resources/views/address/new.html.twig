@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <h1>Ajouter une Adresse</h1>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    <div class="form-action">
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
