@@ -2,62 +2,41 @@
 
     {% block javascripts %}
         {{ parent() }}
-        <script src="{{ asset('bundles/app/js/google_autocomplete.js') }}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-TozRWtnMZroNu6HOGostbH4RVwIhLj4&libraries=places&callback=initAutocomplete"
+        <!-- Angular Material requires Angular.js Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+        <!--Date Picker-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+        <script src="https://cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-TozRWtnMZroNu6HOGostbH4RVwIhLj4&libraries=places"
                 async defer></script>
+        <script src="{{ asset('bundles/app/js/recherche/app.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-recherche/recherche.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-recherche/service/RechercheService.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-recherche/controller/RechercheCtrl.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-results/results.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-results/service/ResultsService.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/recherche/view-results/controller/ResultsCtrl.js') }}"></script>
+
     {% endblock %}
 
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/index.css') }}">
 {% endblock %}
 
 {% block content %}
-
-    <div class="row spacing"></div>
-
-    <div id="map"></div>
-
-    <div class="row spacing"></div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <input type="text" id="startAddress"
-                   onFocus="geolocate()" class="form-control">
-            <label class="search_label" for="startAddress">Adresse de Départ</label>
-            <input type="hidden" id="startCity">
-            <input type="hidden" id="startPostalCode">
-            <input type="hidden" id="startLongitude">
-            <input type="hidden" id="startLatitude">
-        </div><div class="col-md-6">
-            <input type="text" id="finishAddress"
-                   onFocus="geolocate()" class="form-control">
-            <label class="search_label" for="finishAddress">Adresse d'Arrivée</label>
-            <input type="hidden" id="finishCity">
-            <input type="hidden" id="finishPostalCode">
-            <input type="hidden" id="finishLongitude">
-            <input type="hidden" id="finishLatitude">
-        </div>
-    </div>
-
-    <div class="row spacing"></div>
-
-    <div class="row">
-        <div class="col-md-2"></div>
-        <label class="col-md-3 search_label" for="date">Date du trajet</label>
-        <div class="col-md-5">
-            <input type="date" id="date">
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-4">
-        </div><div class="col-md-4">
-            <button type="submit" class="btn btn-default btn-sm">Rechercher un trajet</button>
-        </div><div class="col-md-4">
-        </div>
-    </div>
-
+    <ng-view ng-app='myApp'></ng-view>
 {% endblock %}
