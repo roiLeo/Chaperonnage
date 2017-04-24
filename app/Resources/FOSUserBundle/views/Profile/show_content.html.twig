@@ -1,5 +1,4 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
 <div class="profileClass container">
 
     <ul class="nav nav-tabs text-center" role="tablist">
@@ -133,7 +132,7 @@
 
 
         #}
-        <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+        <div role="tabpanel" class="tab-pane fade" id="address">{{ render(controller('AppBundle:UserAddress:list')) }}</div>
 
 
         {#
@@ -166,6 +165,8 @@
                                    {{ user.description }}
                                </div>
                             </div>
+                        {% else %}
+                            Aucun de vos amis Facebook n'utilise Mon Chaperon.
                         {% endfor %}
                     </div>
             </div>
@@ -222,5 +223,4 @@
             </div>
         </div>
     </div>
-
 </div>
