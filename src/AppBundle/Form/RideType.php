@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\Form;
 
-
-use AppBundle\Entity\User;
 use AppBundle\Entity\Address;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,23 +28,23 @@ class RideType extends AbstractType
             ->add('date')
             ->add('hour')
             ->add('status')
-            ->add('startAddress', AddressType::class, array(
-                'data_class'=> Address::class,
-                'label'=>'Adresse de départ'))
-            ->add('finishAddress', AddressType::class, array(
-                'data_class'=> Address::class,
-                'label'=>'Adresse de fin'));
+            ->add('startAddress', AddressType::class, [
+                'data_class' => Address::class,
+                'label' => 'Adresse de départ', ])
+            ->add('finishAddress', AddressType::class, [
+                'data_class' => Address::class,
+                'label' => 'Adresse de fin', ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\Ride',
             'csrf_protection' => false,
-        ));
+        ]);
     }
 
     /**
@@ -48,6 +54,4 @@ class RideType extends AbstractType
     {
         return 'appbundle_ride';
     }
-
-
 }
