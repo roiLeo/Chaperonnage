@@ -14,8 +14,10 @@ namespace AppBundle\Controller\Api;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations as FOSRest;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\View\View;
+//use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
 
 /**
  * AgentApiController.
@@ -33,11 +35,35 @@ class AgentApiController extends FOSRestController
      *  description="Returns a collection of user Agents"
      * )
      *
+     *
+     * @QueryParam(name="startlat", nullable=false, strict=true, description="Latitude of the starting point")
+     * @QueryParam(name="startlng", nullable=false, strict=true, description="Longitude of the starting point")
+     * @QueryParam(name="finishlat", nullable=false, strict=true, description="Latitude of the ending point")
+     * @QueryParam(name="startlat", nullable=false, strict=true, description="Latitude of the starting point")
+     * @QueryParam(name="date", nullable=false, strict=true, description="Date")
+
+     *
      * @return User[]
      */
-    public function cgetAgents()
+    public function cgetAgents(ParamFetcher $paramFetcher)
     {
-        return $this->getUserManager()->all();
+        $startLat = $paramFetcher->get("startlat");
+        $startLng = $paramFetcher->get("startlng");
+
+        $agents = $this->getUserManager()->all();
+
+        //A améliorer au besoin
+        $result = [];
+        $result[0]=$agents[0];
+        $result[1]=$agents[1];
+        $result[2]=$agents[2];
+
+        foreach($result as $key => $user){
+            $user->position = ["lat" => $startLat+(rand(1,100)/1000),
+                              "lng" => $startLng+(rand(1,100)/1000)];
+            $user->price = rand(0,200)/100;
+        }
+        return $result;
     }
 
     /**
