@@ -19,6 +19,15 @@
 
 <!-- Tab panes -->
     <div class="tab-content">
+
+        {#
+
+
+        tab profil
+
+
+        #}
+
         <div role="tabpanel" class="tab-pane fade in active show" id="profile">
             {% for type, flash_messages in app.session.flashBag.all %}
                 {% for flash_message in flash_messages %}
@@ -116,7 +125,24 @@
             </div>
 
         </div>
+
+        {#
+
+
+        tab adresse
+
+
+        #}
         <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+
+
+        {#
+
+
+        tab amis
+
+
+        #}
         <div role="tabpanel" class="tab-pane fade" id="friends">
             {% if app.user.facebookId %}
             <div class="card">
@@ -154,9 +180,36 @@
                             </div>
                         </div>
             {% endif %}
-            </div>
+        </div>
 
-        <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
+        {#
+
+
+        tab trajet
+
+
+        #}
+        <div role="tabpanel" class="tab-pane fade" id="rides">
+            <div class="card">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Trajets Chaperonnés</h4>
+                    <!--Text-->
+                </div>
+                <!--/.Card content-->
+            </div>
+            <div class="card marginTop15">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Trajets Chaperons</h4>
+                    <!--Text-->
+
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
     </div>
 
 </div>
