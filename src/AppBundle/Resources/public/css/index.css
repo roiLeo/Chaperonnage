@@ -7,4 +7,30 @@
 
 #map {
     height: 400px;
+    padding-top: 30px;
+}
+
+/*** INDEX search ***/
+.addressSearch .md-form label{
+    color: #757575;
+}
+
+.addressSearch .md-form .form-control {
+    border-bottom-color: #ccc;
+}
+
+.addressSearch{
+    padding-top: 30px;
+}
+
+.moment-picker .moment-picker-input{
+    border:none;
+    border-bottom: 1px solid #ccc;
+}
+.moment-picker #date{
+    padding-bottom: 19px;
+}
+
+.form-control {
+    font-family: FontAwesome,"Roboto";
 }
