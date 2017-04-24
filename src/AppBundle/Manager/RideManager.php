@@ -1,24 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Utilisateur
- * Date: 24/04/2017
- * Time: 11:37
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace AppBundle\Manager;
-
 
 use AppBundle\Entity\Ride;
 use AppBundle\Entity\User;
 
 class RideManager extends AbstractDoctrineManager
 {
-//    TRAJET
+    //    TRAJET
 
     public function rideProtectedList(User $user)
     {
         return $this->getRepository()->getManyprotected($user);
+    }
+
+    public function rideCreatedList(User $user)
+    {
+        return $this->getRepository()->getManyCreated($user);
     }
 
     /**

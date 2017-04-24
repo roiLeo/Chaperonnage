@@ -27,6 +27,18 @@ class RideRepository extends \Doctrine\ORM\EntityRepository
             ->select('r')
             ->where('r.protectedUser = :id')
             ->setParameter('id', $user->getId())
+            ->orderBy('r.date', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getManyCreated(User $user)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->where('r.guardUser = :id')
+            ->setParameter('id', $user->getId())
+            ->orderBy('r.date', 'DESC')
             ->getQuery()
             ->getResult();
     }

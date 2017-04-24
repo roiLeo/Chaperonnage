@@ -11,7 +11,6 @@
 
 namespace AppBundle\Manager;
 
-use AppBundle\Entity\Ride;
 use AppBundle\Entity\User;
 
 class ProfileUserResolver
@@ -73,5 +72,4 @@ class ProfileUserResolver
 
         return $allride;
     }
-
 }

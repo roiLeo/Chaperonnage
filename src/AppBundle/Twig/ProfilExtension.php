@@ -34,7 +34,8 @@ class ProfilExtension extends \Twig_Extension
             new \Twig_SimpleFunction('get_credentialVerified', [$this, 'getCredentialVerified']),
             new \Twig_SimpleFunction('get_niveauCop', [$this, 'getNiveauCop']),
             new \Twig_SimpleFunction('get_nbCop', [$this, 'getNombreCop']),
-            new \Twig_SimpleFunction('get_ride', [$this, 'getRide']),
+            new \Twig_SimpleFunction('get_ride', [$this, 'getRideProtected']),
+            new \Twig_SimpleFunction('get_created', [$this, 'getRideCreated']),
         ];
     }
 
@@ -63,8 +64,13 @@ class ProfilExtension extends \Twig_Extension
         return $this->profilResolver->resolveNombreCopieto($user);
     }
 
-    public function getRide(User $user)
+    public function getRideProtected(User $user)
     {
         return $this->rideResolver->rideProtectedList($user);
+    }
+
+    public function getRideCreated(User $user)
+    {
+        return $this->rideResolver->rideCreatedList($user);
     }
 }
