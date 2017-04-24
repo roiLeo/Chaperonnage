@@ -34,10 +34,13 @@ angular
                 title: 'agent',
             });
 
-            ResultsService.searchAgents(start, finish).then(function(data){
-                $scope.searching = false;
-                $scope.agents = data;
-            });
+            RechercheService.newRide()
+                .then(function(){
+                    ResultsService.searchAgents(start, finish).then(function(data){
+                        $scope.searching = false;
+                        $scope.agents = data;
+                    });
+                });
 
             $scope.showAgent = function(agent){
                 marker.setPosition(agent.position);

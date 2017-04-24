@@ -18,15 +18,10 @@ class RideType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setMethod('GET')
             ->add('date')
             ->add('hour')
             ->add('status')
-            ->add('guardUser', EntityType::class, array(
-                'class'=> User::class,
-                'choice_label'=>'name'))
-            ->add('protectedUser', EntityType::class, array(
-                'class'=> User::class,
-                'choice_label'=>'name'))
             ->add('startAddress', AddressType::class, array(
                 'data_class'=> Address::class,
                 'label'=>'Adresse de départ'))
@@ -41,7 +36,8 @@ class RideType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ride'
+            'data_class' => 'AppBundle\Entity\Ride',
+            'csrf_protection' => false,
         ));
     }
 

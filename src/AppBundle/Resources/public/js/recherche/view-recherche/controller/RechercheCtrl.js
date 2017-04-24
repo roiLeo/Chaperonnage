@@ -128,9 +128,4 @@ angular
             return RechercheService.getStartPoint();
         };
 
-        $scope.createRide =  function(){
-            RechercheService.newRide();
-        };
-
-
     }]);
