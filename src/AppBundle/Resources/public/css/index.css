@@ -20,7 +20,7 @@
 }
 
 .addressSearch{
-    padding-top: 30px;
+    padding-top: 50px;
 }
 
 .moment-picker .moment-picker-input{
@@ -33,4 +33,33 @@
 
 .form-control {
     font-family: FontAwesome,"Roboto";
+}
+
+
+.testimonial-card .avatar, .testimonial-card .card-up {
+    overflow: hidden;
+    height: 120px;
+}
+
+.testimonial-card .avatar {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    width: 120px;
+    margin: -65px auto 0;
+    border: 5px solid #fff;
+    background: #FFF;
+}
+.testimonial-card .avatar img {
+    height: 110px;
+    width: 110px;
+    object-fit: cover;
+}
+.default-color-dark {
+    background-color: #f7731b !important;
+}
+.agents{
+    padding-bottom: 30px;
 }
