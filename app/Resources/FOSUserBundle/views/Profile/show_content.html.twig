@@ -226,6 +226,8 @@
                             <div class="col-md-3">{{ ride.guardUser.name }}</div>
                         </div>
                         <hr>
+                    {% else %}
+                        Aucun trajet chaperonné enregistrée.
                     {% endfor %}
                     <!--Text-->
                 </div>
@@ -265,6 +267,8 @@
                             <div class="col-md-3">{{ ride.protectedUser.name }}</div>
                         </div>
                         <hr>
+                    {% else %}
+                        Aucun trajet chaperon enregistré.
                     {% endfor %}
 
 
