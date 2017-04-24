@@ -2,11 +2,12 @@
 
 angular
     .module('recherche')
-    .controller('RechercheCtrl', ['$scope', 'RechercheService', function($scope, RechercheService){
+    .controller('RechercheCtrl', ['$scope', 'RechercheService',  '$location', function($scope, RechercheService,  $location){
         var autocompleteStart, autocompleteFinish;
         var markers = { start : null,
             finish : null};
         var map;
+        $scope.rideDateObj=null;
 
         function initAutocomplete() {
             var directionsService = new google.maps.DirectionsService;
@@ -128,4 +129,14 @@ angular
             return RechercheService.getStartPoint();
         };
 
+        $scope.updateDate = function() {
+            RechercheService.setDate($scope.rideDateObj.format());
+        };
+
+        $scope.searchAgent = function(){
+            $scope.updateDate();
+            if(RechercheService.getStartPoint()&&RechercheService.getFinishPoint()&&RechercheService.getDate()){
+                $location.path('/results');
+            }
+        };
     }]);

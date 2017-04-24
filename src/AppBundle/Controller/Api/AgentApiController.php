@@ -41,7 +41,6 @@ class AgentApiController extends FOSRestController
      * @QueryParam(name="finishlat", nullable=false, strict=true, description="Latitude of the ending point")
      * @QueryParam(name="startlat", nullable=false, strict=true, description="Latitude of the starting point")
      * @QueryParam(name="date", nullable=false, strict=true, description="Date")
-
      *
      * @return User[]
      */
@@ -54,9 +53,16 @@ class AgentApiController extends FOSRestController
 
         //A améliorer au besoin
         $result = [];
+        $nbAgents = rand(1,count($agents));
+        for($i=0;$i<$nbAgents;$i++){
+            $result[$i] = $agents[$i];
+        }
+        /*
         $result[0]=$agents[0];
         $result[1]=$agents[1];
-        $result[2]=$agents[2];
+        $result[2]=$agents[2];*/
+
+
 
         foreach($result as $key => $user){
             $user->position = ["lat" => $startLat+(rand(1,100)/1000),

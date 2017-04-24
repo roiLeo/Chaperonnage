@@ -10,7 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RideType extends AbstractType
+class RideEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,18 +19,10 @@ class RideType extends AbstractType
     {
         $builder
             ->setMethod('GET')
-            ->add('date')
-            ->add('hour')
             ->add('status')
-            ->add('protectedUser', EntityType::class, array(
+            ->add('guardUser', EntityType::class, array(
                 'class'=> User::class,
-                'choice_label'=>'name'))
-            ->add('startAddress', AddressType::class, array(
-                'data_class'=> Address::class,
-                'label'=>'Adresse de départ'))
-            ->add('finishAddress', AddressType::class, array(
-                'data_class'=> Address::class,
-                'label'=>'Adresse de fin'));
+                'choice_label'=>'name'));
     }
     
     /**

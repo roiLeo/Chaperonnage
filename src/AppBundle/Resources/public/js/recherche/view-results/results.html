@@ -1,11 +1,10 @@
-<ul ng-controller="ResultsCtrl">
+<ul>
     <div class="row spacing"></div>
 
     <div id="map"></div>
 
     <div class="row spacing"></div>
         <form ng-submit="">
-            {{$scope.startLat}}
             <p style="margin-top: 0;">Selected : <span class="radioValue">Nom : {{ selectedAgent.name }}, Tarif : {{ selectedAgent.price | currency : "€"}}</span></p>
             <md-radio-group ng-change="showAgent(selectedAgent)" ng-model="selectedAgent">
                 <md-radio-button ng-repeat="agent in agents"
@@ -13,7 +12,7 @@
                     <label>{{agent.name}}</label>
                     <!--<img ng-src="{{agent.picture}}">-->
                 </md-radio-button>
-                <input type="submit">
+                <a ng-href="{{agentUrl}}">Choisir</a>
             </md-radio-group>
         </form>
     </div>

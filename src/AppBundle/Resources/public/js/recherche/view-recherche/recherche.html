@@ -1,4 +1,4 @@
-<div ng-controller="RechercheCtrl">
+<div>
     <div class="row spacing"></div>
 
     <div id="map"></div>
@@ -33,7 +33,7 @@
         <div class="col-md-5">
             <input id="date" class="form-control"
                    flex-gt-xs
-                   ng-model="rideDate"
+                   ng-model="rideDateObj"
                    ng-model-options="{ updateOn: 'blur' }"
                    placeholder="Select a date..."
                    moment-picker="rideDate"
@@ -44,14 +44,18 @@
                    today="true">
         </div>
     </div>
-
+    {{rideDateObj.toString()}}
     <div class="row">
         <div class="col-md-4">
-        </div><div class="col-md-4">
-        <button type="submit" class="btn btn-default btn-sm">
-            <a href="http://127.0.0.1:8000/#/results" >Rechercher un trajet</a>
-        </button>
-        </div><div class="col-md-4">
+        </div>
+        <a href="" ng-click="searchAgent()">
+            <div class="col-md-4">
+            <button type="submit" class="btn btn-default btn-sm">
+                Rechercher un trajet
+            </button>
+            </div>
+        </a>
+        <div class="col-md-4">
         </div>
     </div>
 </div>

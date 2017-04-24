@@ -5,12 +5,19 @@ angular
     .controller('ResultsCtrl', [
         '$scope',
         '$http',
+        '$location',
         'RechercheService',
         'ResultsService',
-        function($scope, $http, RechercheService, ResultsService){
+        function($scope, $http, $location, RechercheService, ResultsService){
+
+            if(!(RechercheService.getStartPoint()&&RechercheService.getFinishPoint()&&RechercheService.getDate())){
+                $location.path('/recherche');
+            }
 
             $scope.agents = [];
             $scope.selectedAgent = {};
+            $scope.agentUrl = '#';
+            $scope.idRide = '0';
 
             var start = {lat: RechercheService.getStartPoint().lat,
                          lng: RechercheService.getStartPoint().lng};
@@ -35,14 +42,21 @@ angular
             });
 
             RechercheService.newRide()
-                .then(function(){
+                .then(function(response){
+                    $scope.idRide = response.data.id;
                     ResultsService.searchAgents(start, finish).then(function(data){
                         $scope.searching = false;
                         $scope.agents = data;
                     });
+                },
+                function(){
+                    $location.path('/recherche');
                 });
 
             $scope.showAgent = function(agent){
+                $scope.agentUrl= "http://127.0.0.1:8000/ride/edit/" + $scope.idRide +
+                    "?appbundle_ride%5Bstatus%5D=in+progress" +
+                    "&appbundle_ride%5BguardUser%5D=" + agent.id;
                 marker.setPosition(agent.position);
                 map.setCenter(agent.position);
             };
