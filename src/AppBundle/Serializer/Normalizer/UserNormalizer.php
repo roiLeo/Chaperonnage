@@ -25,7 +25,7 @@ class UserNormalizer extends AbstractNormalizer
     {
         //* @var User $object */
         $picture = '';
-        if($object->getPicture()){
+        if ($object->getPicture()) {
             $picture = $object->getPicture()->getSrc();
         }
 
