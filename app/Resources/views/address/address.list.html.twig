@@ -5,13 +5,14 @@
             <div>
                 <div class="d-flex">
                     <div>
-                        <strong>{{ address.name }}</strong> - {{ address.street }} {{ address.city }} {{ address.postalCode }} {{ address.country }}</p>
+                        <strong>{{ address.name }}</strong> - {{ address.street }} {{ address.city }} {{ address.postalCode }} {{ address.country }}
                     </div>
                     <div class="pull-right">
-                        <a><i class="fa fa-pencil-square-o btnEditAddress" aria-hidden="true"></i></a>
-                        <a data-toggle="modal" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
+                        <a data-toggle="modal" data-target="#edit_address_form{{ address.id }}"><i class="fa fa-pencil-square-o btnEditAddress" aria-hidden="true"></i></a>
+                        <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
                     </div>
                 </div>
+                {{ render(controller('AppBundle:Address:edit',{id: address.id})) }}
             </div>
         {% else %}
             Aucune adresse enregistrée.
@@ -75,7 +76,7 @@
             </div>
             <!--Footer-->
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button id="dismiss-btn-address-form" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </div>
             {{ form_end(form) }}
@@ -90,7 +91,7 @@
     <div class="modal-dialog" role="document">
         <!--Content-->
         <div class="modal-content">
-            {{ form_start(form, {'method': 'post', 'action': path('app_remove_address', {id: '__ID__'}), 'attr': {'class': 'fos_user_profile_show'}}) }}
+            {{ form_start(delete_form, {'method': 'post', 'action': path('app_remove_address', {id: '__ID__'}), 'attr': {'class': 'fos_user_profile_show'}}) }}
             <!--Header-->
             <div class="modal-header">
                 <h4 class="modal-title w-100" id="myModalLabel">Supprimer l'adresse</h4>
@@ -98,14 +99,14 @@
             <!--Body-->
             <div class="modal-body">
                 Êtes-vous sûr de vouloir supprimer l'adresse <span id="remove_address_name"></span> ?
-                {{ form_rest(form) }}
+                {{ form_rest(delete_form) }}
             </div>
             <!--Footer-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-primary">Supprimer</button>
             </div>
-            {{ form_end(form) }}
+            {{ form_end(delete_form) }}
         </div>
         <!--/.Content-->
     </div>

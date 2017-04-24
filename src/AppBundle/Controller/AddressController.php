@@ -37,14 +37,28 @@ class AddressController extends Controller
             $user->addAddress($form->getData());
             $userManager = $this->get('fos_user.user_manager');
             $userManager->updateUser($user);
-            $this->addFlash('success', 'L\'adresse a bien été enregistrée !');
+            $this->addFlash('success', sprintf('L\'adresse %s a bien été enregistrée !',$form->getData()->getName()));
         }
         return $this->redirectToRoute('fos_user_profile_show');
     }
     /**
+     * @Route("/address/edit/{id}", name="app_edit_form_address")
+     */
+    public function editAction(Request $request,Address $address){
+        $form = $this->createForm(AddressType::class, $address);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+         //todo...
+        }
+        return $this->render('address/address.edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/address/remove/{id}", name="app_remove_address", methods={"POST"})
      */
-    public function removeAction(Address $address){
+    public function removeAction(Request $request, Address $address){
         $user = $this->getUser();
         $deleteForm = $this->createForm(DeleteType::class);
         $deleteForm->handleRequest($request); // ???
@@ -52,7 +66,7 @@ class AddressController extends Controller
             $user->removeAddress($address);
             $userManager = $this->get('fos_user.user_manager');
             $userManager->updateUser($user);
-            $this->addFlash('success', sprintf('L\'adresse %d a bien été enregistrée !',$address->getName()));
+            $this->addFlash('success', sprintf('L\'adresse %s a bien été supprimée !',$address->getName()));
         }
         return $this->redirectToRoute('fos_user_profile_show');
     }
