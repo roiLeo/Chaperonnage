@@ -17,6 +17,7 @@ angular
             $scope.agents = [];
             $scope.agentUrl = '#';
             $scope.idRide = '0';
+            $scope.searching = true;
             var start = null;
             var finish = null;
             var startMarker = null;
@@ -72,10 +73,10 @@ angular
                 });
             }
 
-            RechercheService.newRide()
-                .then(function(response){
+            RechercheService.newRide()      //Création du trajet
+                .then(function(response){       //Si succès,
                     $scope.idRide = response.data.id;
-                    ResultsService.searchAgents(start, finish).then(function(data){
+                    ResultsService.searchAgents(start, finish).then(function(data){//Requête d'agents
                         $scope.searching = false;
                         $scope.agents = data;
 
@@ -83,8 +84,7 @@ angular
                             agentsMarkers[$scope.agents[agent].id] = new google.maps.Marker({
                                 position: $scope.agents[agent].position,
                                 map: map,
-                                title: $scope.agents[agent].name,
-
+                                title: $scope.agents[agent].name
                             });
                             bounds.extend($scope.agents[agent].position);
                         }
