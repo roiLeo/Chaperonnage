@@ -16,9 +16,18 @@
                          alt="Card image cap">
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title">{{agent.name}}</h4>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4 class="card-title">{{agent.name}}</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <small> {{ agent.age }} ans</small>
+                        </div>
+                    </div>
                     <div class="text-center">
-                        <a ng-href="http://127.0.0.1:8000/ride/edit/{{idRide}}?appbundle_ride%5Bstatus%5D=in+progress&appbundle_ride%5BguardUser%5D={{agent.id}}" class="btn btn-default text-center">Reserver</a>
+                        <p>{{agent.description}}</p>
+                        <a ng-href="http://127.0.0.1:8000/ride/edit/{{idRide}}?appbundle_ride%5Bstatus%5D=in+progress&appbundle_ride%5BguardUser%5D={{agent.id}}"
+                           class="btn btn-default text-center">Reserver</a>
                     </div>
                 </div>
             </div>
