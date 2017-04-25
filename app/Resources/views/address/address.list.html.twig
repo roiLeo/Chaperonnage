@@ -2,36 +2,32 @@
     <div class="card-block">
         <h4 class="card-title">Adresses enregistrées</h4>
         {% for address in app.user.address %}
-            <div>
                 <div class="d-flex">
-                    <div>
+                    <div class="col-md-3 col-centered">
                         <strong>{{ address.name }}</strong>
-                        - {{ address.street }} {{ address.city }} {{ address.postalCode }} {{ address.country }}
                     </div>
-                    <div class="pull-right">
-                        <a data-toggle="modal" data-target="#edit_address_form{{ address.id }}"><i
-                                    class="fa fa-pencil-square-o btnEditAddress" aria-hidden="true"></i></a>
-                        <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}"
-                           data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress"
-                                                                  aria-hidden="true"></i></a>
+                    <div class="col-md-8 col-centered">
+                        {{ address.street }} {{ address.city }} {{ address.postalCode }} {{ address.country }}
+                    </div>
+                    <div class="pull-right col-md-1 col-centered">
+                        <a data-toggle="modal" data-target="#edit_address_form{{ address.id }}"><i class="fa fa-pencil-square-o btnEditAddress" aria-hidden="true"></i></a>
+                        <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <!-- Modal Edit Address -->
-                <div class="modal fade" id="edit_address_form{{ address.id }}" tabindex="-1" role="dialog"
-                     aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="edit_address_form{{ address.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     {{ render(controller('AppBundle:UserAddress:edit',{id: address.id})) }}
                 </div>
                 <!-- /.Live preview-->
-            </div>
+            <hr>
         {% else %}
             Aucune adresse enregistrée.
         {% endfor %}
     </div>
 </div>
 <div class="container marginTop15 text-center">
-    <div class="col-md-3 text-center">
-        <a class="btn btn-outline-primary editAvatarButton btn-lg btn-block" data-toggle="modal"
-           data-target="#address_form">Ajouter une adresse</a>
+    <div class="col-md-4 col-centered">
+        <a class="btn btn-outline-primary editAvatarButton btn-lg btn-block" data-toggle="modal" data-target="#address_form">Ajouter une adresse</a>
     </div>
 </div>
 
@@ -87,9 +83,7 @@
             </div>
             <!--Footer-->
             <div class="modal-footer">
-                <button id="dismiss-btn-address-form" type="button" class="btn btn-secondary" data-dismiss="modal">
-                    Annuler
-                </button>
+                <button id="dismiss-btn-address-form" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </div>
             {{ form_end(form) }}
@@ -100,8 +94,7 @@
 <!-- /.Live preview-->
 
 <!-- Modal Remove Address -->
-<div class="modal fade" id="modal_remove_address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="modal_remove_address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!--Content-->
         <div class="modal-content">
