@@ -11,7 +11,7 @@
 }
 
 /*** INDEX search ***/
-.addressSearch .md-form label{
+.addressSearch .md-form label {
     color: #757575;
 }
 
@@ -19,22 +19,22 @@
     border-bottom-color: #ccc;
 }
 
-.addressSearch{
+.addressSearch {
     padding-top: 50px;
 }
 
-.moment-picker .moment-picker-input{
-    border:none;
+.moment-picker .moment-picker-input {
+    border: none;
     border-bottom: 1px solid #ccc;
 }
-.moment-picker #date{
+
+.moment-picker #date {
     padding-bottom: 19px;
 }
 
 .form-control {
-    font-family: FontAwesome,"Roboto";
+    font-family: FontAwesome, "Roboto";
 }
-
 
 .testimonial-card .avatar, .testimonial-card .card-up {
     overflow: hidden;
@@ -52,15 +52,18 @@
     border: 5px solid #fff;
     background: #FFF;
 }
+
 .testimonial-card .avatar img {
     height: 110px;
     width: 110px;
     object-fit: cover;
 }
+
 .default-color-dark {
-    background-color: #303030!important;
+    background-color: #303030 !important;
 }
-.agents{
+
+.agents {
     padding-bottom: 30px;
     padding-top: 50px;
 }
