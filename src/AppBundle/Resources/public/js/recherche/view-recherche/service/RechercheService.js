@@ -21,21 +21,23 @@ angular
             return service.date;
         };
 
-        service.setStartPoint = function(lat, lng, city, postalCode){
+        service.setStartPoint = function(lat, lng, city, postalCode, country){
             service.startPoint = {
                 lat: lat,
                 lng: lng,
                 city: city,
-                postalCode: postalCode
+                postalCode: postalCode,
+                country: country
             };
         };
 
-        service.setFinishPoint = function(lat, lng, city, postalCode){
+        service.setFinishPoint = function(lat, lng, city, postalCode, country){
             service.finishPoint = {
                 lat: lat,
                 lng: lng,
                 city: city,
-                postalCode: postalCode
+                postalCode: postalCode,
+                country: country
             };
         };
 
@@ -55,13 +57,13 @@ angular
                 '&appbundle_ride%5BprotectedUser%5D='                   + CURRENT_USER.id   +
                 '&appbundle_ride%5Bstatus%5D=waiting'                   +
                 '&appbundle_ride%5BstartAddress%5D%5Bname%5D='          + "address_start"                       +
-                '&appbundle_ride%5BstartAddress%5D%5Bcountry%5D='          + "France"                       +
+                '&appbundle_ride%5BstartAddress%5D%5Bcountry%5D='       + service.getStartPoint().country       +
                 '&appbundle_ride%5BstartAddress%5D%5BpostalCode%5D='    + service.getStartPoint().postalCode    +
                 '&appbundle_ride%5BstartAddress%5D%5Bcity%5D='          + service.getStartPoint().city          +
                 '&appbundle_ride%5BstartAddress%5D%5Blongitude%5D='     + service.getStartPoint().lng           +
                 '&appbundle_ride%5BstartAddress%5D%5Blattitude%5D='     + service.getStartPoint().lat           +
-                '&appbundle_ride%5BfinishAddress%5D%5Bname%5D='          + "address_finish"                     +
-                '&appbundle_ride%5BfinishAddress%5D%5Bcountry%5D='          + "France"                     +
+                '&appbundle_ride%5BfinishAddress%5D%5Bname%5D='         + "address_finish"                      +
+                '&appbundle_ride%5BfinishAddress%5D%5Bcountry%5D='      + service.getFinishPoint().country      +
                 '&appbundle_ride%5BfinishAddress%5D%5BpostalCode%5D='   + service.getFinishPoint().postalCode   +
                 '&appbundle_ride%5BfinishAddress%5D%5Bcity%5D='         + service.getFinishPoint().city         +
                 '&appbundle_ride%5BfinishAddress%5D%5Blongitude%5D='    + service.getFinishPoint().lng          +
