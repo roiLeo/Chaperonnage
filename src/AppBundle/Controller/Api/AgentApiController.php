@@ -57,11 +57,8 @@ class AgentApiController extends FOSRestController
         $result[1] = $agents[1];
         $result[2] = $agents[2];
         /**
-        $result[3] = $agents[3];
-        $result[4] = $agents[4];
-        $result[5] = $agents[5];
-        **/
-
+         $result[5] = $agents[5];
+         **/
         foreach ($result as $key => $user) {
             $user->position = ['lat' => $startLat + (rand(1, 100) / 1000),
                               'lng' => $startLng + (rand(1, 100) / 1000), ];
