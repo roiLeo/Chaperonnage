@@ -46,7 +46,7 @@ angular
         };
 
         service.newRide = function(){
-            var url = 'http://127.0.0.1:8000/ride/new?' +
+            var url = 'http://localhost:8000/ride/new?' +
                 'appbundle_ride%5Bdate%5D%5Bdate%5D%5Bday%5D='          + parseInt(service.getDate().toString().substr(8, 2))   +
                 '&appbundle_ride%5Bdate%5D%5Bdate%5D%5Bmonth%5D='       + parseInt(service.getDate().toString().substr(5, 2))   +
                 '&appbundle_ride%5Bdate%5D%5Bdate%5D%5Byear%5D='        + parseInt(service.getDate().toString().substr(0, 4))   +
