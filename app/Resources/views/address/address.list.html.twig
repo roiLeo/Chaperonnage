@@ -12,7 +12,11 @@
                         <a data-toggle="modal" data-id="{{ address.id }}" data-address-name="{{ address.name }}" data-target="#modal_remove_address"><i class="fa fa-trash btnDeleteAddress" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                {{ render(controller('AppBundle:UserAddress:edit',{id: address.id})) }}
+                <!-- Modal Edit Address -->
+                <div class="modal fade" id="edit_address_form{{ address.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    {{ render(controller('AppBundle:UserAddress:edit',{id: address.id})) }}
+                </div>
+                <!-- /.Live preview-->
             </div>
         {% else %}
             Aucune adresse enregistrée.
@@ -36,38 +40,39 @@
                 <h4 class="modal-title w-100" id="myModalLabel">Enregistrer une nouvelle adresse</h4>
             </div>
             <!--Body-->
-            <div class="modal-body">
+            <div class="modal-body" data-form-type="new">
                 {{ form_errors(form) }}
                 <div class="md-form">
-                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control address-name'}}) }}
                     {{ form_label(form.name) }}
                     {{ form_errors(form.name) }}
                 </div>
                 <div id="locationField" class="md-form">
-
-                    <input id="autocomplete" onFocus="geolocate()" type="text">
-
+                    <input
+                            class="google-autocomplete"
+                            type="text"
+                    />
                 </div>
                 <div class="md-form">
-                    {{ form_widget(form.street, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.street, {'attr': {'class': 'form-control address-street'}}) }}
                     {{ form_label(form.street) }}
                     {{ form_errors(form.street) }}
                 </div>
 
                 <div class="md-form">
-                    {{ form_widget(form.postalCode, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.postalCode, {'attr': {'class': 'form-control address-postal-code'}}) }}
                     {{ form_label(form.postalCode) }}
                     {{ form_errors(form.postalCode) }}
                 </div>
 
                 <div class="md-form">
-                    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.city, {'attr': {'class': 'form-control address-city'}}) }}
                     {{ form_label(form.city) }}
                     {{ form_errors(form.city) }}
                 </div>
 
                 <div class="md-form">
-                    {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.country, {'attr': {'class': 'form-control address-country'}}) }}
                     {{ form_label(form.country) }}
                     {{ form_errors(form.country) }}
                 </div>
