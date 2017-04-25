@@ -64,7 +64,7 @@ class RideController extends Controller
             $entityManager->persist($form->getData());
             $entityManager->flush();
 
-            return new RedirectResponse('http://127.0.0.1:8000/profile');
+            return new RedirectResponse('http://localhost:8000/profile');
             /*$this->render(':default:index.html.twig', []);*/
         }
         //return  new Response(json_encode(array('id' => false)), HTTP_INTERNAL_SERVER_ERROR);
