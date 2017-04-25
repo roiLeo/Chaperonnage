@@ -224,10 +224,12 @@
                             <div class="col-md-1 text-center"><i class="fa fa-calendar col-md-1" aria-hidden="true"></i></div>
                             <div class="col-md-3">{{ ride.date|date('d-m-Y')}} - {{ ride.hour|date('h:i:s') }}</div>
                         </div>
-                        <div class="alignItemCenter col-md-12">
-                            <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(ride.guardUser.picture.getsrc) }}"  alt="photo de profil" height="40" width="40"></div>
-                            <div class="col-md-3">{{ ride.guardUser.name }}</div>
-                        </div>
+                        {% if ride.guardUser %}
+                            <div class="alignItemCenter col-md-12">
+                                <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(get_avatar(ride.guardUser)) }}"  alt="photo de profil" height="40" width="40"></div>
+                                <div class="col-md-3">{{ ride.guardUser.name }}</div>
+                            </div>
+                        {% endif %}
                         <hr>
                     {% else %}
 
@@ -267,7 +269,7 @@
                             <div class="col-md-3">{{ ride.date|date('d-m-Y')}} - {{ ride.hour|date('h:i:s') }}</div>
                         </div>
                         <div class="alignItemCenter col-md-12">
-                            <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(ride.protectedUser.picture.getsrc) }}"  alt="photo de profil" height="40" width="40"></div>
+                            <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(get_avatar(ride.protectedUser)) }}"  alt="photo de profil" height="40" width="40"></div>
                             <div class="col-md-3">{{ ride.protectedUser.name }}</div>
                         </div>
                         <hr>
