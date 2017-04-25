@@ -43,7 +43,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
     private function generateRandomString($length = 10)
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; ++$i) {
@@ -57,44 +57,23 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
         $users = [
                 [
-                    'name' => 'Franck',
-                    'surname' => 'Bilal',
-                    'addresses' => [
-                        'address-1',
-                        'address-0',
-                    ],
-                ],
-                [
-                    'name' => 'Jeremy',
-                    'surname' => 'Batman',
+                    'name' => 'admin',
+                    'surname' => 'toto',
+                    'picture_id' => 'picture-0',
+                    'credential_id' => 'picture-1',
+                    'super_admin' => true,
                     'addresses' => [
                         'address-2',
-                        'address-8',
+                        'address-1',
                     ],
+                    'gender' => 'female',
+                    'phone_verified' => true,
                 ],
                 [
-                    'name' => 'Alexia',
-                    'surname' => 'xXCatXx',
-                    'addresses' => [
-                        'address-3',
-                        'address-9',
-                    ],
-                ],
-                [
-                    'name' => 'Roger',
-                    'surname' => 'BellegosseDu93',
-                    'addresses' => [
-                        'address-4',
-                        'address-5',
-                        'address-6',
-                        'address-7',
-                    ],
-                ],
-                [
-                    'name' => 'Emily',
-                    'surname' => 'Milly',
-                    'addresses' => [
-                    ],
+                    'name' => 'user',
+                    'surname' => 'titi',
+                    'gender' => 'male',
+                    'phone_verified' => true,
                 ],
             ];
         foreach ($users as $i => $u) {
@@ -106,14 +85,24 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
             $user->setDescription($this->generateRandomString(20));
 
-            $user->setPhoneVerified(rand(0, 1) === 1);
+            $user->setPhoneVerified($u['phone_verified']);
 
-            $user->setGender(rand(0, 1) === 1 ? 'M' : 'F');
-            $addresses = $u['addresses'];
-            foreach ($addresses as $j => $address) {
-                $user->addAddress($this->getReference($address));
+            $user->setGender($u['gender']);
+            if (!empty($u['addresses'])) {
+                $addresses = $u['addresses'];
+                foreach ($addresses as $j => $address) {
+                    $user->addAddress($this->getReference($address));
+                }
             }
-
+            if (!empty($u['super_admin'])) {
+                $user->setSuperAdmin($u['super_admin']);
+            }
+            if (!empty($u['picture_id'])) {
+                $user->setPicture($this->getReference($u['picture_id']));
+            }
+            if (!empty($u['credential_id'])) {
+                $user->setCredential($this->getReference($u['credential_id']));
+            }
             $user->setUsername($u['surname']);
             $user->setEmail($u['surname'].'@domain.com');
             $user->setPlainPassword('password');
@@ -127,6 +116,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 10;
+        return 3;
     }
 }

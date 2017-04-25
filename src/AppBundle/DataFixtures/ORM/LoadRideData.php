@@ -35,44 +35,35 @@ class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
     {
         $rides = [
             [
-                'GuardUser' => 'user-0',
-                'ProtectedUser' => 'user-2',
-                'StartAddress' => 'address-3',
-                'FinishAddress' => 'address-9',
-            ],
-            [
-                'GuardUser' => 'user-0',
-                'ProtectedUser' => 'user-1',
-                'StartAddress' => 'address-2',
-                'FinishAddress' => 'address-8',
-            ],
-            [
-                'GuardUser' => 'user-2',
-                'ProtectedUser' => 'user-3',
-                'StartAddress' => 'address-5',
-                'FinishAddress' => 'address-6',
+                'GuardUser' => 'user-1',
+                'ProtectedUser' => 'user-0',
+                'StartAddress' => 'address-0',
+                'FinishAddress' => 'address-1',
+                'status' => 'in progress',
             ],
             [
                 'GuardUser' => 'user-1',
-                'ProtectedUser' => 'user-3',
-                'StartAddress' => 'address-7',
-                'FinishAddress' => 'address-4',
+                'ProtectedUser' => 'user-0',
+                'StartAddress' => 'address-2',
+                'FinishAddress' => 'address-3',
+                'status' => 'waiting',
             ],
             [
-                'GuardUser' => 'user-2',
+                'GuardUser' => 'user-1',
                 'ProtectedUser' => 'user-0',
-                'StartAddress' => 'address-1',
-                'FinishAddress' => 'address-0',
+                'StartAddress' => 'address-4',
+                'FinishAddress' => 'address-5',
+                'status' => 'success',
             ],
         ];
         foreach ($rides as $i => $r) {
             $ride = new Ride();
 
-            $ride->setDate($this->randomDate('2017-06-01', '2017-12-31'));
+            $ride->setDate($this->randomDate('2017-05-01', '2017-12-31'));
 
             $ride->setHour($ride->getDate());
 
-            $ride->setStatus($this->statuses[rand(0, 2)]);
+            $ride->setStatus($r['status']);
 
             $ride->setGuardUser($this->getReference($r['GuardUser']));
             $ride->setProtectedUser($this->getReference($r['ProtectedUser']));
@@ -88,6 +79,6 @@ class LoadRideData extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 11;
+        return 4;
     }
 }
