@@ -40,8 +40,14 @@ class UserAddressType extends AbstractType
                 'label' => 'Pays',
                 'attr' => ['readonly' => 'readonly'],
             ])
-            ->add('longitude', HiddenType::class)
-            ->add('lattitude', HiddenType::class);
+            ->add('longitude', HiddenType::class, [
+                'attr' => ['class' => 'address-longitude',
+                ],
+            ])
+            ->add('lattitude', HiddenType::class, [
+                'attr' => ['class' => 'address-lattitude',
+                    ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

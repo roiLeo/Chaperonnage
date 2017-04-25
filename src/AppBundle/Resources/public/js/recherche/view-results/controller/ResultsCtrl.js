@@ -97,8 +97,6 @@ angular
                     $location.path('/recherche');
                 });
 
-
-
             $scope.selectAgent = function(agent){
                 $scope.agentUrl= "http://127.0.0.1:8000/ride/edit/" + $scope.idRide +
                     "?appbundle_ride%5Bstatus%5D=in+progress" +

@@ -10,6 +10,7 @@
  */
 
 namespace AppBundle\Controller;
+
 use AppBundle\Form\RideType;
 use AppBundle\Form\RideEditType;
 use AppBundle\Entity\Ride;
@@ -18,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+
 
 class RideController extends Controller
 {
@@ -65,6 +67,7 @@ class RideController extends Controller
         }
         //return  new Response(json_encode(array('id' => false)), HTTP_INTERNAL_SERVER_ERROR);
         return $this->render(':default:index.html.twig', [
+
             'form' => $form->createView(),
         ]);
     }
