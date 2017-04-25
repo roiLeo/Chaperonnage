@@ -10,7 +10,8 @@
  */
 
 namespace AppBundle\Form;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\User;
 use AppBundle\Entity\Address;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
