@@ -9,16 +9,17 @@
         <!--Body-->
         <div class="modal-body" data-form-type="edit">
             {{ form_errors(form) }}
+
             <div class="md-form">
                 {{ form_widget(form.name, {'attr': {'class': 'form-control address-name'}}) }}
                 {{ form_label(form.name) }}
                 {{ form_errors(form.name) }}
             </div>
+
             <div id="locationField" class="md-form">
-
                 <input class="google-autocomplete" type="text">
-
             </div>
+
             <div class="md-form">
                 {{ form_widget(form.street, {'attr': {'class': 'form-control address-street'}}) }}
                 {{ form_label(form.street) }}
