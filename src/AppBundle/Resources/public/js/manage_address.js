@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
 
     $('.google-autocomplete').each(function() {
@@ -31,14 +32,12 @@ function clearModalAddressForm(address_form)
 
 }
 $(document).ready(function() {
-
     $(".btnDeleteAddress").click(function(){
         var deleteForm = $('form[name="app_delete_type"]');
         var id = $(this).parent().attr('data-id');
         $(deleteForm).attr('action',"/address/remove/"+ id);
         $('#remove_address_name').text($(this).parent().attr('data-address-name'));
     });
-
     $('#address_form').on('hidden.bs.modal', function (e) {
         clearModalAddressForm($(this)[0]);
     });
