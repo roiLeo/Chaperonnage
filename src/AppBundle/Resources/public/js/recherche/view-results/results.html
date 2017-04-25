@@ -15,7 +15,7 @@
                 <div class="card-block">
                     <h4 class="card-title">{{agent.name}}</h4>
                     <div class="text-center">
-                        <a ng-href="{{agentUrl}}" class="btn btn-default text-center">Reserver</a>
+                        <a ng-href="http://127.0.0.1:8000/ride/edit/{{$scope.idRide}}?appbundle_ride%5Bstatus%5D=in+progress&appbundle_ride%5BguardUser%5D={{agent.id}}" class="btn btn-default text-center">Reserver</a>
                     </div>
                 </div>
             </div>
