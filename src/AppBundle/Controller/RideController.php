@@ -1,17 +1,23 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace AppBundle\Controller;
 use AppBundle\Form\RideType;
 use AppBundle\Form\RideEditType;
 use AppBundle\Entity\Ride;
-use AppBundle\Form\StartAddressType;
-use AppBundle\Form\FinishAddressType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
 
 class RideController extends Controller
 {
@@ -58,7 +64,7 @@ class RideController extends Controller
             /*$this->render(':default:index.html.twig', []);*/
         }
         //return  new Response(json_encode(array('id' => false)), HTTP_INTERNAL_SERVER_ERROR);
-        return $this->render(':address:new.html.twig', [
+        return $this->render(':default:index.html.twig', [
             'form' => $form->createView(),
         ]);
     }

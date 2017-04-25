@@ -29,6 +29,11 @@ services:
         arguments:
             - "@=service('doctrine').getManager()"
 
+    app.ride_manager:
+        class: AppBundle\Manager\RideManager
+        arguments:
+            - "@=service('doctrine').getManager()"
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
@@ -68,6 +73,7 @@ services:
         - { name: twig.extension }
         arguments:
             - "@app.profil_manager"
+            - "@app.ride_manager"
 
     hwi_oauth.user.provider.entity:
             class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
@@ -93,6 +99,12 @@ services:
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Pictures , group : Picture}
 
+    admin.ride:
+                class: AppBundle\Admin\RideAdmin
+                arguments: [~, AppBundle\Entity\Ride, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: Ride , group : Ride}
+
     admin.user:
             class: AppBundle\Admin\UserAdmin
             arguments: [~, AppBundle\Entity\User, ~]
@@ -104,4 +116,9 @@ services:
           arguments:
               - '%pictures_directory%'
               - "@=service('doctrine').getManager()"
+
+    app.address_manager:
+        class: AppBundle\Manager\AddressManager
+        arguments:
+            - "@=service('doctrine').getManager()"
 

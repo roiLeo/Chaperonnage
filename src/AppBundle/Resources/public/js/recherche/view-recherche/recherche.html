@@ -1,41 +1,31 @@
+
 <div>
-    <div class="row spacing"></div>
+    <div id="map" class="z-depth-1"></div>
 
-    <div id="map"></div>
-
-    <div class="row spacing"></div>
-
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row addressSearch">
+        <div class="col-md-3 md-form">
             <input type="text" id="startAddress"
-                   ng-focus="geolocate()" class="form-control">
+                   ng-focus="geolocate()" class="form-control" placeholder="">
             <label class="search_label" for="startAddress">Adresse de Départ</label>
             <input type="hidden" id="startCity">
             <input type="hidden" id="startPostalCode">
             <input type="hidden" id="startLongitude">
             <input type="hidden" id="startLatitude">
-        </div><div class="col-md-6">
+        </div>
+        <div class="col-md-3 md-form">
             <input type="text" id="finishAddress"
-                   ng-focus="geolocate()" class="form-control">
+                   ng-focus="geolocate()" class="form-control" placeholder="">
             <label class="search_label" for="finishAddress">Adresse d'Arrivée</label>
             <input type="hidden" id="finishCity">
             <input type="hidden" id="finishPostalCode">
             <input type="hidden" id="finishLongitude">
             <input type="hidden" id="finishLatitude">
         </div>
-    </div>
-
-    <div class="row spacing"></div>
-
-    <div class="row">
-        <div class="col-md-2"></div>
-        <label class="col-md-3 search_label" for="date">Date du trajet</label>
-        <div class="col-md-5">
-            <input id="date" class="form-control"
+        <div class="col-md-3">
+            <input id="date" placeholder="&#xf073; Date du trajet" class="form-control"
                    flex-gt-xs
                    ng-model="rideDateObj"
                    ng-model-options="{ updateOn: 'blur' }"
-                   placeholder="Select a date..."
                    moment-picker="rideDate"
                    locale="fr"
                    format="dddd DD MMM YYYY - HH:mm"
@@ -43,19 +33,8 @@
                    autoclose="true"
                    today="true">
         </div>
-    </div>
-    {{rideDateObj.toString()}}
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <a href="" ng-click="searchAgent()">
-            <div class="col-md-4">
-            <button type="submit" class="btn btn-default btn-sm">
-                Rechercher un trajet
-            </button>
-            </div>
-        </a>
-        <div class="col-md-4">
+        <div class="col-md-3 text-center"><a class="btn btn-primary" href="" ng-click="searchAgent()">Rechercher
+            un trajet</a>
         </div>
     </div>
 </div>

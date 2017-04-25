@@ -1,3 +1,8 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     background-color: #f9f9f9;
 }
@@ -25,7 +30,7 @@ body {
     height: 42px;
 }
 
-.spacing{
+.spacing {
     height: 50px;
 }
 
@@ -36,9 +41,27 @@ body {
 }
 
 /*** FOOTER ***/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    height: inherit!important;
+}
+
+body {
+    height: inherit !important;
+    margin-bottom: 242px;
+    position: initial;
+}
+
 footer.page-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: #676b74;
-    margin-top: 2rem;
+    height: 242px;
 }
 
 .logofacebook:hover {

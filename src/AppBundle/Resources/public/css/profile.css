@@ -50,6 +50,10 @@
     color: #A52C2F;
 }
 
+.yellowInProgress{
+    color: #BFA87C;
+}
+
 .underline{
     text-decoration: underline;
 }
@@ -134,3 +138,41 @@
 .friend-block{
     align-items: center;
 }
+
+/*Onglet Trajet*/
+.card img{
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 40px;
+}
+
+.arrowNoMargin{
+    margin-right: 0px!important;
+}
+
+/* modal address_form */
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+/* btn delete address */
+i.fa.fa-trash.btnDeleteAddress{
+    color:#A52c2F;
+    transform: scale(1.5,1.5);
+}
+/* btn edit address */
+i.fa.fa-pencil-square-o.btnEditAddress{
+    color:#2C9227;
+    transform: scale(1.5,1.5);
+}
+.modal{
+    z-index: 20;
+}
+.modal-backdrop{
+    z-index: 10;
+}​
+
+

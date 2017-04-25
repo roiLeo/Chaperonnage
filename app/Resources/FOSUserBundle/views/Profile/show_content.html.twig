@@ -1,5 +1,4 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
 <div class="profileClass container">
 
     <ul class="nav nav-tabs text-center" role="tablist">
@@ -19,6 +18,15 @@
 
 <!-- Tab panes -->
     <div class="tab-content">
+
+        {#
+
+
+        tab profil
+
+
+        #}
+
         <div role="tabpanel" class="tab-pane fade in active show" id="profile">
             {% for type, flash_messages in app.session.flashBag.all %}
                 {% for flash_message in flash_messages %}
@@ -116,7 +124,24 @@
             </div>
 
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="address">bbb</div>
+
+        {#
+
+
+        tab adresse
+
+
+        #}
+        <div role="tabpanel" class="tab-pane fade" id="address">{{ render(controller('AppBundle:UserAddress:list')) }}</div>
+
+
+        {#
+
+
+        tab amis
+
+
+        #}
         <div role="tabpanel" class="tab-pane fade" id="friends">
             {% if app.user.facebookId %}
             <div class="card">
@@ -140,6 +165,8 @@
                                    {{ user.description }}
                                </div>
                             </div>
+                        {% else %}
+                            Aucun de vos amis Facebook n'utilise Mon Chaperon.
                         {% endfor %}
                     </div>
             </div>
@@ -154,9 +181,100 @@
                             </div>
                         </div>
             {% endif %}
+        </div>
+
+        {#
+
+
+        tab trajet
+
+
+        #}
+        <div role="tabpanel" class="tab-pane fade" id="rides">
+            <div class="card">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Trajets Chaperonnés</h4>
+
+                    {% for ride in get_ride(app.user) %}
+                        <div class="alignItemCenter container">
+                            <p class="col-md-12">
+                                <strong class="col-md-3">
+                            {% if ride.startAddress.name %}
+                                 {{ ride.startAddress.name |escape}} </strong>   <i class="fa fa-long-arrow-right col-md-1 arrowNoMargin text-center" aria-hidden="true"></i>   <strong class="col-md-3"> {{ ride.finishAddress.name |escape}} </strong>
+                            {% else %}
+                                {{ ride.startAddress.street |escape}} </strong>   <i class="fa fa-long-arrow-right col-md-1 arrowNoMargin text-center" aria-hidden="true"></i>   <strong class="col-md-3"> {{ ride.finishAddress.street |escape}}</strong> </p>
+                            {% endif %}
+                            |
+                            {% if ride.status == 'success' %}
+                                <span class="greenValid col-md-3">{{ ride.status }}</span>
+                            {% elseif ride.status == 'in progress' %}
+                                <span class="yellowInProgress col-md-3">{{ ride.status }}</span>
+                            {% else %}
+                                <span class="redNonValid col-md-3">{{ ride.status }}</span>
+                            {% endif %}
+                            </p>
+
+                        </div>
+                        <div class="alignItemCenter col-md-12">
+                            <div class="col-md-1 text-center"><i class="fa fa-calendar col-md-1" aria-hidden="true"></i></div>
+                            <div class="col-md-3">{{ ride.date|date('d-m-Y')}} - {{ ride.hour|date('h:i:s') }}</div>
+                        </div>
+                        <div class="alignItemCenter col-md-12">
+                            <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(ride.guardUser.picture.getsrc) }}"  alt="photo de profil" height="40" width="40"></div>
+                            <div class="col-md-3">{{ ride.guardUser.name }}</div>
+                        </div>
+                        <hr>
+                    {% else %}
+                        Aucun trajet chaperonné enregistrée.
+                    {% endfor %}
+                    <!--Text-->
+                </div>
+                <!--/.Card content-->
             </div>
+            <div class="card marginTop15">
+                <!--Card content-->
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">Trajets Chaperons</h4>
+                    <!--Text-->
+                    {% for ride in get_created(app.user) %}
+                        <div class="alignItemCenter container">
+                            <p class="col-md-12">
+                                <strong class="col-md-3">
+                                    {% if ride.startAddress.name %}
+                                        {{ ride.startAddress.name |escape}} </strong>   <i class="fa fa-long-arrow-right col-md-1 arrowNoMargin text-center" aria-hidden="true"></i>   <strong class="col-md-3"> {{ ride.finishAddress.name |escape}} </strong>
+                                    {% else %}
+                                        {{ ride.startAddress.street |escape}} </strong>   <i class="fa fa-long-arrow-right col-md-1 arrowNoMargin text-center" aria-hidden="true"></i>   <strong class="col-md-3"> {{ ride.finishAddress.street |escape}}</strong> </p>
+                                    {% endif %}
+                                    |
+                                    {% if ride.status == 'success' %}
+                                        <span class="greenValid col-md-3">{{ ride.status }}</span>
+                                    {% elseif ride.status == 'in progress' %}
+                                        <span class="yellowInProgress col-md-3">{{ ride.status }}</span>
+                                    {% else %}
+                                        <span class="redNonValid col-md-3">{{ ride.status }}</span>
+                                    {% endif %}
+                                    </p>
+                        </div>
+                        <div class="alignItemCenter col-md-12">
+                            <div class="col-md-1 text-center"><i class="fa fa-calendar col-md-1" aria-hidden="true"></i></div>
+                            <div class="col-md-3">{{ ride.date|date('d-m-Y')}} - {{ ride.hour|date('h:i:s') }}</div>
+                        </div>
+                        <div class="alignItemCenter col-md-12">
+                            <div class="col-md-1"><img class="rounded-circle img-responsive rounded-image marginAuto" src="{{ asset(ride.protectedUser.picture.getsrc) }}"  alt="photo de profil" height="40" width="40"></div>
+                            <div class="col-md-3">{{ ride.protectedUser.name }}</div>
+                        </div>
+                        <hr>
+                    {% else %}
+                        Aucun trajet chaperon enregistré.
+                    {% endfor %}
 
-        <div role="tabpanel" class="tab-pane fade" id="rides">vvv</div>
+
+                </div>
+                <!--/.Card content-->
+            </div>
+        </div>
     </div>
-
 </div>
