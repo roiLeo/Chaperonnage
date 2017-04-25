@@ -59,14 +59,22 @@ class UserAddressController extends Controller
     }
 
     /**
-     * @Route("/address/edit/{id}", name="app_edit_form_address")
+     * @Route("/address/edit/{id}", name="app_edit_address")
      */
     public function editAction(Request $request, Address $address)
     {
-        $form = $this->createForm(UserAddressType::class, $address);
+        $form = $this->createForm(UserAddressType::class, $address, [
+            'action' => $this->generateUrl('app_edit_address', [
+                'id' => $address->getId(),
+            ]),
+        ]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            //todo...
+            $this->getAddressManager()->save($form->getData());
+
+            $this->addFlash('success', sprintf('L\'adresse %s a bien été mise à jour !', $form->getData()->getName()));
+
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         return $this->render('address/address.edit.html.twig', [

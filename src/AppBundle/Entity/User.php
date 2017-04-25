@@ -350,7 +350,7 @@ class User extends BaseUser
      *
      * @return \AppBundle\Entity\Picture
      */
-    public function getCredential(): ?Picture
+    public function getCredential(): ?Credential
     {
         return $this->credential;
     }
