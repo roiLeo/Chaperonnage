@@ -5,47 +5,95 @@ angular
     .controller('ResultsCtrl', [
         '$scope',
         '$http',
+        '$location',
         'RechercheService',
         'ResultsService',
-        function($scope, $http, RechercheService, ResultsService){
+        function($scope, $http, $location, RechercheService, ResultsService){
+
+            if(!(RechercheService.getStartPoint()&&RechercheService.getFinishPoint()&&RechercheService.getDate())){
+                $location.path('/recherche');
+            }
 
             $scope.agents = [];
-            $scope.selectedAgent = {};
             $scope.agentUrl = '#';
-
-            var start = {lat: RechercheService.getStartPoint().lat,
-                lng: RechercheService.getStartPoint().lng};
-            var finish = {lat: RechercheService.getFinishPoint().lat,
-                lng: RechercheService.getFinishPoint().lng};
+            $scope.idRide = '0';
+            var start = null;
+            var finish = null;
+            var startMarker = null;
+            var finishMarker = null;
+            var agentsMarkers = [];
+            var bounds  = new google.maps.LatLngBounds();
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer;
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 13,
                 center: start
             });
+            directionsDisplay.setMap(map);
 
-            var m2 = new google.maps.Marker({
+            start = {lat: RechercheService.getStartPoint().lat,
+                         lng: RechercheService.getStartPoint().lng};
+            finish = {lat: RechercheService.getFinishPoint().lat,
+                          lng: RechercheService.getFinishPoint().lng};
+            bounds.extend(start);
+            bounds.extend(finish);
+
+
+            startMarker = new google.maps.Marker({
                 position: start,
                 map: map,
                 title: 'départ',
             });
 
-            var marker = new google.maps.Marker({
-                position: start,
+            finishMarker = new google.maps.Marker({
+                position: finish,
                 map: map,
-                title: 'agent',
+                title: 'arrivé',
             });
 
+            if(start&&finish){
+                //Displaying the direction on the map
+                console.log(start);
+                console.log('direction');
+                directionsService.route({
+                    origin: start,
+                    destination: finish,
+                    travelMode: 'WALKING'
+                }, function (response, status) {
+                    if (status === 'OK') {
+                        finishMarker.setMap(null);
+                        startMarker.setMap(null);
+                        directionsDisplay.setDirections(response);
+                    } else{
+                        startMarker.setMap(map);
+                        finishMarker.setMap(map);
+                    }
+                });
+            }
+
             RechercheService.newRide()
-                .then(function(){
+                .then(function(response){
+                    $scope.idRide = response.data.id;
                     ResultsService.searchAgents(start, finish).then(function(data){
                         $scope.searching = false;
                         $scope.agents = data;
-                    });
-                });
 
-            $scope.showAgent = function(agent){
-                $scope.agentUrl= "http://127.0.0.1:8000/ride/edit/42?appbundle_ride%5Bstatus%5D=in+progress&appbundle_ride%5BguardUser%5D=" + agent.id;
-                marker.setPosition(agent.position);
-                map.setCenter(agent.position);
-            };
+                        for(var agent in $scope.agents){
+                            agentsMarkers[$scope.agents[agent].id] = new google.maps.Marker({
+                                position: $scope.agents[agent].position,
+                                map: map,
+                                title: $scope.agents[agent].name,
+
+                            });
+                            bounds.extend($scope.agents[agent].position);
+                        }
+
+                        map.fitBounds(bounds);
+                        map.panToBounds(bounds);
+                    });
+                },
+                function(){
+                    $location.path('/recherche');
+                });
         }]);
