@@ -11,11 +11,12 @@ angular
 
             $scope.agents = [];
             $scope.selectedAgent = {};
+            $scope.agentUrl = '#';
 
             var start = {lat: RechercheService.getStartPoint().lat,
-                         lng: RechercheService.getStartPoint().lng};
+                lng: RechercheService.getStartPoint().lng};
             var finish = {lat: RechercheService.getFinishPoint().lat,
-                          lng: RechercheService.getFinishPoint().lng};
+                lng: RechercheService.getFinishPoint().lng};
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 13,
@@ -43,6 +44,7 @@ angular
                 });
 
             $scope.showAgent = function(agent){
+                $scope.agentUrl= "http://127.0.0.1:8000/ride/edit/42?appbundle_ride%5Bstatus%5D=in+progress&appbundle_ride%5BguardUser%5D=" + agent.id;
                 marker.setPosition(agent.position);
                 map.setCenter(agent.position);
             };

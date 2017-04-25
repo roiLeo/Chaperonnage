@@ -50,6 +50,10 @@
     color: #A52C2F;
 }
 
+.yellowInProgress{
+    color: #BFA87C;
+}
+
 .underline{
     text-decoration: underline;
 }
@@ -134,6 +138,18 @@
 .friend-block{
     align-items: center;
 }
+
+/*Onglet Trajet*/
+.card img{
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 40px;
+}
+
+.arrowNoMargin{
+    margin-right: 0px!important;
+}
+
 /* modal address_form */
 .pac-container {
     background-color: #FFF;
@@ -158,3 +174,5 @@ i.fa.fa-pencil-square-o.btnEditAddress{
 .modal-backdrop{
     z-index: 10;
 }​
+
+
