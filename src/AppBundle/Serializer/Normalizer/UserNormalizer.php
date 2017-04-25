@@ -15,7 +15,6 @@ use AppBundle\Entity\User;
 use AppBundle\Manager\AvatarUserResolver;
 use AppBundle\Manager\BirthdayUserResolver;
 
-
 /**
  * UserNormalizer.
  */
@@ -24,10 +23,12 @@ class UserNormalizer extends AbstractNormalizer
     private $avatarUserResolver;
     private $birthdayUserResolver;
 
-    public function __construct(AvatarUserResolver $avatarUserResolver, BirthdayUserResolver $birthdayUserResolver){
+    public function __construct(AvatarUserResolver $avatarUserResolver, BirthdayUserResolver $birthdayUserResolver)
+    {
         $this->avatarUserResolver = $avatarUserResolver;
         $this->birthdayUserResolver = $birthdayUserResolver;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -36,7 +37,6 @@ class UserNormalizer extends AbstractNormalizer
         //* @var User $object */
         $picture = $this->avatarUserResolver->resolve($object);
         $age = $this->birthdayUserResolver->resolve($object);
-
 
         $data = [
             'id' => $object->getId(),
