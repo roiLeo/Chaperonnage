@@ -33,6 +33,7 @@ class UserNormalizer extends AbstractNormalizer
             'id' => $object->getId(),
             'name' => $object->getName(),
             'gender' => $object->getGender(),
+            'description' => $object->getDescription(),
             'picture' => $picture,
             'position' => $object->position,
             'price' => $object->price,
