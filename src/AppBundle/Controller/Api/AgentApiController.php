@@ -53,13 +53,13 @@ class AgentApiController extends FOSRestController
 
         //A améliorer au besoin
         $result = [];
-        for($i=0;$i<3;$i++){
-            $result[$i] = $agents[rand(0,count($agents)-1)];
-        }
-        /*
+        /*$nbAgents = rand(1,count($agents));
+        for($i=0;$i<$nbAgents;$i++){
+            $result[$i] = $agents[$i];
+        }*/
         $result[0]=$agents[0];
         $result[1]=$agents[1];
-        $result[2]=$agents[2];*/
+        $result[2]=$agents[2];
 
 
         foreach($result as $key => $user){
