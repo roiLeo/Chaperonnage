@@ -36,6 +36,10 @@
     font-family: FontAwesome, "Roboto";
 }
 
+.addressSearch .btn {
+    width: 100%;
+}
+
 .testimonial-card .avatar, .testimonial-card .card-up {
     overflow: hidden;
     height: 120px;
@@ -67,6 +71,7 @@
     padding-bottom: 30px;
     padding-top: 50px;
 }
-.agents .card-block{
+
+.agents .card-block {
     padding-top: 0;
 }
