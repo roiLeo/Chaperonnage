@@ -7,7 +7,7 @@
 
 #map {
     height: 400px;
-    padding-top: 30px;
+    margin-top: 50px;
 }
 
 /*** INDEX search ***/
@@ -62,4 +62,5 @@
 }
 .agents{
     padding-bottom: 30px;
+    padding-top: 50px;
 }

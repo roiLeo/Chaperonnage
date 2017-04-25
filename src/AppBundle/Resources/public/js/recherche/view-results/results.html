@@ -1,54 +1,24 @@
 <ul>
-    <div class="row spacing"></div>
-
-    <div id="map"></div>
-
-    <div class="row spacing"></div>
-
+    <div id="map" class="z-depth-1"></div>
 
     <div class="row agents">
         <div class="col-md-4" ng-repeat="agent in agents"
              ng-value="agent">
-            <!--Card-->
             <div class="card testimonial-card">
                 <div class="card-up default-color-dark">
                 </div>
-
-                <!--Card image-->
                 <div class="avatar">
                     <img class="rounded-circle img-responsive rounded-image"
                          src="{{agent.picture}}"
                          alt="Card image cap">
                 </div>
-                <!--/.Card image-->
-                <!--Card content-->
                 <div class="card-block">
-                    <!--Title-->
                     <h4 class="card-title">{{agent.name}}</h4>
-                    <!--Text-->
                     <div class="text-center">
                         <a ng-href="{{agentUrl}}" class="btn btn-default text-center">Reserver</a>
                     </div>
                 </div>
-                <!--/.Card content-->
             </div>
-            <!--/.Card-->
         </div>
     </div>
-
-
-    <script>(function ($) {
-        "use strict";
-
-        // manual carousel controls
-        $('.next').click(function () {
-            $('.carousel').carousel('next');
-            return false;
-        });
-        $('.prev').click(function () {
-            $('.carousel').carousel('prev');
-            return false;
-        });
-
-    })(jQuery);</script>
 </ul>

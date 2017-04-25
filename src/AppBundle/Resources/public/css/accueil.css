@@ -41,11 +41,26 @@ body {
 }
 
 /*** FOOTER ***/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    height: inherit !important;
+    margin-bottom: 242px;
+    position: initial;
+}
+
 footer.page-footer {
-    background-color: #676b74;
-    width: 100%;
-    /*bottom: 0;*/
     position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #676b74;
+    height: 242px;
 }
 
 .logofacebook:hover {
