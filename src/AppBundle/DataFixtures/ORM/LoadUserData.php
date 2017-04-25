@@ -75,6 +75,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                     'gender' => 'male',
                     'phone_verified' => true,
                 ],
+                [
+                    'name' => 'roger',
+                    'surname' => 'belleGosseDu93',
+                    'gender' => 'male',
+                    'phone_verified' => true,
+                ],
             ];
         foreach ($users as $i => $u) {
             $user = new User();
