@@ -59,7 +59,6 @@ class UserAddressController extends Controller
     }
 
     /**
-
      * @Route("/address/edit/{id}", name="app_edit_address")
      */
     public function editAction(Request $request, Address $address)
