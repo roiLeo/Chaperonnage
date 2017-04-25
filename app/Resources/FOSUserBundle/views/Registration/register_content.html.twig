@@ -39,9 +39,8 @@
     }
 </script>
 <div class="text-center">
-    <a href="#" onclick="fb_login();" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Sign
-        in
-        with Facebook </a>
+    <a href="#" onclick="fb_login();" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Se
+        connecter avec Facebook</a>
     <div class="mt-2 mb-2 hr">OR</div>
 </div>
 
@@ -96,20 +95,11 @@
 </div>
 
 <div class="text-center">
-    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-        <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span
-                class="custom-control-description">CGI</span> </label>
-    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-        <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span
-                class="custom-control-description">Newsletter</span> </label>
-</div>
-
-<div class="text-center">
     <button type="submit"
             class="btn sign btn-outline-primary btn-lg btn-block">{{ 'registration.submit'|trans }}</button>
 </div>
 <div class="text-center">
-    <p class="tw">have an account? <a href="{{ path('fos_user_security_login') }}">Sign In</a></p>
-    <p class="tw"><a href="{{ path('fos_user_resetting_request') }}">Forgot your Password?</a></p>
+    <p class="tw">Déjà inscrit ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></p>
+    <p class="tw"><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a></p>
 </div>
 {{ form_end(form) }}
