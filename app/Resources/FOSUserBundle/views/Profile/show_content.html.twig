@@ -94,9 +94,12 @@
                             {% endif %}
 
                             {% if get_credentialVerified(app.user) == 'true' %}
-                                <p class="card-text greenValid"><i class="fa fa-check-square-o" aria-hidden="true"></i>Pièce d'identité vérifié </p>
+                                <p class="card-text greenValid"><i class="fa fa-check-square-o" aria-hidden="true"></i>Pièce d'identité vérifiée </p>
                             {% else %}
-                                <p class="card-text redNonValid"><i class="fa fa-square-o" aria-hidden="true"></i><a href="{{ path('edit_credential') }}" class="redNonValid underline">Ajouter une pièce d'identité </a> </p>
+                                <div class="redNonValid alignItemCenter">
+                                    <i class="fa fa-square-o" aria-hidden="true"></i>
+                                    <p class="card-text "><a href="{{ path('edit_credential') }}" class="redNonValid underline">Identité non vérifiée</a> </p>
+                                </div>
                             {% endif %}
 
                         </div>
@@ -227,7 +230,7 @@
                         </div>
                         <hr>
                     {% else %}
-                        Aucun trajet chaperonné enregistrée.
+                        Aucun trajet chaperonné enregistré.
                     {% endfor %}
                     <!--Text-->
                 </div>
