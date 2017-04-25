@@ -22,73 +22,67 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
     {
         $addresses = [
             [
-                'city' => 'Orly',
-                'postal' => '94390',
-                'latitude' => 48.7262468,
-                'longitude' => 2.3630585,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Maison',
+                'country' => 'France',
+                'street' => '58 Route de Lodève',
+                'latitude' => 43.6168975,
+                'longitude' => 3.8261876999999913,
             ],
             [
-                'city' => 'Lyon',
-                'postal' => '69001',
-                'latitude' => 45.7581095,
-                'longitude' => 4.6950379,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Boulot',
+                'country' => 'France',
+                'street' => '64 rue Maurice Béjart',
+                'latitude' => 43.6168588,
+                'longitude' => 3.824768199999994,
             ],
             [
-                'city' => 'Créteil',
-                'postal' => '94000',
-                'latitude' => 48.7845902,
-                'longitude' => 2.4172901,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Maison',
+                'country' => 'France',
+                'street' => '58 Route de Lodève',
+                'latitude' => 43.6168975,
+                'longitude' => 3.8261876999999913,
             ],
             [
-                'city' => 'Fontenay-sous-Bois',
-                'postal' => '94120',
-                'latitude' => 48.8503561,
-                'longitude' => 2.4385401,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Boulot',
+                'country' => 'France',
+                'street' => '64 rue Maurice Béjart',
+                'latitude' => 43.6168588,
+                'longitude' => 3.824768199999994,
             ],
             [
-                'city' => 'Orly',
-                'postal' => '94390',
-                'latitude' => 48.7262468,
-                'longitude' => 2.3630585,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Maison',
+                'country' => 'France',
+                'street' => '58 Route de Lodève',
+                'latitude' => 43.6168975,
+                'longitude' => 3.8261876999999913,
             ],
             [
-                'city' => 'Lyon',
-                'postal' => '69001',
-                'latitude' => 45.7581095,
-                'longitude' => 4.6950379,
-            ],
-            [
-                'city' => 'Créteil',
-                'postal' => '94000',
-                'latitude' => 48.7845902,
-                'longitude' => 2.4172901,
-            ],
-            [
-                'city' => 'Fontenay-sous-Bois',
-                'postal' => '94120',
-                'latitude' => 48.8503561,
-                'longitude' => 2.4385401,
-            ],
-            [
-                'city' => 'Fontenay-sous-Bois',
-                'postal' => '94120',
-                'latitude' => 48.8503561,
-                'longitude' => 2.4385401,
-            ],
-            [
-                'city' => 'Fontenay-sous-Bois',
-                'postal' => '94120',
-                'latitude' => 48.8503561,
-                'longitude' => 2.4385401,
+                'city' => 'Montpellier',
+                'postal' => '34080',
+                'name' => 'Boulot',
+                'country' => 'France',
+                'street' => '64 rue Maurice Béjart',
+                'latitude' => 43.6168588,
+                'longitude' => 3.824768199999994,
             ],
         ];
         foreach ($addresses as $i => $a) {
             $address = new Address();
-
             $address->setPostalCode($a['postal']);
-
+            $address->setName($a['name']);
+            $address->setStreet($a['street']);
             $address->setCity($a['city']);
-
+            $address->setCountry($a['country']);
             $address->setLattitude($a['latitude']);
             $address->setLongitude($a['longitude']);
 
@@ -100,6 +94,6 @@ class LoadAddressData extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 9;
+        return 1;
     }
 }
