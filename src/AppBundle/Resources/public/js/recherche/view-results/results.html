@@ -2,6 +2,9 @@
     <div id="map" class="z-depth-1"></div>
 
     <div class="row agents">
+        <div flex layout="column" layout-sm="column" layout-align="center center">
+            <md-progress-circular md-mode="indeterminate" ng-show="searching"></md-progress-circular>
+        </div>
         <div class="col-md-4" ng-repeat="agent in agents"
              ng-value="agent">
             <div class="card testimonial-card">

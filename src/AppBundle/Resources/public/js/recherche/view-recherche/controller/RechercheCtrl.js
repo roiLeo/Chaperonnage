@@ -49,6 +49,7 @@ angular
             var lat = coord.lat;
             var lng = coord.lng;
             var city = '';
+            var country= '';
             var postalCode = 0;
 
             for (var i = 0; i < place.address_components.length; i++) {
@@ -58,12 +59,15 @@ angular
                 if(place.address_components[i].types[0]=="postal_code"){
                     postalCode = place.address_components[i].long_name;
                 }
+                if(place.address_components[i].types[0]=="country"){
+                    country = place.address_components[i].long_name;
+                }
             }
 
             if(addr=='start') {
-                RechercheService.setStartPoint(lat, lng, city, postalCode);
+                RechercheService.setStartPoint(lat, lng, city, postalCode, country);
             }else{
-                RechercheService.setFinishPoint(lat, lng, city, postalCode);
+                RechercheService.setFinishPoint(lat, lng, city, postalCode, country);
             }
 
 
@@ -125,16 +129,8 @@ angular
         $scope.myDate = new Date();
         $scope.isOpen = false;
 
-        $scope.startPoint = function(){
-            return RechercheService.getStartPoint();
-        };
-
-        $scope.updateDate = function() {
-            RechercheService.setDate($scope.rideDateObj.format());
-        };
-
         $scope.searchAgent = function(){
-            $scope.updateDate();
+            RechercheService.setDate($scope.rideDateObj.format());
             if(RechercheService.getStartPoint()&&RechercheService.getFinishPoint()&&RechercheService.getDate()){
                 $location.path('/results');
             }
